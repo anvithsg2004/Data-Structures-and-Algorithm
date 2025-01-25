@@ -1,0 +1,71 @@
+package DSA.Sliding_Window;
+
+//Same as the question "Find length of the longest subarray containing atmost two distinct integers".
+
+//We can say this question as = Max Length Sub Array with atmost 2 types of number.
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+public class _3_Fruit_Into_Baskets {
+
+    //Brute Force Solution
+    public static int totalElements(Integer[] arr) {
+
+        int n = arr.length;
+
+        int maxLen = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            Set<Integer> set = new HashSet<>();
+
+            for (int j = i; j < n; j++) {
+                set.add(arr[i]);
+
+                if (set.size() <= 2) {
+                    maxLen = Math.max(maxLen, j - i + 1);
+                } else {
+                    break;
+                }
+            }
+
+        }
+
+        return maxLen;
+    }
+
+    //Optimised Solution
+    public static int totalElements2(Integer[] arr) {
+
+        int maxLen = 0;
+        int n = arr.length;
+        int left = 0;
+
+        Map<Integer, Integer> freqMap = new HashMap<>();
+
+        for (int right = 0; right < n; right++) {
+            // Add the current element to the frequency map
+            freqMap.put(arr[right], freqMap.getOrDefault(arr[right], 0) + 1);
+
+            // Shrink the window until there are at most 2 unique elements
+            while (freqMap.size() > 2) {
+                // Remove the element at the left pointer
+                int leftElement = arr[left];
+                freqMap.put(leftElement, freqMap.get(leftElement) - 1);
+                if (freqMap.get(leftElement) == 0) {
+                    freqMap.remove(leftElement);
+                }
+                left++;
+            }
+
+            // Update the maximum window length
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+
+        return maxLen;
+
+    }
+}
