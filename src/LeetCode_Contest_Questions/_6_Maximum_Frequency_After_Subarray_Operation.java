@@ -1,8 +1,9 @@
+package LeetCode_Contest_Questions;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class Practise {
-
+public class _6_Maximum_Frequency_After_Subarray_Operation {
     public int maxFrequency(int[] nums, int k) {
         int n = nums.length;
 
@@ -54,75 +55,36 @@ public class Practise {
         System.out.println("Minimum frequency: " + minFreq);
         System.out.println("Maximum frequency: " + maxFreq);
 
+        int difference = maxFreqNum - minFreqNum;
+        int opposite = -difference;
+
+        //If the "minFreq" and "maxFreq" as same.
         if (minFreq == maxFreq) {
-            // Calculate potential x values based on highest and lowest numbers
-            int difference = maxFreqNum - minFreqNum;
-            int opposite = -difference;
-
-            // Compute maximum gains for both x values
-            int gainDifference = computeMaxGain(nums, k, difference);
-            int gainOpposite = computeMaxGain(nums, k, opposite);
-
-            // Take the best gain and add to the original count of k
-            return originalKCount + Math.max(gainDifference, gainOpposite);
-        }
-
-        int diff = maxFreqNum - k;
-        int oppDiff = -diff;
-
-        int[] first = new int[nums.length];
-        System.arraycopy(nums, 0, first, 0, nums.length);
-        int[] second = new int[nums.length];
-        System.arraycopy(nums, 0, second, 0, nums.length);
-
-        int diffFirstIndex = findFirst(nums, diff);
-        int diffLastIndex = findLast(nums, diff);
-        int oppDiffFirstIndex = findFirst(nums, oppDiff);
-        int oppDiffLastIndex = findLast(nums, oppDiff);
-
-        for (int i = diffFirstIndex; i <= diffLastIndex; i++) {
-            if (diff + first[i] == k) {
-                continue;
+            int first = 0;
+            int second = 0;
+            for (int i = 0; i < n; i++) {
+                nums[i] = difference + nums[i];
             }
-            first[i] = diff + first[i];
-        }
-
-        for (int i = oppDiffFirstIndex; i <= oppDiffLastIndex; i++) {
-            if (diff + second[i] == k) {
-                continue;
+            for (int i = 0; i < n; i++) {
+                if (nums[i] == k) {
+                    first++;
+                }
             }
-            second[i] = oppDiff + second[i];
-        }
 
-
-        int firstNum = 0;
-        int secondNum = 0;
-
-        for (int i = 0; i < n; i++) {
-            if (first[i] == k) {
-                firstNum++;
+            for (int i = 0; i < n; i++) {
+                nums[i] = opposite + nums[i];
             }
-        }
-
-        for (int i = 0; i < n; i++) {
-            if (second[i] == k) {
-                secondNum++;
+            for (int i = 0; i < n; i++) {
+                if (nums[i] == k) {
+                    second++;
+                }
             }
+
+            return Math.max(first, second);
+
         }
 
-        return Math.max(firstNum, secondNum);
-    }
-
-    private int computeMaxGain(int[] nums, int k, int x) {
-        int currentSum = 0;
-        int maxSum = 0;
-        for (int num : nums) {
-            // Calculate contribution: +1 if becomes k, -1 if was k and changes
-            int value = (num + x == k) ? 1 : (num == k) ? -1 : 0;
-            currentSum = Math.max(value, currentSum + value);
-            maxSum = Math.max(maxSum, currentSum);
-        }
-        return maxSum > 0 ? maxSum : 0; // Ensure no negative contribution
+        return minFreq + maxFreq;
     }
 
     public int findFirst(int[] nums, int target) {
