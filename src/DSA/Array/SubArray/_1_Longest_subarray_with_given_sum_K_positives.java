@@ -84,8 +84,9 @@ public class _1_Longest_subarray_with_given_sum_K_positives {
                 // the subarray a[i...j-1]:
                 s += a[j];
 
-                if (s == k)
+                if (s == k) {
                     len = Math.max(len, j - i + 1);
+                }
             }
         }
         return len;

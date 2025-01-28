@@ -19,8 +19,7 @@ public class _10_Union_Optimal_Approch {
                 if (union.size() == 0 || union.get(union.size() - 1) != array1[i])
                     union.add(array1[i]);
                 i++;
-            } else // case 3
-            {
+            } else {
                 if (union.size() == 0 || union.get(union.size() - 1) != array2[j])
                     union.add(array2[j]);
                 j++;

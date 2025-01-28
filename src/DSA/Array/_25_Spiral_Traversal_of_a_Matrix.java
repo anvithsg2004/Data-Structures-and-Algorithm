@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class _25_Spiral_Traversal_of_a_Matrix {
-
     public List<Integer> spiralOrder(int[][] matrix) {
 
         //Right → Bottom → Left → Top
@@ -73,10 +72,6 @@ public class _25_Spiral_Traversal_of_a_Matrix {
         }
 
         return ans;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

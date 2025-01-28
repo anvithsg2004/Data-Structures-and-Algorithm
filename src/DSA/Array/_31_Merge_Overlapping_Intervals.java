@@ -19,14 +19,14 @@ public class _31_Merge_Overlapping_Intervals {
 
             //If the List is empty
             //OR
-            //the current interval array index is greater than the previous then make a new List and add to it.
+            //the current interval array index is greater than the previous, then make a new List and add to it.
             if (ans.isEmpty() || intervals[i][0] > ans.get(ans.size() - 1).get(1)) {
 
                 ans.add(Arrays.asList(intervals[i][0], intervals[i][1]));
 
             } else {
 
-                //Update with interval last number or the List last Number
+                //Update with an interval last number or the List last Number
                 //Example :- (2, 6) == List and (3, 8) == New Interval
                 //Result :- (2, 8).
                 ans.get(ans.size() - 1).set(1, Math.max(ans.get(ans.size() - 1).get(1), intervals[i][1]));
@@ -55,7 +55,7 @@ public class _31_Merge_Overlapping_Intervals {
             int end = intervals[i][1];
 
             //Skip all the merged intervals:
-            //If the ans last end is greater than do not do anything.
+            //If the ans, last end is greater than do not do anything.
             if (!ans.isEmpty() && end <= ans.get(ans.size() - 1).get(1)) {
                 continue;
             }
@@ -73,10 +73,6 @@ public class _31_Merge_Overlapping_Intervals {
         }
 
         return ans;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

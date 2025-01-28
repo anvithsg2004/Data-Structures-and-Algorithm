@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class _20_Next_Permutation {
-
     public ArrayList<Integer> nextPermutation(int[] nums) {
 
         ArrayList<Integer> result = new ArrayList<>();
@@ -45,14 +44,11 @@ public class _20_Next_Permutation {
         }
 
         // Step 3: reverse the right half:
+        //It is doing it by reference, so the result will get change.
         List<Integer> sublist = result.subList(ind + 1, n);
         Collections.reverse(sublist);
 
         return result;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

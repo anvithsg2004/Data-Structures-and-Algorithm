@@ -1,7 +1,6 @@
 package DSA.Array;
 
 public class _18_Maximum_Subarray_Sum_Kadanes_Algorithm {
-
     public int maxSubArray(int[] nums) {
 
         int sum = 0;
@@ -22,10 +21,6 @@ public class _18_Maximum_Subarray_Sum_Kadanes_Algorithm {
         }
 
         return maxi;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

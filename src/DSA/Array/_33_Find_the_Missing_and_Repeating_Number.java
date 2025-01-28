@@ -3,7 +3,7 @@ package DSA.Array;
 public class _33_Find_the_Missing_and_Repeating_Number {
 
     //Optimal Code
-    public int[] findTwoElement2(int arr[]) {
+    public int[] findTwoElement2(int[] arr) {
 
         long n = arr.length;
 
@@ -43,7 +43,7 @@ public class _33_Find_the_Missing_and_Repeating_Number {
 
 
     //Hashing
-    public int[] findTwoElement(int arr[]) {
+    public int[] findTwoElement(int[] arr) {
 
         int n = arr.length;
 
@@ -76,10 +76,6 @@ public class _33_Find_the_Missing_and_Repeating_Number {
         int[] ans = {repeating, missing};
 
         return ans;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

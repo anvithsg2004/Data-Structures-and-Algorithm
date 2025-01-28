@@ -35,8 +35,4 @@ public class _32_Merge_two_sorted_arrays_without_extra_space {
         Arrays.sort(nums2);
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }
