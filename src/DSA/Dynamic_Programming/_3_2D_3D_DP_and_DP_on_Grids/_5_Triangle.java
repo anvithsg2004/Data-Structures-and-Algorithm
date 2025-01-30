@@ -7,7 +7,6 @@ public class _5_Triangle {
 
     //Recursion
     public int minimumTotal(List<List<Integer>> triangle) {
-        int n = triangle.size();
         return helper(0, 0, triangle);
     }
 

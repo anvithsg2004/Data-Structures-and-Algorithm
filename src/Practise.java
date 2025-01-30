@@ -1,157 +1,132 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+
+class index {
+    int i;
+    int j;
+
+    public index(int i, int j) {
+        this.i = i;
+        this.j = j;
+    }
+}
 
 public class Practise {
 
-    public int maxFrequency(int[] nums, int k) {
-        int n = nums.length;
+    public static int fun3(int[] arr1, int[] arr2) {
 
-        Map<Integer, Integer> freqMap = new HashMap<>();
-        for (int i = 0; i < n; i++) {
-            freqMap.put(nums[i], freqMap.getOrDefault(nums[i], 0) + 1);
-        }
+        Map<Integer, index> commonElements = new HashMap<>();
 
-        //Initialize variables
-        int minFreqNum = Integer.MAX_VALUE; // Number with minimum frequency
-        int maxFreqNum = Integer.MIN_VALUE; // Number with maximum frequency
-        int minFreq = Integer.MAX_VALUE;    // Minimum frequency value
-        int maxFreq = Integer.MIN_VALUE;    // Maximum frequency value
-
-        // Step 3: Find min and max frequency numbers
-        for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
-            int num = entry.getKey();
-            int freq = entry.getValue();
-
-            // Update min frequency number
-            if (freq < minFreq || (freq == minFreq && num < minFreqNum)) {
-                minFreq = freq;
-                minFreqNum = num;
-            }
-
-            // Update max frequency number
-            if (freq > maxFreq || (freq == maxFreq && num > maxFreqNum)) {
-                maxFreq = freq;
-                maxFreqNum = num;
+        for (int i = 0; i < arr1.length; i++) {
+            for (int j = 0; j < arr2.length; j++) {
+                if (arr1[i] == arr2[j]) {
+                    int element = arr1[i];
+                    commonElements.put(element, new index(i, j));
+                }
             }
         }
 
-        // Step 4: Handle case where all frequencies are the same
-        if (minFreq == maxFreq) {
-            // Find the highest and lowest numbers in the array
-            int highestNum = Integer.MIN_VALUE;
-            int lowestNum = Integer.MAX_VALUE;
-            for (int num : nums) {
-                if (num > highestNum) highestNum = num;
-                if (num < lowestNum) lowestNum = num;
+        int sum1 = 0;
+        int sum2 = 0;
+
+        //For sum1, starting from arr1.
+        for (int i = 0; i < arr1.length; i++) {
+            if (commonElements.containsKey(arr1[i])) {
+                index curr = commonElements.get(arr1[i]);
+                sum1 = sum1 + forRestOfTheSum(arr2, curr.j);
+                break;
             }
-            minFreqNum = lowestNum;
-            maxFreqNum = highestNum;
+            sum1 = sum1 + arr1[i];
         }
 
-        // Output results
-        System.out.println("Number with minimum frequency: " + minFreqNum);
-        System.out.println("Number with maximum frequency: " + maxFreqNum);
-        System.out.println("Minimum frequency: " + minFreq);
-        System.out.println("Maximum frequency: " + maxFreq);
-
-        if (minFreq == maxFreq) {
-            // Calculate potential x values based on highest and lowest numbers
-            int difference = maxFreqNum - minFreqNum;
-            int opposite = -difference;
-
-            // Compute maximum gains for both x values
-            int gainDifference = computeMaxGain(nums, k, difference);
-            int gainOpposite = computeMaxGain(nums, k, opposite);
-
-            // Take the best gain and add to the original count of k
-            return originalKCount + Math.max(gainDifference, gainOpposite);
+        //For sum2, starting from arr2
+        for (int i = 0; i < arr2.length; i++) {
+            if (commonElements.containsKey(arr1[i])) {
+                index curr = commonElements.get(arr1[i]);
+                sum2 = sum2 + forRestOfTheSum(arr1, curr.i);
+                break;
+            }
+            sum2 = sum2 + arr2[i];
         }
 
-        int diff = maxFreqNum - k;
-        int oppDiff = -diff;
+        return Math.max(sum1, sum2);
 
-        int[] first = new int[nums.length];
-        System.arraycopy(nums, 0, first, 0, nums.length);
-        int[] second = new int[nums.length];
-        System.arraycopy(nums, 0, second, 0, nums.length);
+    }
 
-        int diffFirstIndex = findFirst(nums, diff);
-        int diffLastIndex = findLast(nums, diff);
-        int oppDiffFirstIndex = findFirst(nums, oppDiff);
-        int oppDiffLastIndex = findLast(nums, oppDiff);
+    public static int forRestOfTheSum(int[] arr, int j) {
+        int sum = 0;
 
-        for (int i = diffFirstIndex; i <= diffLastIndex; i++) {
-            if (diff + first[i] == k) {
+        for (int i = j; i < arr.length; i++) {
+            sum = sum + arr[i];
+        }
+
+        return sum;
+    }
+
+    public static String fun2(String string) {
+
+        int n = string.length();
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        int i = 0;
+
+        for (int j = 0; j < n; j++) {
+            if (string.charAt(i) != string.charAt(j)) {
+                char ch = string.charAt(i);
+                int num = j - i;
+                stringBuilder.append(ch);
+                stringBuilder.append(num);
+                i = j;
+            }
+        }
+
+        stringBuilder.append(string.charAt(i));
+        stringBuilder.append(n - i);
+
+        return stringBuilder.toString();
+
+    }
+
+    public static int fun1(int[] arr) {
+        HashSet<Integer> nums = new HashSet<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > 0) {
+                nums.add(arr[i]);
+            }
+        }
+
+        ArrayList<Integer> num = new ArrayList<>(nums);
+
+        int missing = -1;
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (num.get(i) == 1) {
                 continue;
             }
-            first[i] = diff + first[i];
-        }
 
-        for (int i = oppDiffFirstIndex; i <= oppDiffLastIndex; i++) {
-            if (diff + second[i] == k) {
-                continue;
-            }
-            second[i] = oppDiff + second[i];
-        }
-
-
-        int firstNum = 0;
-        int secondNum = 0;
-
-        for (int i = 0; i < n; i++) {
-            if (first[i] == k) {
-                firstNum++;
+            if (!nums.contains(num.get(i) - 1)) {
+                missing = num.get(i) - 1;
+                break;
             }
         }
 
-        for (int i = 0; i < n; i++) {
-            if (second[i] == k) {
-                secondNum++;
-            }
-        }
-
-        return Math.max(firstNum, secondNum);
+        return missing;
     }
 
-    private int computeMaxGain(int[] nums, int k, int x) {
-        int currentSum = 0;
-        int maxSum = 0;
-        for (int num : nums) {
-            // Calculate contribution: +1 if becomes k, -1 if was k and changes
-            int value = (num + x == k) ? 1 : (num == k) ? -1 : 0;
-            currentSum = Math.max(value, currentSum + value);
-            maxSum = Math.max(maxSum, currentSum);
-        }
-        return maxSum > 0 ? maxSum : 0; // Ensure no negative contribution
+    public static void main(String[] args) {
+        int[] arr = {2, -3, 4, 1, 7};
+        System.out.println(fun1(arr)); // Expected: 3
+
+        String s = "aabcccccaaa";
+        System.out.println(fun2(s)); // Expected: "a2b1c5a3"
+
+        int[] arr1 = {1, 2, 3};
+        int[] arr2 = {3, 4, 5};
+        System.out.println(fun3(arr1, arr2)); // Expected: 9
     }
 
-    public int findFirst(int[] nums, int target) {
-
-        int n = nums.length;
-
-        int index = 0;
-
-        for (int i = 0; i < n; i++) {
-            if (nums[i] == target) {
-                index = i;
-            }
-        }
-        return index;
-    }
-
-    public int findLast(int[] nums, int target) {
-
-        int n = nums.length;
-
-        int index = n - 1;
-
-        for (int i = n - 1; i >= 0; i--) {
-            if (nums[i] == target) {
-                index = i;
-            }
-        }
-
-        return index;
-
-    }
 }

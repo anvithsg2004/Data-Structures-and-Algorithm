@@ -2,8 +2,8 @@ package DSA.Dynamic_Programming._2_1D_Array_DP;
 
 //How to Solve DP Questions
 //1. Try to represent any problems in terms of index
-//2. Do all possible stuffs on that index, according to the problem statement
-//3. Sum of all stuffs ->count all the ways , min(of all stuffs) -> Find min
+//2. Do all possible stuff on that index, according to the problem statement
+//3. Sum of all stuffs → count all the ways , min(of all stuffs) -> Find min
 
 public class _1_Climbing_Stairs {
 
@@ -29,13 +29,11 @@ public class _1_Climbing_Stairs {
             return 1;
         }
 
-        if (memo[n] != 0) {
+        if (memo[n] != -1) {
             return memo[n];
         }
 
-        memo[n] = climbStairs(n - 1, memo) + climbStairs(n - 2, memo);
-
-        return memo[n];
+        return memo[n] = climbStairs(n - 1, memo) + climbStairs(n - 2, memo);
 
     }
 

@@ -1,7 +1,18 @@
 package DSA.Graphs._5_Minimum_Spanning_Tree;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
+
+class MSTNode {
+    int i;
+    int j;
+
+    public MSTNode(int i, int j) {
+        this.i = i;
+        this.j = j;
+    }
+}
 
 class Pair {
     int node;
@@ -14,13 +25,15 @@ class Pair {
 }
 
 public class _2_Prim_Algorithm {
-
     public static int spanningTree(int v, int e, List<List<int[]>> adj) {
 
+        //Min Heap
         PriorityQueue<Pair> pq = new PriorityQueue<>((x, y) -> x.weight - y.weight);
         pq.add(new Pair(0, 0));
 
         boolean[] visited = new boolean[v];
+
+        ArrayList<MSTNode> mstNodes = new ArrayList<>();
 
         //This is to count the sum of all the weights of the Minimum Spanning Tree.
         int sum = 0;
@@ -44,15 +57,12 @@ public class _2_Prim_Algorithm {
 
                 if (visited[adjNode] == false) {
                     pq.add(new Pair(adjNode, edW));
+                    mstNodes.add(new MSTNode(node, adjNode));
                 }
             }
         }
 
         return sum;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

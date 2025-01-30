@@ -12,7 +12,7 @@ public class _5_Union_by_Size {
     // Constructor initializes the Disjoint Set for `n` nodes.
     public _5_Union_by_Size(int n) {
         for (int i = 0; i <= n; i++) {
-            // Initially, every node is a single-node tree, so size is 1.
+            // Initially, every node is a single-node tree, so the size is 1.
             size.add(1);
             // Each node is its own parent at the start (self-loop).
             parent.add(i);

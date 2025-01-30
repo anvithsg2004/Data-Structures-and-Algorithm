@@ -55,6 +55,7 @@ public class _4_Union_by_Rank {
         } else {
             // If both trees have the same rank, attach one under the other
             // (e.g., attach `v`'s tree under `u`) and increase the rank of the new root.
+            // ultimateParent_v a child of ultimateParent_u
             parent.set(ultimateParent_v, ultimateParent_u);
             int rankU = rank.get(ultimateParent_u);
             rank.set(ultimateParent_u, rankU + 1); // Increment rank as we increased the tree height.

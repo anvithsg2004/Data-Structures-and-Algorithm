@@ -2,7 +2,7 @@ package DSA.Graphs._5_Minimum_Spanning_Tree;
 
 //Disjoint Set
 //For Example :-
-//We have two components 1->2->3->4 and 5->6->7. Now the question is does 1 and 5 belong to the same component or not?
+//We have two parts 1→2→3→4 and 5→6→7. Now the question is does 1 and 5 belong to the same component or not?
 //Basically I do is that I do a simple DFS/BFS which basically take O(V + E).
 //But the Disjoint Set will do in constant time complexity.
 //Usually used dynamic Graphs
@@ -13,7 +13,7 @@ package DSA.Graphs._5_Minimum_Spanning_Tree;
 //To find the parent, we have to find the ultimate parent.
 
 //Here union means there are two nodes 1 and 2.
-//If say union then connect 1 and 2 == 1->2
+//If say union then connect 1 and 2 == 1→2
 
 //Union(u, v)
 //Steps :-
