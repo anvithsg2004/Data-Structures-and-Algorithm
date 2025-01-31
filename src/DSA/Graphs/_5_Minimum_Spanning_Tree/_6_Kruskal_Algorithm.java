@@ -21,7 +21,6 @@ class Edge implements Comparable<Edge> {
 }
 
 public class _6_Kruskal_Algorithm {
-
     public static int spanningTree(int v, int e, List<List<int[]>> adj) {
 
         List<Edge> edges = new ArrayList<>();
@@ -54,10 +53,6 @@ public class _6_Kruskal_Algorithm {
         }
 
         return mstWt;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }
