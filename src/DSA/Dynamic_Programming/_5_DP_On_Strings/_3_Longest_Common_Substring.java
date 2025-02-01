@@ -29,6 +29,7 @@ public class _3_Longest_Common_Substring {
                     dp[i][j] = 1 + dp[i - 1][j - 1];
                     answer = Math.max(answer, dp[i][j]);
                 } else {
+                    //if(S1[i-1] != S2[j-1]), the characters don’t match, therefore, the consecutive of characters is broken. So we set the cell value (dp[i][j]) as 0.
                     dp[i][j] = 0;
                 }
             }
