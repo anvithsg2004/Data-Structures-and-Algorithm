@@ -29,7 +29,6 @@ public class _15_Reverse_Words_in_a_String {
         }
 
         // Trim the final result to remove any extra space at the end
-
         return reversedSentence.toString().trim();
     }
 }
