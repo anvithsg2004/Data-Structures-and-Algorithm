@@ -20,7 +20,7 @@ public class _8_Sort_Vowels_in_a_String {
         }
 
         StringBuilder sortedVowels = new StringBuilder();
-        // Construct the sorted vowel string for uppercase
+        //Construct the sorted vowel string for uppercase
         for (int i = 0; i < 26; i++) {
             char c = (char) ('A' + i);
             while (upper[i] != 0) {
@@ -29,7 +29,7 @@ public class _8_Sort_Vowels_in_a_String {
             }
         }
 
-        // Construct the sorted vowel string for lowercase
+        //Construct the sorted vowel string for lowercase
         for (int i = 0; i < 26; i++) {
             char c = (char) ('a' + i);
             while (lower[i] != 0) {
@@ -44,16 +44,12 @@ public class _8_Sort_Vowels_in_a_String {
         for (int i = 0; i < sb.length(); i++) {
             if (sb.charAt(i) == '#') {
                 if (vowelIndex < sortedVowels.length()) {
-                    sb.setCharAt(i, sortedVowels.charAt(vowelIndex)); // Replace with the sorted vowel
+                    sb.setCharAt(i, sortedVowels.charAt(vowelIndex)); // Replace it with the sorted vowel
                     vowelIndex++;
                 }
             }
         }
 
         return sb.toString(); // Return the modified string
-    }
-
-    public static void main(String[] args) {
-
     }
 }

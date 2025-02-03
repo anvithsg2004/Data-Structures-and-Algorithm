@@ -1,6 +1,6 @@
 package DSA.Practice.Arrays.Easy;
 
-public class __Special_Array_I {
+public class _11_Special_Array_I {
     public boolean isArraySpecial(int[] nums) {
 
         int n = nums.length;

@@ -32,8 +32,4 @@ public class _2_Count_Subarray_sum_Equals_K {
 
         return count;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

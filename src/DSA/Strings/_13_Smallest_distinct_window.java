@@ -3,7 +3,6 @@ package DSA.Strings;
 import java.util.HashMap;
 
 public class _13_Smallest_distinct_window {
-
     public static String findSmallestWindow(String str) {
         if (str == null || str.isEmpty()) {
             return "";
@@ -54,9 +53,5 @@ public class _13_Smallest_distinct_window {
         }
 
         return result;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

@@ -1,7 +1,6 @@
 package DSA.Strings;
 
 public class _3_Defanging_IP_Address {
-
     public String defangIPaddr(String address) {
         int index = 0;
         StringBuilder ans = new StringBuilder();
@@ -16,9 +15,5 @@ public class _3_Defanging_IP_Address {
         }
 
         return ans.toString();
-    }
-
-    public static void main(String[] args) {
-
     }
 }

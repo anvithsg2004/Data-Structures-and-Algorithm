@@ -3,7 +3,6 @@ package DSA.Strings;
 import java.util.Stack;
 
 public class _14_Remove_Outermost_Parentheses {
-
     public String removeOuterParentheses(String s) {
 
         Stack<Character> bracket = new Stack<>();
@@ -26,10 +25,6 @@ public class _14_Remove_Outermost_Parentheses {
         }
 
         return sb.toString();
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

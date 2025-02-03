@@ -10,8 +10,8 @@ public class _1_Assign_Cookies {
         Arrays.sort(g);
         Arrays.sort(s);
 
-        int left = 0;  // for the children array
-        int right = 0; // for the cookie array
+        int left = 0;  // For the children array
+        int right = 0; // For the cookie array
 
         while (left < n && right < m) {
             if (g[left] <= s[right]) {

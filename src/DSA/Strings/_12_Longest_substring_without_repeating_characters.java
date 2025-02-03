@@ -3,7 +3,6 @@ package DSA.Strings;
 import java.util.HashSet;
 
 public class _12_Longest_substring_without_repeating_characters {
-
     public int lengthOfLongestSubstring(String s) {
         if (s == null || s.isEmpty()) {
             return 0;
@@ -27,9 +26,5 @@ public class _12_Longest_substring_without_repeating_characters {
         }
 
         return maxLength;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

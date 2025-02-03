@@ -13,6 +13,7 @@ public class _11_Candy {
         left[0] = 1;
         right[n - 1] = 1;
 
+        //Coming from the front.
         for (int i = 1; i < n; i++) {
             if (ratings[i] > ratings[i - 1]) {
                 left[i] = left[i - 1] + 1;
@@ -21,6 +22,7 @@ public class _11_Candy {
             }
         }
 
+        //Coming from the back.
         for (int i = n - 2; i >= 0; i--) {
             if (ratings[i] > ratings[i + 1]) {
                 right[i] = right[i + 1] + 1;

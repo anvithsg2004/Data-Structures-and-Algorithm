@@ -15,7 +15,7 @@ public class _21_Leaders_in_an_Array_problem {
 
         result.add(max);
 
-        //Come from last and which is the max from the last keep one adding those to result list.
+        //Come from last and which is the max from the last keep one adding those to the result list.
         for (int i = n - 2; i >= 0; i--) {
 
             if (arr[i] >= max) {
@@ -29,10 +29,6 @@ public class _21_Leaders_in_an_Array_problem {
         Collections.reverse(result);
 
         return result;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

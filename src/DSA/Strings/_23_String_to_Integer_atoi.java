@@ -1,7 +1,6 @@
 package DSA.Strings;
 
 public class _23_String_to_Integer_atoi {
-
     public int myAtoi(String s) {
 
         s = s.trim();
@@ -29,7 +28,7 @@ public class _23_String_to_Integer_atoi {
                 break;
             }
 
-            // Check for overflow before multiplying result by 10
+            // Check for overflow before a multiplying result by 10
             if (result > (Integer.MAX_VALUE - middle) / 10) {
                 return isNegative ? Integer.MIN_VALUE : Integer.MAX_VALUE;
             }
@@ -42,10 +41,6 @@ public class _23_String_to_Integer_atoi {
         }
 
         return result;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

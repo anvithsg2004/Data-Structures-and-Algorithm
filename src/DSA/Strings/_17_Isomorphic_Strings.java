@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class _17_Isomorphic_Strings {
-
-
     //Another Approach
     public boolean fun(String s, String t) {
 
@@ -35,32 +33,6 @@ public class _17_Isomorphic_Strings {
         }
 
         return true;
-
-    }
-
-
-    public boolean isIsomorphic(String s, String t) {
-
-        Map<Character, Character> map = new HashMap<>();
-
-        for (int i = 0; i < s.length(); i++) {
-
-            char ss = s.charAt(i);
-            char tt = t.charAt(i);
-
-            if ((!map.containsKey(ss) && map.containsValue(tt)) || (map.containsKey(ss) && map.get(ss) != tt)) {
-                return false;
-            }
-
-            map.put(ss, tt);
-
-        }
-
-        return true;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

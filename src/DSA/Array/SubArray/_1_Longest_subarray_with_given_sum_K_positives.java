@@ -34,7 +34,6 @@ public class _1_Longest_subarray_with_given_sum_K_positives {
         return maxLen;
     }
 
-
     //Better Solution for both Positive and Negative
     public static int getLongestSubarray(int[] a, long k) {
 

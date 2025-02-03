@@ -5,13 +5,12 @@ import java.util.Map;
 import java.util.PriorityQueue;
 
 public class _21_Sort_Characters_By_Frequency {
-
     public String frequencySort(String s) {
 
         Map<Character, Integer> map = new HashMap<>();
 
         for (char c : s.toCharArray()) {
-            map.put(c, map.getOrDefault(c , 0) + 1);
+            map.put(c, map.getOrDefault(c, 0) + 1);
         }
 
         PriorityQueue<Map.Entry<Character, Integer>> pq = new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());
@@ -26,10 +25,6 @@ public class _21_Sort_Characters_By_Frequency {
         }
 
         return answer.toString();
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

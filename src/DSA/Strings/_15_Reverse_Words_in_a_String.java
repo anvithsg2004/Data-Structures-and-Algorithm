@@ -3,7 +3,6 @@ package DSA.Strings;
 import java.util.ArrayList;
 
 public class _15_Reverse_Words_in_a_String {
-
     public String reverseWords(String s) {
         String[] words = s.split(" ");
 
@@ -32,8 +31,5 @@ public class _15_Reverse_Words_in_a_String {
         // Trim the final result to remove any extra space at the end
 
         return reversedSentence.toString().trim();
-    }
-
-    public static void main(String[] args) {
     }
 }

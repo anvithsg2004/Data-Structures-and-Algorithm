@@ -40,8 +40,4 @@ public class _3_Largest_Subarray_with_Zero_Sum {
         return maxLen;
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

@@ -1,7 +1,6 @@
 package DSA.Strings;
 
 public class _16_Largest_odd_number_in_a_string {
-
     public String largestOddNumber(String num) {
 
         // Length of the input string
@@ -9,7 +8,7 @@ public class _16_Largest_odd_number_in_a_string {
 
         // Check if the last digit is odd
         if (Integer.parseInt(String.valueOf(num.charAt(n - 1))) % 2 != 0) {
-            return num; // If last digit is odd, return the whole string
+            return num; // If the last digit is odd, return the whole string
         }
 
         // Initialize result as empty
@@ -25,10 +24,6 @@ public class _16_Largest_odd_number_in_a_string {
         }
 
         return result;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

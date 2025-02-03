@@ -51,8 +51,4 @@ public class _2_Sorting_the_Sentence {
 
         return temp.toString();
     }
-
-    public static void main(String[] args) {
-
-    }
 }

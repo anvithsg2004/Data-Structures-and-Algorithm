@@ -20,7 +20,8 @@ public class _1_Longest_Palindrome {
 
         }
 
-        //In this problem the intuition is only the even number of the times the character has repeated.
+        //In this problem the intuition is only the even number of the times
+        //the character has repeated.
         //If there is an odd, then reduce it.
 
         //If you get any odd then add it at the last.
@@ -54,9 +55,5 @@ public class _1_Longest_Palindrome {
 
 
         return count + isOdd;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

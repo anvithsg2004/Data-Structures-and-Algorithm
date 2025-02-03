@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class _24_Count_number_of_substrings {
-
-    public static long substrCount (String s, int k) {
+    public static long substrCount(String s, int k) {
 
         return help(s, k) - help(s, k - 1);
 
@@ -43,10 +42,6 @@ public class _24_Count_number_of_substrings {
         }
 
         return count;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

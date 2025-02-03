@@ -26,8 +26,8 @@ public class _5_Valid_Parenthesis {
         return helper(s, 0, 0);
     }
 
-    //The helper function is just simple. If "(", then increase the count or else decrease the count.
-
+    //The helper function is just simple. If "(",
+    //then increase the count or else decrease the count.
     public boolean helper(String s, int index, int count) {
         // If the count goes negative, it's invalid
         if (count < 0) {

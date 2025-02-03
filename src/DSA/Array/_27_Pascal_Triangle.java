@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class _27_Pascal_Triangle {
-
     //There are three variations.
 
     //Variation 1
@@ -66,9 +65,5 @@ public class _27_Pascal_Triangle {
         }
 
         return ansRow;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

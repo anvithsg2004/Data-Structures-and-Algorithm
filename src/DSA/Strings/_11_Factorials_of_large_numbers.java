@@ -25,8 +25,4 @@ public class _11_Factorials_of_large_numbers {
 
         return answer;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

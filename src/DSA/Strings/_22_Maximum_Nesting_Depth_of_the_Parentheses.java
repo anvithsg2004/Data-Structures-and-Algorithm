@@ -1,7 +1,6 @@
 package DSA.Strings;
 
 public class _22_Maximum_Nesting_Depth_of_the_Parentheses {
-
     public int maxDepth(String s) {
 
         int count = 0;
@@ -20,10 +19,6 @@ public class _22_Maximum_Nesting_Depth_of_the_Parentheses {
         }
 
         return maxi;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

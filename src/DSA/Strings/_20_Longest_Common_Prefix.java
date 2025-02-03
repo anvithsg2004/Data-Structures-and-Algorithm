@@ -3,7 +3,6 @@ package DSA.Strings;
 import java.util.Arrays;
 
 public class _20_Longest_Common_Prefix {
-
     public String longestCommonPrefix(String[] strs) {
 
         Arrays.sort(strs);
@@ -21,10 +20,6 @@ public class _20_Longest_Common_Prefix {
         }
 
         return index == 0 ? "" : str1.substring(0, index);
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

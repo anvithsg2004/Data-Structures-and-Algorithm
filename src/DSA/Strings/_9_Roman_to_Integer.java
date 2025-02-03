@@ -42,8 +42,4 @@ public class _9_Roman_to_Integer {
 
         return sum;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

@@ -29,8 +29,4 @@ public class _5_Check_if_the_Sentence_Is_Pangram {
 
         return true;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

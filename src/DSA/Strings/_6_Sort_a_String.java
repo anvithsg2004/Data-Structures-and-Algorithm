@@ -1,7 +1,6 @@
 package DSA.Strings;
 
 public class _6_Sort_a_String {
-
     public String sort(String s) {
         if (s == null) {
             return null;
@@ -21,9 +20,5 @@ public class _6_Sort_a_String {
         }
 
         return ans.toString();
-    }
-
-    public static void main(String[] args) {
-
     }
 }
