@@ -1,6 +1,7 @@
 package DSA.Practice.Arrays.Medium;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 class Position {
     int i;
@@ -18,6 +19,8 @@ class Position {
 }
 
 public class _3_Tuple_with_Same_Product {
+
+    //My Approach
     public static int tupleSameProduct(int[] nums) {
 
         //Combination of this [a, b, c, d]
@@ -68,6 +71,32 @@ public class _3_Tuple_with_Same_Product {
         return count;
 
     }
+
+    //My Approach
+    public static int tupleSameProduct2(int[] nums) {
+        HashMap<Integer, Integer> productCount = new HashMap<>();
+        int n = nums.length;
+
+        // Store all products in HashMap
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {  // Avoid duplicate pairs by ensuring i < j
+                int product = nums[i] * nums[j];
+                productCount.put(product, productCount.getOrDefault(product, 0) + 1);
+            }
+        }
+
+        int count = 0;
+
+        // Calculate valid tuples
+        for (int freq : productCount.values()) {
+            if (freq > 1) {
+                count += (freq * (freq - 1) / 2) * 8;  // Each pair contributes to 8 valid permutations
+            }
+        }
+
+        return count;
+    }
+
 
     public static void main(String[] args) {
         int[] arr = {2, 3, 4, 6};
