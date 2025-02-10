@@ -1,61 +1,40 @@
 package DSA.Practice.Arrays.Medium;
 
 import java.util.HashMap;
-import java.util.PriorityQueue;
-
-class Pair {
-    int index;
-    int number;
-
-    public Pair(int index, int number) {
-        this.index = index;
-        this.number = number;
-    }
-}
+import java.util.TreeSet;
 
 public class _5_Design_a_Number_Container_System {
 
-    PriorityQueue<Pair> container;
-    HashMap<Integer, Integer> indexMap;
+    HashMap<Integer, TreeSet<Integer>> numberToIndex;
+    HashMap<Integer, Integer> indexToNumber;
 
     public _5_Design_a_Number_Container_System() {
-        container = new PriorityQueue<>((a, b) -> Integer.compare(a.index, b.index));
-        indexMap = new HashMap<>();
+        numberToIndex = new HashMap<>();
+        indexToNumber = new HashMap<>();
     }
 
     public void change(int index, int number) {
-        //If the PQ has the index before then update.
-        Pair toUpdate = null;
-
-        for (Pair p : container) {
-            if (p.index == index) {
-                toUpdate = p;
-                break;
+        //Delete the Old.
+        if (indexToNumber.containsKey(index)) {
+            int previousNumber = indexToNumber.get(index);
+            numberToIndex.get(previousNumber).remove(index);
+            if (numberToIndex.get(number).size() == 0) {
+                numberToIndex.remove(number);
             }
         }
-
-        if (toUpdate != null) {
-            container.remove(toUpdate);  //Remove an old pair
-            container.add(new Pair(index, number));  //Add an updated pair
-            indexMap.put(index, number);
-        } else {
-            //If the PQ do not have the index before then add the number.
-            container.add(new Pair(index, number));
-            indexMap.put(index, number);
+        //Insert the New.
+        indexToNumber.put(index, number);
+        if (!numberToIndex.containsKey(number)) {
+            numberToIndex.put(number, new TreeSet<>());
         }
+        numberToIndex.get(number).add(index);
     }
 
     public int find(int number) {
-        for (Pair p : container) {
-            int index = p.index;
-            int num = p.number;
-
-            if (num == number) {
-                return index;
-            }
-
+        if (!numberToIndex.containsKey(number)) {
+            return -1;
         }
-        return -1;
+        return numberToIndex.get(number).first();
     }
 
 }
