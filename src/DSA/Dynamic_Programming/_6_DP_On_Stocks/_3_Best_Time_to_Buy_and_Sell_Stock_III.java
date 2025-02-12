@@ -56,7 +56,7 @@ public class _3_Best_Time_to_Buy_and_Sell_Stock_III {
             return 0;
         }
 
-        // Check if result is already computed
+        // Check if a result is already computed
         if (dp[index][buyOrNot][time] != -1) {
             return dp[index][buyOrNot][time];
         }

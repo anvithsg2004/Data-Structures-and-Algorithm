@@ -28,21 +28,21 @@ public class _7_Shortest_Common_Supersequence {
         int j = m;
 
         int index = len - 1;
-        String ans = "";
+        StringBuilder ans = new StringBuilder();
 
         while (i > 0 && j > 0) {
             if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
-                ans += s1.charAt(i - 1);
+                ans.append(s1.charAt(i - 1));
                 index--;
                 i--;
                 j--;
                 //If in two which is greater, move to the greater and add the lower string to the String.
             } else if (dp[i - 1][j] > dp[i][j - 1]) {
-                ans = ans + s1.charAt(i - 1);
+                ans.append(s1.charAt(i - 1));
                 i--;
             } else {
                 //If in two which is greater, move to the greater and add the lower string to the String.
-                ans = ans + s2.charAt(j - 1);
+                ans.append(s2.charAt(j - 1));
                 j--;
             }
         }
@@ -50,15 +50,15 @@ public class _7_Shortest_Common_Supersequence {
         //Adding Remaining Characters - Only one of the below two while loops will run
 
         while (i > 0) {
-            ans = ans +  s1.charAt(i - 1);
+            ans.append(s1.charAt(i - 1));
             i--;
         }
         while (j > 0) {
-            ans = ans +  s2.charAt(j - 1);
+            ans.append(s2.charAt(j - 1));
             j--;
         }
 
-        String ans2 = new StringBuilder(ans).reverse().toString();
+        String ans2 = new StringBuilder(ans.toString()).reverse().toString();
 
         return ans2;
     }

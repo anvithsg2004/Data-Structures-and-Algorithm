@@ -89,6 +89,4 @@ public class _2_Minimum_Cost_to_Cut_the_Stick {
         return dp[i][j] = mini;
 
     }
-
-
 }

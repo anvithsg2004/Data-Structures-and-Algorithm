@@ -20,7 +20,14 @@ public class _1_Matrix_Chain_Multiplication {
         int mini = Integer.MAX_VALUE;
 
         for (int k = i; k <= j - 1; k++) {
-            int steps = helper(i, k, arr) + helper(k + 1, j, arr) + arr[i - 1] * arr[k] * arr[j];
+            int steps =
+                    //Left Partition
+                    helper(i, k, arr) +
+                    //Right Partition
+                    helper(k + 1, j, arr) +
+                    //The left resultant matrix has dimensions arr[i−1]×arr[k].
+                    //The right resultant matrix has dimensions arr[k]×arr[j].
+                    arr[i - 1] * arr[k] * arr[j];
             mini = Math.min(mini, steps);
         }
 
@@ -93,5 +100,3 @@ public class _1_Matrix_Chain_Multiplication {
         return dp[1][n - 1];
     }
 }
-
-
