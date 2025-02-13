@@ -3,7 +3,6 @@ package DSA.Sliding_Window;
 public class _5_Binary_Subarrays_With_Sum {
 
     //It is nothing but count the subarray sum equals k
-
     public int numSubarraysWithSum(int[] nums, int k) {
         return fun(nums, k) - fun(nums, k - 1);
     }

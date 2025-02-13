@@ -2,7 +2,7 @@ package DSA.Binary_Search;
 
 public class _9_Search_in_Rotated_Sorted_Array_II {
 
-    //In this there are duplicates.
+    //In this, there are duplicates.
 
     public boolean search(int[] nums, int target) {
         int low = 0;
@@ -16,7 +16,7 @@ public class _9_Search_in_Rotated_Sorted_Array_II {
             }
 
             if (nums[low] == nums[mid] && nums[mid] == nums[high]) {
-                //Whenever the three Low, Mid and High are equal then just shrink the low and high.
+                //Whenever the three Low, Mid and High are equal, then just shrink the low and high.
                 //Rest all are same.
                 low = low + 1;
                 high = high - 1;

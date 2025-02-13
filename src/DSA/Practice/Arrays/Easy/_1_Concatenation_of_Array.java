@@ -1,7 +1,6 @@
 package DSA.Practice.Arrays.Easy;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class _1_Concatenation_of_Array {
 

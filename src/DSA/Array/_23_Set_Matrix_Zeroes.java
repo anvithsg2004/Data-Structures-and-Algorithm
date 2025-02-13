@@ -91,8 +91,4 @@ public class _23_Set_Matrix_Zeroes {
         }
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

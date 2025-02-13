@@ -21,7 +21,9 @@ public class _1_Count_Square_Submatrices_with_All_Ones {
                 if (matrix[i][j] == 0) {
                     dp[i][j] = 0;
                 } else {
-                    dp[i][j] = 1 + Math.min(dp[i - 1][j], Math.min(dp[i - 1][j - 1], dp[i][j - 1]));
+                    dp[i][j] = 1 +
+                            Math.min(dp[i - 1][j],
+                                    Math.min(dp[i - 1][j - 1], dp[i][j - 1]));
                 }
             }
         }

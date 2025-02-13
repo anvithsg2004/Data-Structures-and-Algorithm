@@ -1,7 +1,5 @@
 package DSA.Linked_List.Single_Linked_List;
 
-
-
 public class _17_Starting_Point_Of_Loop {
 
     public static Node20 startPoint(Node20 head) {
@@ -24,9 +22,5 @@ public class _17_Starting_Point_Of_Loop {
         }
 
         return null;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

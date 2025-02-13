@@ -22,8 +22,4 @@ public class _4_String_Rotated_by2_Places {
         String rotatedAntiClock = str1.substring(2) + str1.substring(0, 2);
         return rotatedAntiClock.equals(str2);
     }
-
-    public static void main(String[] args) {
-
-    }
 }

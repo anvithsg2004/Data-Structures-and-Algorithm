@@ -1,27 +1,19 @@
+package DSA.Practice.Tree.GFG_Medium;
+
 import java.util.ArrayList;
 
-class Node {
-    int data;
-    Node left, right;
-
-    public Node(int d) {
-        data = d;
-        left = right = null;
-    }
-}
-
-public class Practise {
-
+public class _2_Pair_Sum_in_BST {
     public boolean findTarget(Node root, int target) {
 
         ArrayList<Integer> arr = new ArrayList<>();
         helper(root, arr);
 
         int n = arr.size();
+
         int left = 0;
         int right = n - 1;
 
-        while (left <= right) {
+        while (left < right) {
 
             int sum = arr.get(right) + arr.get(left);
 
@@ -30,9 +22,9 @@ public class Practise {
             }
 
             if (sum > target) {
-                left++;
-            } else {
                 right--;
+            } else if (sum < target) {
+                left++;
             }
 
         }
@@ -52,5 +44,4 @@ public class Practise {
         helper(root.right, arr);
 
     }
-
 }

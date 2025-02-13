@@ -1,9 +1,7 @@
 package DSA.Array;
 
-import java.util.*;
-
 public class _12_Missing_Number_in_an_Array {
-    public static int missingNumber(int []a, int N) {
+    public static int missingNumber(int[] a, int N) {
 
         // Outer loop that runs from 1 to N:
         for (int i = 1; i <= N; i++) {
@@ -16,14 +14,14 @@ public class _12_Missing_Number_in_an_Array {
             for (int j = 0; j < N - 1; j++) {
                 if (a[j] == i) {
 
-                    // i is present in the array:
+                    // 'i' is present in the array:
                     flag = 1;
                     break;
                 }
             }
 
             // check if the element is missing
-            //i.e flag == 0:
+            //i.e., flag == 0:
 
             if (flag == 0) return i;
         }
@@ -31,14 +29,6 @@ public class _12_Missing_Number_in_an_Array {
         // The following line will never execute.
         // It is just to avoid warnings.
         return -1;
-    }
-
-    public static void main(String args[]) {
-        int N = 5;
-        int a[] = {1, 2, 4, 5};
-
-        int ans = missingNumber(a, N);
-        System.out.println("The missing number is: " + ans);
     }
 
 }

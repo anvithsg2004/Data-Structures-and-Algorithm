@@ -2,7 +2,7 @@ package DSA.Dynamic_Programming._2_1D_Array_DP;
 
 //How to Solve DP Questions
 //1. Try to represent any problems in terms of index
-//2. Do all possible stuff on that index, according to the problem statement
+//2. Do all possible stuff on that index, according to problem statement
 //3. Sum of all stuffs → count all the ways , min(of all stuffs) -> Find min
 
 public class _1_Climbing_Stairs {

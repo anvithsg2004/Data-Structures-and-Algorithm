@@ -24,8 +24,4 @@ public class _23_Intersection_of_Two_Linked_Lists {
         return d1;
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

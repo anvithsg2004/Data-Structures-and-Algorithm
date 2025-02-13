@@ -12,9 +12,4 @@ public class _1_Largest_Number {
 
         return largest;
     }
-
-    public static void main(String[] args) {
-     int[] array = {3, 2, 1, 5, 2, 69, 100, 0};
-        System.out.println("The largest element is : " + largest(array));
-    }
 }

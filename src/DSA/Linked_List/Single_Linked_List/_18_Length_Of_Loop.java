@@ -15,9 +15,9 @@ class Node20 {
     }
 }
 
-public class _18_Lenght_Of_Loop {
+public class _18_Length_Of_Loop {
 
-    public static int findLenght(Node20 slow, Node20 fast) {
+    public static int findLength(Node20 slow, Node20 fast) {
         int count = 1;
         fast = fast.next;
 
@@ -38,7 +38,7 @@ public class _18_Lenght_Of_Loop {
             fast = fast.next.next;
 
             if (slow == fast) {
-                return findLenght(slow, fast);
+                return findLength(slow, fast);
             }
         }
 
