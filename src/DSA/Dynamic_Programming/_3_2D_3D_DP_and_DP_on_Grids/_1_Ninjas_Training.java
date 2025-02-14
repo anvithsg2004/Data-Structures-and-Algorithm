@@ -2,19 +2,24 @@ package DSA.Dynamic_Programming._3_2D_3D_DP_and_DP_on_Grids;
 
 import java.util.Arrays;
 
+//This a good problem.
+
 public class _1_Ninjas_Training {
 
     //Recursion
     public int maximumPoints(int[][] arr, int N) {
+        //Here in the function we send the total length of the array, last which do not exist and arr.
         return helper(N - 1, 3, arr);
     }
 
     public int helper(int day, int last, int[][] points) {
 
+        //If this is the last day.
         if (day == 0) {
             int maxiIndex0 = 0;
             for (int i = 0; i <= 2; i++) {
                 if (i != last) {
+                    //Get the maximum element value and return.
                     maxiIndex0 = Math.max(maxiIndex0, points[0][i]);
                 }
             }
@@ -23,7 +28,9 @@ public class _1_Ninjas_Training {
 
         int maxi = 0;
 
+        //There three days so 0 to 2.
         for (int i = 0; i <= 2; i++) {
+            //Do not take the last day trained.
             if (i != last) {
                 int activity = points[day][i] + helper(day - 1, i, points);
                 maxi = Math.max(maxi, activity);

@@ -2,6 +2,8 @@ package DSA.Bit_Manipulation;
 
 public class _12_Single_Number_I {
 
+    //Just Basic XOR Gate formulas.
+
     public int singleNumber(int[] nums) {
 
         int n = nums.length;

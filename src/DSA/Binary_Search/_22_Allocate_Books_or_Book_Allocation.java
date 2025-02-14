@@ -13,13 +13,13 @@ public class _22_Allocate_Books_or_Book_Allocation {
     //Main Part :- The maximum number of pages assigned to a student is minimum.
 
     //Examples :-
-    //Array = [25, 46, 28, 49, 24]
-    //1) 25|46|28|49,24 = 73
-    //2) 25|45|28,49|24 = 77
-    //3) 25|46,28|49|24 = 74
-    //4) 25,46|28|49|24 = 71
-
-    //So take the 4) this is the problem.
+    //Input: arr[] = [12, 34, 67, 90], k = 2
+    //Output: 113
+    //Explanation: Books can be distributed in following ways:
+    //[12] and [34, 67, 90] – The maximum pages assigned to a student is  34 + 67 + 90 = 191.
+    //[12, 34] and [67, 90] – The maximum pages assigned to a student is 67 + 90 = 157.
+    //[12, 34, 67] and [90] – The maximum pages assigned to a student is 12 + 34 + 67 = 113.
+    //The third combination has the minimum pages assigned to a student which is 113.
 
     public static int countStudents(ArrayList<Integer> arr, int pages) {
         int n = arr.size(); // size of array
@@ -55,9 +55,5 @@ public class _22_Allocate_Books_or_Book_Allocation {
             }
         }
         return low;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

@@ -3,7 +3,6 @@ package DSA.Binary_Search;
 //Floor :- Largest Number in an Array <= X
 //Ceil :- Smallest Number in Array >= X
 
-
 class Solution {
     public static int ceil(int[] arr, int n, int x) {
         int low = 0, high = n - 1;

@@ -9,6 +9,12 @@ public class _11_Find_out_how_many_times_the_array_has_been_rotated {
         int ans = Integer.MAX_VALUE;
         int index = -1;
 
+        //Here this the like the same and similar previous problem.
+
+        //There we take the minimum of the low or the mid.
+
+        //Here we take the index of the low and mid and return it.
+
         while (low <= high) {
             int mid = (low + high) / 2;
 
@@ -28,9 +34,5 @@ public class _11_Find_out_how_many_times_the_array_has_been_rotated {
         }
 
         return index;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

@@ -2,6 +2,18 @@ package DSA.Binary_Search;
 
 public class _16_Minimum_days_to_make_M_bouquets {
 
+//Problem Statement = Return the minimum number of days you need
+//to wait to be able to make m bouquets from the garden.
+//If it is impossible to make m bouquets return -1.
+
+    //Example Input: bloomDay = [1,10,3,10,2], m = 3, k = 1
+    //Output: 3
+    //Explanation: Let us see what happened in the first three days. x means flower bloomed and _ means flower did not bloom in the garden.
+    //We need 3 bouquets each should contain 1 flower.
+    //After day 1: [x, _, _, _, _]   // we can only make one bouquet.
+    //After day 2: [x, _, _, _, x]   // we can only make two bouquets.
+    //After day 3: [x, _, x, _, x]   // we can make 3 bouquets. The answer is 3.
+
     public boolean possible(int[] arr, int day, int m, int k) {
         int n = arr.length;
         int count = 0;
@@ -15,7 +27,6 @@ public class _16_Minimum_days_to_make_M_bouquets {
                 count = 0;
             }
         }
-
 
         //For the last count.
         noOfB = noOfB + (count / k);
@@ -57,9 +68,5 @@ public class _16_Minimum_days_to_make_M_bouquets {
         }
 
         return low;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

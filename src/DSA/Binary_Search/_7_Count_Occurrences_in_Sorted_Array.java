@@ -12,6 +12,7 @@ public class _7_Count_Occurrences_in_Sorted_Array {
         while (low <= high) {
             int mid = (low + high) / 2;
 
+            //So here we want the first occurrence, so reduce the high and get the first occurrence.
             if (arr[mid] == x) {
                 first = mid;
                 high = mid - 1;
@@ -34,6 +35,7 @@ public class _7_Count_Occurrences_in_Sorted_Array {
         while (low <= high) {
             int mid = (low + high) / 2;
 
+            //So If I get the element, then increase the lope so that I get the last element.
             if (arr[mid] == x) {
                 last = mid;
                 low = mid + 1;

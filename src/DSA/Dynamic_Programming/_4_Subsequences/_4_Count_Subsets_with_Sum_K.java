@@ -8,6 +8,8 @@ public class _4_Count_Subsets_with_Sum_K {
     public int helper3(int index, int target, int[] arr) {
 
         if (index == 0) {
+            //Here it returns 2 because we can take zero or
+            //not take zero.
             if (target == 0 && arr[0] == 0) {
                 return 2;
             }

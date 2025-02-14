@@ -1,7 +1,6 @@
 package DSA.Binary_Search;
 
 public class _1_Search_An_Element {
-
     public static int search(int[] arr, int target) {
         int n = arr.length;
         int low = 0;
@@ -20,9 +19,5 @@ public class _1_Search_An_Element {
         }
 
         return -1;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

@@ -6,6 +6,7 @@ package DSA.Bit_Manipulation;
 
 public class _16_Divide_Two_Integers_without_using_Multiplication_and_Division_Operators {
 
+    //Optimal
     public static int divide2(int dividend, int divisor) {
 
         if (dividend == divisor) {
@@ -51,7 +52,7 @@ public class _16_Divide_Two_Integers_without_using_Multiplication_and_Division_O
 
     }
 
-
+    //Brute Force
     public int divide(int dividend, int divisor) {
 
         // Handle an edge case for overflow

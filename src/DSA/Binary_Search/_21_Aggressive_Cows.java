@@ -11,8 +11,4 @@ public class _21_Aggressive_Cows {
 //
 //
 //    }
-
-    public static void main(String[] args) {
-
-    }
 }

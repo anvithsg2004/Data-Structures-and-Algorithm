@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class _11_Intersection {
 
+    //This question is same as the union but here we add when the elements are both equal.
     public static void intersection(int[] array1, int[] array2) {
         int i = 0, j = 0;
         ArrayList<Integer> answer = new ArrayList<>();
@@ -15,9 +16,11 @@ public class _11_Intersection {
                 }
                 i++;
                 j++;
-            } else if (array1[i] < array2[j]) {
+            } //If the array2[j] is greater, then increase 'i' to make the elements equal.
+            else if (array1[i] < array2[j]) {
                 i++;
-            } else {
+            } //If the array1[i] is greater, then increase 'j' to make the elements equal.
+            else {
                 j++;
             }
         }

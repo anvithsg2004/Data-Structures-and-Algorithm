@@ -9,9 +9,7 @@ public class _7_Remove_the_last_bit {
     //The last right '1' will convert to '0' and the next will convert '0' to '1'.
 
     public int removeTheLastSetBit(int n) {
-        int number = n & (n - 1);
-
-        return number;
+        return n & (n - 1);
     }
 
 }

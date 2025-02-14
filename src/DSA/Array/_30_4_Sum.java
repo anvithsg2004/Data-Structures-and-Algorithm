@@ -56,6 +56,7 @@ public class _30_4_Sum {
     //Better Solution
     public List<List<Integer>> fourSum2(int[] nums, int target) {
 
+        //Same as the before question.
         int n = nums.length;
         Set<List<Integer>> st = new HashSet<>();
 

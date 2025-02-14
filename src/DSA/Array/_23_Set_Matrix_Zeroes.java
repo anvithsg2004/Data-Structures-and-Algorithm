@@ -65,13 +65,16 @@ public class _23_Set_Matrix_Zeroes {
         int rows = matrix.length;
         int columns = matrix[0].length;
 
+        //Create this arrays to store in which index the element is zero.
         boolean[] row = new boolean[rows];
         boolean[] column = new boolean[columns];
 
+        //Traverse the matrix and find out where is the element is zero.
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 if (matrix[i][j] == 0) {
 
+                    //Marks the 'row' and 'col' array with true.
                     row[i] = true;
 
                     column[j] = true;
@@ -80,6 +83,7 @@ public class _23_Set_Matrix_Zeroes {
             }
         }
 
+        //Now If we get any row or col array as true, then mark the entire row and column as zero.
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
 

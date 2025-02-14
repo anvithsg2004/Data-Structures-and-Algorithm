@@ -18,6 +18,7 @@ public class _5_Number_of_Subarrays_with_xor_K {
             xr = xr ^ a[i];
 
             //By formula: x = xr^k:
+            //Here they get as 0 then the 'xr' is equal to the k.
             int x = xr ^ k;
 
             // add the occurrence of xr^k
@@ -36,7 +37,6 @@ public class _5_Number_of_Subarrays_with_xor_K {
         }
         return cnt;
     }
-
 
     //Brute Force Solution
     public static int subarraysWithXorK2(int[] a, int k) {

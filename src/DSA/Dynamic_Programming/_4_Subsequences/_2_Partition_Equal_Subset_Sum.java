@@ -2,6 +2,9 @@ package DSA.Dynamic_Programming._4_Subsequences;
 
 public class _2_Partition_Equal_Subset_Sum {
 
+    //Given an integer array nums, return true if you can partition the array into
+    //two subsets such that the sum of the elements in both subsets is equal or false otherwise.
+
     //Recursion
     public boolean canPartition(int[] nums) {
 
@@ -43,7 +46,6 @@ public class _2_Partition_Equal_Subset_Sum {
         return taken || notTaken;
 
     }
-
 
     //Memoization
     public boolean canPartition2(int[] nums) {

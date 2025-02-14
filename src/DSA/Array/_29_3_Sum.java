@@ -72,7 +72,9 @@ public class _29_3_Sum {
                 int third = -(arr[i] + arr[j]);
 
                 //Find the element in the set:
+                //If the set has any element, then there is an element in the set.
                 if (hashset.contains(third)) {
+                    //Take that and put it in the List and sort it.
                     List<Integer> temp = Arrays.asList(arr[i], arr[j], third);
                     temp.sort(null);
                     st.add(temp);

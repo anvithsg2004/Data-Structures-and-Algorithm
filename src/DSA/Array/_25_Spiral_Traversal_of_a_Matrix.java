@@ -6,6 +6,11 @@ import java.util.List;
 public class _25_Spiral_Traversal_of_a_Matrix {
     public List<Integer> spiralOrder(int[][] matrix) {
 
+        //This is an important problem.
+        //Remember the trick.
+
+        //Left (Top++) -> Top(Right--) -> Right(Bottom--) -> Bottom(Left++)
+
         //Right → Bottom → Left → Top
         //In this the problem works.
 

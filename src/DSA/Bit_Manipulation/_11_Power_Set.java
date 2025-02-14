@@ -9,6 +9,9 @@ import java.util.List;
 public class _11_Power_Set {
     public static List<List<Integer>> generatePowerSet(int[] nums) {
 
+        //Intuition = The code creates all possible subsets of an array by using binary numbers,
+        // where each bit decides whether to include an element or not.
+
         List<List<Integer>> allSubset = new ArrayList<>();
 
         int n = nums.length;
@@ -22,6 +25,8 @@ public class _11_Power_Set {
             for (int j = 0; j < n; j++) {
 
                 // Check if the j-th bit is set in i
+                //For Example, i = 7 and the binary will be '111'
+                //so it say that all the three should be added in the subset.
                 if ((i & (1 << j)) != 0) {
                     subset.add(nums[j]);
                 }
@@ -34,10 +39,5 @@ public class _11_Power_Set {
 
         return allSubset;
 
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {1, 2, 3};
-        System.out.println(generatePowerSet(arr));
     }
 }

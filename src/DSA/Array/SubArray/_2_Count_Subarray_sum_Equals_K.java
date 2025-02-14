@@ -5,6 +5,9 @@ import java.util.Map;
 
 public class _2_Count_Subarray_sum_Equals_K {
 
+    //Remember this code.
+    //Very, very important.
+
     public int subarraySum(int[] a, int k) {
         int n = a.length;
 
@@ -14,6 +17,11 @@ public class _2_Count_Subarray_sum_Equals_K {
         int sum = 0;
 
         // Initialize preSumMap with sum 0 having one occurrence
+        //This is equal to
+        // if (sum == k) {
+        //     maxLen = Math.max(maxLen, i + 1);
+        // }
+        //So whenever I get 0 as the remaining, then the sum is equal to the k given.
         preSumMap.put(0, 1);
 
         for (int i = 0; i < n; i++) {

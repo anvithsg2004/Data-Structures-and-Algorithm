@@ -2,8 +2,14 @@ package DSA.Dynamic_Programming._2_1D_Array_DP;
 
 import java.util.ArrayList;
 
+//Here the houses will be in the circular order.
 public class _5_House_Robber_2 {
     public static long robStreet(int n, ArrayList<Integer> arr) {
+
+        //We cannot rob two adjacent houses.
+        //Since the houses are arranged in a circle, the first and last houses are adjacent.
+        //We have to choose either the first house or the last house, but not both.
+
         ArrayList<Integer> arr1 = new ArrayList<>();
         ArrayList<Integer> arr2 = new ArrayList<>();
 

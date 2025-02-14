@@ -7,6 +7,8 @@ public class _8_Search_in_Rotated_Sorted_Array {
 
         //Take this array and do a dry run.
         //7 8 9 1 2 3 4 5 6
+
+        //Remember this code.
         while (low <= high) {
             int mid = (low + high) / 2;
 

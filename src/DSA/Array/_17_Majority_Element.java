@@ -14,12 +14,15 @@ public class _17_Majority_Element {
 
         for (int i = 0; i < n; i++) {
 
+            //If the count is '0' then assign a new element and increase the count.
             if (count == 0) {
                 count = 1;
                 ele = nums[i];
-            } else if (ele == nums[i]) {
+            }// If we encounter the same element 'ele' then increase the count.
+            else if (ele == nums[i]) {
                 count++;
             } else {
+                //If we encounter any different element, then decrease the count.
                 count--;
             }
 
@@ -69,10 +72,6 @@ public class _17_Majority_Element {
         }
 
         return -1;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

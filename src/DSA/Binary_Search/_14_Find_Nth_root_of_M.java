@@ -35,8 +35,4 @@ public class _14_Find_Nth_root_of_M {
 
         return -1;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

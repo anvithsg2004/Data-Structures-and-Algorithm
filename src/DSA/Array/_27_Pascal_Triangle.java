@@ -13,6 +13,8 @@ public class _27_Pascal_Triangle {
     //Find r-1 C c-1
     public static long nCr(int n, int r) {
 
+        //Remember this (10 * 9 * 8)/(1 * 2 * 3)
+
         long res = 1;
 
         for (int i = 0; i < r; i++) {

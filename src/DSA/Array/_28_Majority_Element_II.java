@@ -18,17 +18,22 @@ public class _28_Majority_Element_II {
 
         for (int i = 0; i < n; i++) {
 
+            //If the count1 is '0' and ele2 should not be equal to ele1 means the current element.
             if (count1 == 0 && ele2 != nums[i]) {
                 count1 = 1;
                 ele1 = nums[i];
-            } else if (count2 == 0 && ele1 != nums[i]) {
+            }//If the count2 is '0' and ele1 should not be equal to ele2 means the current element.
+            else if (count2 == 0 && ele1 != nums[i]) {
                 count2 = 1;
                 ele2 = nums[i];
-            } else if (nums[i] == ele1) {
+            } //If the ele1 is equal to the current element than increase count1.
+            else if (nums[i] == ele1) {
                 count1 = count1 + 1;
-            } else if (nums[i] == ele2) {
+            } //If the ele2 is equal to the current element than increase count2.
+            else if (nums[i] == ele2) {
                 count2 = count2 + 1;
             } else {
+                //If the current element is neither equal to ele1 and ele2.
                 count1 = count1 - 1;
                 count2 = count2 - 1;
             }

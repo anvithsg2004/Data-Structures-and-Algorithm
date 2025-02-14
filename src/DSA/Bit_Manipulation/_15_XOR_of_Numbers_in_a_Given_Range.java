@@ -3,10 +3,10 @@ package DSA.Bit_Manipulation;
 public class _15_XOR_of_Numbers_in_a_Given_Range {
 
     //Trick :=
+    // n % 4 == 0       n
     // n % 4 == 1       1
     // n % 4 == 2       n + 1
     // n % 4 == 3       0
-    // n % 4 == 0       n
 
     //Brute Force Solution
     public static int findXOR(int l, int r) {

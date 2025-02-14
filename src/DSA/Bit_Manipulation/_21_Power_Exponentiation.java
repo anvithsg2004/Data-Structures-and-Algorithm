@@ -1,7 +1,10 @@
 package DSA.Bit_Manipulation;
 
-public class _21_Power_Exponentiation {
+//Instead of multiplying x n times, we use divide and conquer (reducing exponent by half).
+//If n is even, we square x and halve n.
+//If n is odd, we multiply 'ans' by x and decrease n by 1.
 
+public class _21_Power_Exponentiation {
     public double myPow(double x, int n) {
 
         double ans = 1;
@@ -34,5 +37,4 @@ public class _21_Power_Exponentiation {
         return ans;
 
     }
-
 }

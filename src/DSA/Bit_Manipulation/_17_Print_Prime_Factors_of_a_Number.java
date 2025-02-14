@@ -6,7 +6,16 @@ import java.util.List;
 public class _17_Print_Prime_Factors_of_a_Number {
 
     //Better Solution
+    //Key Steps in the Code:
+    //Create a list to store unique prime factors.
+    //Iterate from 2 to n (since 2 is the smallest prime).
+    //If 'i' divides n completely, it is a prime factor, so add it to the list.
+    //Remove all occurrences of i from n by dividing repeatedly.
+    //Convert the list to an array and return the result.
+
     public int[] AllPrimeFactors2(int n) {
+
+        //2 and 5 are the prime factors of 20 because 2 × 5 = 20.
 
         List<Integer> result = new ArrayList<>();
 

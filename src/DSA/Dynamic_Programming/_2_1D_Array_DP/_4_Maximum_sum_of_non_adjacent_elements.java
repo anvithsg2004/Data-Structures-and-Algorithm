@@ -9,6 +9,8 @@ public class _4_Maximum_sum_of_non_adjacent_elements {
         return helper(nums.length, nums);
     }
 
+    //Here we are not allowed to take adjacent house.
+
     public int helper(int index, int[] nums) {
 
         if (index == 0) {
@@ -19,8 +21,10 @@ public class _4_Maximum_sum_of_non_adjacent_elements {
             return 0;
         }
 
+        //Pick the current and skip the next and take next next index.
         int pick = nums[index] + helper(index - 2, nums);
 
+        //Do not take the current and take the next.
         int nonPick = 0 + helper(index - 1, nums);
 
         return Math.min(pick, nonPick);

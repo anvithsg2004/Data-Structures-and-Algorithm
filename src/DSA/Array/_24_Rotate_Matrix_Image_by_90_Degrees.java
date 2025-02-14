@@ -12,8 +12,8 @@ public class _24_Rotate_Matrix_Image_by_90_Degrees {
         for (int i = 0; i < rows; i++) {
             for (int j = i; j < columns; j++) {
 
-                int temp = 0;
-                temp = matrix[i][j];
+                //Just reverse the indexes.
+                int temp = matrix[i][j];
                 matrix[i][j] = matrix[j][i];
                 matrix[j][i] = temp;
 
@@ -22,6 +22,7 @@ public class _24_Rotate_Matrix_Image_by_90_Degrees {
 
         //Second reverse
         for (int i = 0; i < rows; i++) {
+            //Just traverse till the half because it will exchange the rest.
             for (int j = 0; j < columns / 2; j++) {
 
                 int temp = 0;
@@ -33,8 +34,6 @@ public class _24_Rotate_Matrix_Image_by_90_Degrees {
         }
 
     }
-
-
 
     //Brute Force
     public void rotate(int[][] matrix) {

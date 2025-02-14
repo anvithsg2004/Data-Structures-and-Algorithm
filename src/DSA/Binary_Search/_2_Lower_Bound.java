@@ -7,6 +7,7 @@ public class _2_Lower_Bound {
     public static int fun(int[] arr, int target, int n) {
         int low = 0;
         int high = n - 1;
+
         //If nothing is gotten, return the last hypothetical Index.
         //Remember this throughout the binary Search.
         int ans = n;
@@ -24,9 +25,5 @@ public class _2_Lower_Bound {
         }
 
         return ans;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

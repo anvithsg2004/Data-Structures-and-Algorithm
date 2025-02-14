@@ -7,6 +7,7 @@ import java.util.List;
 public class _20_Next_Permutation {
     public ArrayList<Integer> nextPermutation(int[] nums) {
 
+        //This is an important problem.
         ArrayList<Integer> result = new ArrayList<>();
         for (int num : nums) {
             result.add(num);
@@ -14,7 +15,7 @@ public class _20_Next_Permutation {
 
         int n = result.size();
 
-        //Now find the greatest number index in the array given.
+        //Now find the "greatest number index" in the array given and store it.
         int ind = -1;
         for (int i = n - 2; i >= 0; i--) {
             if (result.get(i) < result.get(i + 1)) {
@@ -29,7 +30,7 @@ public class _20_Next_Permutation {
             return result;
         }
 
-        //Find the next greater element and swap it with arr[ind]:
+        //Find the "next greater element" and swap it with arr[ind]:
         for (int i = n - 1; i > ind; i--) {
 
             if (result.get(i) > result.get(ind)) {

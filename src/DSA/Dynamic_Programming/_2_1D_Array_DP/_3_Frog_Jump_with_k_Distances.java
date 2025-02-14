@@ -9,6 +9,7 @@ public class _3_Frog_Jump_with_k_Distances {
         return helper(arr.length - 1, k, arr);
     }
 
+    //A frog can can jump by either taking a kth-step jump.
     public int helper(int index, int k, int[] arr) {
 
         if (index == 0) {

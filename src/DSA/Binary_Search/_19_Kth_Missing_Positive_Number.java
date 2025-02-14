@@ -4,9 +4,16 @@ public class _19_Kth_Missing_Positive_Number {
 
     //Brute Force Solution
     public static int missingK(int[] vec, int n, int k) {
+        //This is a good solution
+        //Remember this.
+        //If the element in the array is smaller that the k.
+        //Then increase the k by 1.
         for (int i = 0; i < n; i++) {
-            if (vec[i] <= k) k++; //shifting k
-            else break;
+            if (vec[i] <= k) {
+                k++; //shifting k
+            } else {
+                break;
+            }
         }
         return k;
     }
@@ -40,9 +47,5 @@ public class _19_Kth_Missing_Positive_Number {
 
         //Add the K to index and add 1 to it and return it.
         return k + arr[high] + 1;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

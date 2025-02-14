@@ -9,6 +9,7 @@ public class _2_Frog_Jump {
         return helper(arr, n - 1);
     }
 
+    //A frog can can jump by either taking a 1-step or 2-step jump.
     public int helper(int[] arr, int index) {
 
         if (index == 0) {
@@ -19,7 +20,8 @@ public class _2_Frog_Jump {
 
         int right = Integer.MAX_VALUE;
 
-        if (index > 1) {
+        //Here this condition is compulsory to make sure that it won't make an exception.
+        if (index >= 2) {
             right = helper(arr, index - 2) + Math.abs(arr[index] - arr[index - 2]);
         }
 
@@ -77,5 +79,4 @@ public class _2_Frog_Jump {
 
         return dp[n - 1];
     }
-
 }

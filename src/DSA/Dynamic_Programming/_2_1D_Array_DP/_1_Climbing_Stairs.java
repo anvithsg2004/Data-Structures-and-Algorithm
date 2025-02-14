@@ -5,6 +5,9 @@ package DSA.Dynamic_Programming._2_1D_Array_DP;
 //2. Do all possible stuff on that index, according to problem statement
 //3. Sum of all stuffs → count all the ways , min(of all stuffs) -> Find min
 
+//Problem Statement = You are climbing a staircase. It takes n steps to reach the top.
+//Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
 public class _1_Climbing_Stairs {
 
     //Recursion Way
