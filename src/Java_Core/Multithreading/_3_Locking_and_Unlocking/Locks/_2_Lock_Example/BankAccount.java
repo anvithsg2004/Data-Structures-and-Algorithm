@@ -8,6 +8,7 @@ public class BankAccount {
 
     public int balance;
 
+    //This is like user created a personal lock instead of using synchronised.
     public Lock lock = new ReentrantLock();
 
     public BankAccount(int balance) {
@@ -28,7 +29,9 @@ public class BankAccount {
                         System.out.println(Thread.currentThread().getName() + "Completed withdrawal");
                         System.out.println(Thread.currentThread().getName() + "remaining balance " + balance);
                     } catch (Exception e) {
-
+                        //If a thread remembers it was interrupted, it can stop safely, exit loops, or clean up resources.
+                        //If a thread forgets it was interrupted, it might continue running even when it should stop.
+                        Thread.currentThread().interrupt();
                     } finally {
                         lock.unlock();
                     }
@@ -40,7 +43,12 @@ public class BankAccount {
             }
 
         } catch (Exception e) {
+            Thread.currentThread().interrupt();
+        }
 
+        //Here is the use of remembering the status.
+        if (Thread.currentThread().isInterrupted()) {
+            System.out.println("Get Out!!!");
         }
     }
 }
