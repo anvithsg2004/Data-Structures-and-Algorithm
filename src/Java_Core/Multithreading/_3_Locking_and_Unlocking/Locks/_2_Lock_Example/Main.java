@@ -1,13 +1,13 @@
-package Java_Core.Multithreading.Synchronization.Locks._2_Lock_Example;
+package Java_Core.Multithreading._3_Locking_and_Unlocking.Locks._2_Lock_Example;
 
 public class Main {
 
     public static void main(String[] args) {
-        BankAccount account = new BankAccount(5000);
+        BankAccount sbi = new BankAccount(5000);
         Runnable task = new Runnable() {
             @Override
             public void run() {
-                account.withdraw(800);
+                sbi.withdraw(800);
             }
         };
 

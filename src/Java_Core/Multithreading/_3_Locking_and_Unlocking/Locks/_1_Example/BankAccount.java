@@ -1,4 +1,4 @@
-package Java_Core.Multithreading.Synchronization.Locks._1_Example;
+package Java_Core.Multithreading._3_Locking_and_Unlocking.Locks._1_Example;
 
 public class BankAccount {
 

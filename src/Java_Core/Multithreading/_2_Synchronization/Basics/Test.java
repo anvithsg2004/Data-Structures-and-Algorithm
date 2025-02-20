@@ -1,4 +1,4 @@
-package Java_Core.Multithreading.Synchronization.Basics;
+package Java_Core.Multithreading._2_Synchronization.Basics;
 
 public class Test {
 

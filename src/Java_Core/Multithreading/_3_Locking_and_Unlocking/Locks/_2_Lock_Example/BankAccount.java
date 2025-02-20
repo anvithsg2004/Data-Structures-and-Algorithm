@@ -1,4 +1,4 @@
-package Java_Core.Multithreading.Synchronization.Locks._2_Lock_Example;
+package Java_Core.Multithreading._3_Locking_and_Unlocking.Locks._2_Lock_Example;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -23,10 +23,10 @@ public class BankAccount {
                 if (amount <= balance) {
                     System.out.println(Thread.currentThread().getName() + "proceeding to withdrawal");
                     try {
-                        Thread.sleep(300);
+                        Thread.sleep(10000);
                         balance = balance - amount;
                         System.out.println(Thread.currentThread().getName() + "Completed withdrawal");
-                        System.out.println(Thread.currentThread().getName() + "remaining balance" + balance);
+                        System.out.println(Thread.currentThread().getName() + "remaining balance " + balance);
                     } catch (Exception e) {
 
                     } finally {
