@@ -5,12 +5,32 @@ class sharedResource {
 
     public boolean hasData;
 
-    public void produce(int value) {
-
+    // Producer method
+    public synchronized void produce(int value) {
+        while (hasData) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        data = value;
+        hasData = true;
+        notify();  // Wake up Consumer
     }
 
-    public int consume() {
-
+    // Consumer method
+    public synchronized int consume() {
+        while (!hasData) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        hasData = false;
+        notify();  // Wake up Producer
+        return data;
     }
 }
 
@@ -50,6 +70,15 @@ class Consumer implements Runnable {
 
 public class Thread_Communication {
     public static void main(String[] args) {
+        sharedResource resource = new sharedResource();
 
+        Producer producer = new Producer(resource);
+        Consumer consumer = new Consumer(resource);
+
+        Thread t1 = new Thread(producer);
+        Thread t2 = new Thread(consumer);
+
+        t1.start();
+        t2.start();
     }
 }
