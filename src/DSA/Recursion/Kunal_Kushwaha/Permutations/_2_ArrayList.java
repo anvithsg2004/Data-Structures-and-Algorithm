@@ -27,8 +27,4 @@ public class _2_ArrayList {
         return ans;
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

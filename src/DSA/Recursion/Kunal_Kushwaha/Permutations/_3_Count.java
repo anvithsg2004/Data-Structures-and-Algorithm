@@ -23,10 +23,4 @@ public class _3_Count {
         return count;
 
     }
-
-    public static void main(String[] args) {
-
-        System.out.println(permutationCount("", "abc"));
-
-    }
 }
