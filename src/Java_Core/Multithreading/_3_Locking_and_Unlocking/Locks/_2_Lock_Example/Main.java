@@ -4,6 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         BankAccount sbi = new BankAccount(5000);
+        //Runnable task = () -> sbi.withdraw(800);
         Runnable task = new Runnable() {
             @Override
             public void run() {

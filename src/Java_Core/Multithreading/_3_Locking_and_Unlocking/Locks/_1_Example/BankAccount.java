@@ -10,20 +10,20 @@ public class BankAccount {
 
     //This is what lock is.
     public synchronized void withdraw(int amount) {
-        System.out.println(Thread.currentThread().getName() + "attempting to withdraw" + amount);
+        System.out.println(Thread.currentThread().getName() + " attempting to withdraw " + amount);
 
         if (amount <= balance) {
-            System.out.println(Thread.currentThread().getName() + "proceeding to withdrawal");
+            System.out.println(Thread.currentThread().getName() + " proceeding to withdrawal");
             try {
-                Thread.sleep(300);
+                Thread.sleep(3000);
             } catch (Exception e) {
 
             }
             balance = balance - amount;
-            System.out.println(Thread.currentThread().getName() + "Completed withdrawal");
-            System.out.println(Thread.currentThread().getName() + "remaining balance" + balance);
+            System.out.println(Thread.currentThread().getName() + " Completed withdrawal");
+            System.out.println(Thread.currentThread().getName() + " remaining balance " + balance);
         } else {
-            System.out.println(Thread.currentThread().getName() + "No sufficient balance.");
+            System.out.println(Thread.currentThread().getName() + " No sufficient balance.");
         }
     }
 }

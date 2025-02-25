@@ -16,4 +16,3 @@ package Java_Core.Multithreading._1_Thread;
 //Running – Actively executing the run() method.
 //Blocked/Waiting – Paused due to synchronization or waiting for a resource.
 //Terminated – Execution completed or stopped.
-

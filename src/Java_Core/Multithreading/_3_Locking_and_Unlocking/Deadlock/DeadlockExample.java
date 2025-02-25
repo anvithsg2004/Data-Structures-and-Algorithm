@@ -12,7 +12,7 @@ class Task1 extends Thread {
 
             try {
                 Thread.sleep(100);
-            } catch (InterruptedException e) {
+            } catch (InterruptedException ignored) {
             }
 
             System.out.println("Thread-1: Waiting for PAPER...");
@@ -30,7 +30,7 @@ class Task2 extends Thread {
 
             try {
                 Thread.sleep(100);
-            } catch (InterruptedException e) {
+            } catch (InterruptedException ignored) {
             }
 
             System.out.println("Thread-2: Waiting for PEN...");

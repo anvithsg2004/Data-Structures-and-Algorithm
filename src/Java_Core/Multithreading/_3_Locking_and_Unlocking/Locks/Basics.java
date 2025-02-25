@@ -39,4 +39,3 @@ package Java_Core.Multithreading._3_Locking_and_Unlocking.Locks;
 //1) .lock() == Wait until the current thread which is running and go after that thread gets unlock().
 //2) .tryLock() == try if it is possible then go or leave.
 //3) .unlock() == Remove the lock.
-

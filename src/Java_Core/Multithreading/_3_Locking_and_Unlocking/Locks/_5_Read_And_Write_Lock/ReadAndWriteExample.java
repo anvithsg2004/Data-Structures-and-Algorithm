@@ -2,21 +2,18 @@ package Java_Core.Multithreading._3_Locking_and_Unlocking.Locks._5_Read_And_Writ
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class ReadAndWriteExample {
 
     private int count = 0;
 
-    private final ReadWriteLock lock = new ReentrantReadWriteLock();
-
-    private final Lock readLock = new ReentrantLock();
-
-    private final Lock writeLock = new ReentrantLock();
+    private final ReadWriteLock lock = new ReentrantReadWriteLock(); // Correct lock
+    private final Lock readLock = lock.readLock(); // Get read lock from ReadWriteLock
+    private final Lock writeLock = lock.writeLock(); // Get write lock from ReadWriteLock
 
     public void increment() {
-        writeLock.lock();
+        writeLock.lock(); // Correctly uses write lock for modification
         try {
             count++;
         } finally {
@@ -25,33 +22,27 @@ public class ReadAndWriteExample {
     }
 
     public int getCount() {
-        writeLock.lock();
+        readLock.lock(); // Correctly uses read lock for reading
         try {
             return count;
         } finally {
-            writeLock.unlock();
+            readLock.unlock();
         }
     }
 
     public static void main(String[] args) {
         ReadAndWriteExample counter = new ReadAndWriteExample();
 
-        Runnable readTask = new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 10; i++) {
-                    System.out.println(Thread.currentThread().getName() + " read : " + counter.getCount());
-                }
+        Runnable readTask = () -> {
+            for (int i = 0; i < 10; i++) {
+                System.out.println(Thread.currentThread().getName() + " read: " + counter.getCount());
             }
         };
 
-        Runnable writeTask = new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 10; i++) {
-                    counter.increment();
-                    System.out.println(Thread.currentThread().getName() + " incremented");
-                }
+        Runnable writeTask = () -> {
+            for (int i = 0; i < 10; i++) {
+                counter.increment();
+                System.out.println(Thread.currentThread().getName() + " incremented");
             }
         };
 
@@ -67,12 +58,11 @@ public class ReadAndWriteExample {
             writerThread.join();
             readerThread1.join();
             readerThread2.join();
-        } catch (Exception e) {
-            System.out.println("Some Error...");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.out.println("Interrupted...");
         }
 
-        System.out.println("Final Count : " + counter.getCount());
-
+        System.out.println("Final Count: " + counter.getCount());
     }
-
 }
