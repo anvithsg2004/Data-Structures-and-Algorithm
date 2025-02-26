@@ -8,6 +8,7 @@ import java.util.Map;
 public class _13_Number_of_Sub_arrays_With_Odd_Sum {
 
     //Brute Force Solution
+    //Got Time Complexity Error
     public int numOfSubarrays(int[] arr) {
 
         int n = arr.length;
@@ -37,15 +38,7 @@ public class _13_Number_of_Sub_arrays_With_Odd_Sum {
         //Even - Even = Even ❌
         //Odd - Odd = Even ❌
 
-        
 
         return count;
     }
-
-    public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 5, 6, 7};
-        numOfSubarrays2(arr);
-
-    }
-
 }
