@@ -1,55 +1,37 @@
 package DSA.Practice.Arrays.Easy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class _16_Find_the_Largest_Almost_Missing_Integer {
     public static int largestInteger(int[] nums, int k) {
 
         int n = nums.length;
 
-        ArrayList<ArrayList<Integer>> subArrays = new ArrayList<>();
+        int[] freq = new int[51];
 
         for (int i = 0; i <= n - k; i++) {
-            ArrayList<Integer> sub = new ArrayList<>();
+            HashSet<Integer> numbers = new HashSet<>();
+
             for (int j = i; j < i + k; j++) {
-                sub.add(nums[j]);
+                numbers.add(nums[j]);
             }
-            subArrays.add(sub);
-        }
 
-        subArrays.forEach(System.out::println);
-
-        //Sort the given Array
-        Arrays.sort(nums);
-
-        int subArrayLength = subArrays.size();
-
-        int[] countFreq = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            int count = 0;
-            for (int j = 0; j < subArrayLength; j++) {
-                if (subArrays.get(j).contains(nums[i])) {
-                    count++;
-                }
-            }
-            countFreq[i] = count;
-        }
-
-        System.out.println(Arrays.toString(countFreq));
-
-        int maxNumber = Integer.MIN_VALUE;
-        int minFreq = Integer.MAX_VALUE;
-
-        for (int i = 0; i < n; i++) {
-            if (countFreq[i] < minFreq || (countFreq[i] == minFreq && nums[i] > maxNumber)) {
-                minFreq = countFreq[i];
-                maxNumber = nums[i];
+            for (Integer integer : numbers) {
+                freq[integer]++;
             }
         }
 
-        return (minFreq < subArrayLength) ? maxNumber : -1;
+        System.out.println(Arrays.toString(freq));
+
+        int maxNumber = -1;
+
+        for (int i = 0; i < 51; i++) {
+            if (freq[i] > 0 && freq[i] == 1) {
+                maxNumber = Math.max(i, maxNumber);
+            }
+        }
+
+        return maxNumber;
 
     }
 

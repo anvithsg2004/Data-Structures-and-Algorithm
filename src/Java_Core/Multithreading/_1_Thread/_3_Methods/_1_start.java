@@ -19,5 +19,4 @@ public class _1_start extends Thread {
         _1_start t1 = new _1_start();
         t1.start();
     }
-
 }
