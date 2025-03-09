@@ -1,7 +1,9 @@
 package DSA.Dynamic_Programming._7_DP_On_LIS;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
+
+//This problem is about finding the longest chain of words where
+//each word in the chain is formed by adding exactly one letter to the previous word.
 
 public class _5_Longest_String_Chain {
 
@@ -31,6 +33,11 @@ public class _5_Longest_String_Chain {
     }
 
     public int longestStrChain(String[] words) {
+
+        //We sort words by length.
+        //We use DP to store the longest chain ending at each word.
+        //We compare each word with previous words to find valid chains.
+        //Final result: the longest chain length.
 
         int n = words.length;
 

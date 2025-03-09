@@ -34,8 +34,4 @@ public class _24_Find_the_smallest_Divisor {
         }
         return low;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

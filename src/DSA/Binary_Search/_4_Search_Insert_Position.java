@@ -21,8 +21,4 @@ public class _4_Search_Insert_Position {
 
         return ans;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

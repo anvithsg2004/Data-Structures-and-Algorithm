@@ -5,6 +5,11 @@ import java.util.Arrays;
 public class _6_Longest_Bitonic_Subsequence {
     public static int LongestBitonicSequence(int n, int[] nums) {
 
+        //We need to find the Longest Bitonic Subsequence (LBS) in an array.
+        //A bitonic subsequence is a sequence that:
+        //1) First increases
+        //2) Then decreases
+
         int[] dp1 = new int[n];
         int[] dp2 = new int[n];
 
@@ -12,6 +17,8 @@ public class _6_Longest_Bitonic_Subsequence {
         Arrays.fill(dp2, 1);
 
         //This is for the DP1 Array
+        //Here is the simple trick and a twist.
+        //nums[i] > nums[previousIndex]
         for (int i = 0; i < n; i++) {
             for (int previousIndex = 0; previousIndex < i; previousIndex++) {
                 if (nums[i] > nums[previousIndex]) {
@@ -21,6 +28,8 @@ public class _6_Longest_Bitonic_Subsequence {
         }
 
         //Now reverse it and do the same.
+        //Here just the reverse of that.
+        //nums[i] < nums[previousIndex]
         for (int i = n - 1; i >= 0; i--) {
             for (int previousIndex = n - 1; previousIndex > i; previousIndex--) {
                 if (nums[previousIndex] < nums[i]) {

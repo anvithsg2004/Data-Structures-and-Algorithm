@@ -42,8 +42,4 @@ public class _23_Painters_Partition_and_Split_Array {
         return low;
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

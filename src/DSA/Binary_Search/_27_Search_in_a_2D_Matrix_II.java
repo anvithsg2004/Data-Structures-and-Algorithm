@@ -5,8 +5,6 @@ import java.util.ArrayList;
 public class _27_Search_in_a_2D_Matrix_II {
 
     //In this the individual rows and columns are sorted.
-
-
     //Better Solution
     //Take individual row and apply Binary Search as it is sorted individually.
     public static boolean binarySearch(ArrayList<Integer> nums, int target) {
@@ -34,7 +32,6 @@ public class _27_Search_in_a_2D_Matrix_II {
         return false;
     }
 
-
     //Optimal Solution
     public static boolean searchElement2(ArrayList<ArrayList<Integer>> matrix, int target) {
         int n = matrix.size();
@@ -48,10 +45,5 @@ public class _27_Search_in_a_2D_Matrix_II {
             else col--;
         }
         return false;
-    }
-
-
-    public static void main(String[] args) {
-
     }
 }

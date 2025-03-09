@@ -47,8 +47,4 @@ public class _28_Find_Peak_Element_II {
 
         return new int[]{-1, -1};
     }
-
-    public static void main(String[] args) {
-
-    }
 }

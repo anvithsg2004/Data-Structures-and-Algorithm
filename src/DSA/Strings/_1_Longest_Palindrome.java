@@ -34,7 +34,7 @@ public class _1_Longest_Palindrome {
 
         for (int i = 0; i < 26; i++) {
 
-            if (lower[i] > 0) { // Only process non-zero frequencies for lowercase
+            if (lower[i] > 0) { //Only process non-zero frequencies for lowercase
                 if (lower[i] % 2 == 0) {
                     count += lower[i];
                 } else {

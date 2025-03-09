@@ -21,8 +21,8 @@ public class _16_Divide_Two_Integers_without_using_Multiplication_and_Division_O
             sign = false;
         }
 
-        long n = Math.abs(dividend);
-        long d = Math.abs(divisor);
+        long n = Math.abs(dividend); //Numerator
+        long d = Math.abs(divisor); //Denominator
 
         long quotient = 0;
 
@@ -30,12 +30,20 @@ public class _16_Divide_Two_Integers_without_using_Multiplication_and_Division_O
 
             int count = 0;
 
+            //We find the largest count where d << count is still ≤ n:
+            //3 << 1 = 6
+            //3 << 2 = 12
+            //3 << 3 = 24
+            //3 << 4 = 48 (too large, stop at count = 3)
+
             while (n >= (d << (count + 1))) {
                 count = count + 1;
             }
 
+            //quotient = quotient + (1 << 3) = 0 + 8 = 8
             quotient = quotient + (1L << count);
 
+            //n = n - (d << 3) = 25 - 24 = 1
             n = n - (d << count);
 
         }

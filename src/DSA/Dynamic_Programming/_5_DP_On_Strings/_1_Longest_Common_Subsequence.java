@@ -96,7 +96,7 @@ public class _1_Longest_Common_Subsequence {
             }
         }
 
-        // The value at dp[n][m] gives the LCS length for the entire strings text1 and text2
+        // The value at dp[n][m] gives the LCS length for the entire strings text1 and text2.
         return dp[n][m];
 
     }

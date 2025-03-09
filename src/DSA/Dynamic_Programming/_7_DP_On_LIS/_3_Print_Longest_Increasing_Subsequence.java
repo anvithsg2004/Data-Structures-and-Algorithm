@@ -1,8 +1,6 @@
 package DSA.Dynamic_Programming._7_DP_On_LIS;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 
 public class _3_Print_Longest_Increasing_Subsequence {
     public ArrayList<Integer> helper(int[] arr) {
@@ -17,7 +15,7 @@ public class _3_Print_Longest_Increasing_Subsequence {
         for (int i = 0; i < n; i++) {
             hash[i] = i;
 
-            for (int previousIndex = 0; previousIndex < i; previousIndex++) {
+            for (int previousIndex = 0; previousIndex <= i - 1; previousIndex++) {
                 if (arr[previousIndex] < arr[i] && dp[previousIndex] + 1 > dp[i]) {
                     dp[i] = 1 + dp[previousIndex];
                     hash[i] = previousIndex;

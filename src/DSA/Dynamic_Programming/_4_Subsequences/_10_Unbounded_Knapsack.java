@@ -1,6 +1,7 @@
 package DSA.Dynamic_Programming._4_Subsequences;
 
-//In the previous problem, there was only one supply of values, but here there is infinite number of values provided.
+//In the previous problem, there was only one supply of values,
+//but here there is infinite number of values provided.
 //Same like the coin 2 problem in this package.
 
 public class _10_Unbounded_Knapsack {

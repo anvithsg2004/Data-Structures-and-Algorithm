@@ -1,9 +1,6 @@
 package DSA.Dynamic_Programming._7_DP_On_LIS;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 //What is a Subset?
 //In Subsequence, we pick the elements, and we follow the order.

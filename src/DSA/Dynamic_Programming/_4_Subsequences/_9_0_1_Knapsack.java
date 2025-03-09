@@ -22,7 +22,8 @@ public class _9_0_1_Knapsack {
         int taken = Integer.MIN_VALUE;
         if (weight[index] <= maxWeight) {
             taken = values[index]
-                    + helper(index - 1, maxWeight - weight[index], weight, values);
+                    + helper(index - 1,
+                    maxWeight - weight[index], weight, values);
         }
 
         // We want the maximum of these two

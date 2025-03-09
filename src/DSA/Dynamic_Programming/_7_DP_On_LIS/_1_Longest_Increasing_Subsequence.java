@@ -80,6 +80,17 @@ public class _1_Longest_Increasing_Subsequence {
         // including prev_index == -1, which is shifted to 0 for easier indexing.
         int[][] dp = new int[n + 1][n + 1];
 
+        //Why is dp (n+1) × (n+1)?
+        //1. Understanding index and prev_index
+        //index goes from 0 to n-1 (i.e., 0 to 7 for nums.length = 8).
+        //prev_index goes from -1 to n-1 (we allow prev_index = -1 to indicate no element was picked before).
+        //To avoid negative indexing, we shift prev_index by 1:
+        //
+        //When prev_index = -1, we store it at prev_index + 1 = 0.
+        //When prev_index = 0, we store it at prev_index + 1 = 1.
+        //When prev_index = 7, we store it at prev_index + 1 = 8.
+        //So, prev_index runs from -1 to 7, making it n+1 (i.e., 9).
+
         for (int index = n - 1; index >= 0; index--) {
             for (int prev_index = index - 1; prev_index >= -1; prev_index--) {
                 int notTake = dp[index + 1][prev_index + 1];

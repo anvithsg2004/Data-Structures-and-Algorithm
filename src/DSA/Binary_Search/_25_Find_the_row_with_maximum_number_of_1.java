@@ -37,8 +37,4 @@ public class _25_Find_the_row_with_maximum_number_of_1 {
         }
         return index;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

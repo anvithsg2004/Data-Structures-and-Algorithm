@@ -27,8 +27,4 @@ public class _10_Minimum_in_Rotated_Sorted_Array {
 
         return ans;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

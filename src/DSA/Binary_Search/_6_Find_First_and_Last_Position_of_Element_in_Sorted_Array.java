@@ -60,8 +60,4 @@ public class _6_Find_First_and_Last_Position_of_Element_in_Sorted_Array {
 
         return new int[]{a, b - 1};
     }
-
-    public static void main(String[] args) {
-
-    }
 }
