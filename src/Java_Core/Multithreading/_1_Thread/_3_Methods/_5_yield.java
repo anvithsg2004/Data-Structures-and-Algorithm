@@ -6,7 +6,7 @@ class _5_yield extends Thread {
     public void run() {
         for (int i = 1; i <= 5; i++) {
             System.out.println(Thread.currentThread().getName() + " is running...");
-            Thread.yield(); // Hints that other threads should run
+            Thread.yield();//Hints that other threads should run
             //Used to pause the current thread and allow other threads of the same or higher priority to execute.
         }
     }

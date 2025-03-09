@@ -49,10 +49,4 @@ public class _8_Move_Zero_To_End {
 
         System.out.println(Arrays.toString(array));
     }
-
-    public static void main(String[] args) {
-        int[] array = {0, 1, 0, 3, 12};
-
-        Move_To_End(array);
-    }
 }

@@ -1,6 +1,6 @@
 //Thread pooling is a technique where a fixed number of threads are created in advance and
-// reused to execute multiple tasks instead of creating and destroying threads repeatedly.
-// This improves performance and reduces the overhead of thread creation.
+//reused to execute multiple tasks instead of creating and destroying threads repeatedly.
+//This improves performance and reduces the overhead of thread creation.
 
 //Why Use Thread Pooling?
 //✔ Avoids Overhead – Creating threads dynamically is expensive. A pool reduces the cost.

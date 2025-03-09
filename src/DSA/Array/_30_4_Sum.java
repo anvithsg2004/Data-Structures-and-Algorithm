@@ -65,8 +65,7 @@ public class _30_4_Sum {
                 Set<Long> hashset = new HashSet<>();
                 for (int k = j + 1; k < n; k++) {
 
-                    long sum = nums[i] + nums[j];
-                    sum += nums[k];
+                    long sum = nums[i] + nums[j] + nums[k];
                     long fourth = target - sum;
                     if (hashset.contains(fourth)) {
                         List<Integer> temp = new ArrayList<>();
@@ -120,10 +119,6 @@ public class _30_4_Sum {
 
         List<List<Integer>> result = new ArrayList<>(set);
         return result;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

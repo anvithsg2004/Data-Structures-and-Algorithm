@@ -16,7 +16,8 @@ class sharedResource {
         }
         data = value;
         hasData = true;
-        notify();  // Wake up Consumer
+        System.out.println("Produce: " + value); // Log here
+        notify();
     }
 
     // Consumer method
@@ -28,9 +29,11 @@ class sharedResource {
                 e.printStackTrace();
             }
         }
+        int value = data;
         hasData = false;
-        notify();  // Wake up Producer
-        return data;
+        System.out.println("Consume: " + value); // Log here
+        notify();
+        return value;
     }
 }
 
@@ -44,9 +47,9 @@ class Producer implements Runnable {
 
     @Override
     public void run() {
+        // In Producer's run()
         for (int i = 0; i < 10; i++) {
             resource.produce(i);
-            System.out.println("Produce: " + i);
         }
     }
 }
@@ -61,9 +64,9 @@ class Consumer implements Runnable {
 
     @Override
     public void run() {
+        // In Consumer's run()
         for (int i = 0; i < 10; i++) {
             int value = resource.consume();
-            System.out.println("Consume: " + value);
         }
     }
 }
@@ -72,6 +75,8 @@ public class Thread_Communication {
     public static void main(String[] args) {
         sharedResource resource = new sharedResource();
 
+        //It uses wait() and notify() for synchronization
+        //between two threads (Producer and Consumer) that share a common resource.
         Producer producer = new Producer(resource);
         Consumer consumer = new Consumer(resource);
 

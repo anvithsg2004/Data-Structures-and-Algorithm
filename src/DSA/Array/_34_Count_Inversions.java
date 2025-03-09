@@ -87,8 +87,4 @@ public class _34_Count_Inversions {
 
         return count;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

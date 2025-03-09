@@ -54,8 +54,4 @@ public class _24_Rotate_Matrix_Image_by_90_Degrees {
         }
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

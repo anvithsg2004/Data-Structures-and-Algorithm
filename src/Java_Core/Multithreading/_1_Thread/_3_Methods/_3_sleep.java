@@ -6,7 +6,9 @@ class _3_sleep extends Thread {
             System.out.println("Thread running: " + i);
             try {
                 System.out.println("Going to sleep");
-                Thread.sleep(5000); // Pauses the thread for 1 second
+                Thread.sleep(5000);
+                // Pauses the thread for 1 second
+                //It only pauses the current thread, other threads keep running.
                 System.out.println("Woke up");
             } catch (InterruptedException e) {
                 System.out.println(e);

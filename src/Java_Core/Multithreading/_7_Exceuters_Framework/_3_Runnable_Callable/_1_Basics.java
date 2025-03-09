@@ -4,3 +4,5 @@
 //Used With	                Thread, ExecutorService	        ExecutorService
 //Method	                run()	                        call()
 
+//Both Runnable and Callable are functional interfaces because
+//they have only one abstract method.

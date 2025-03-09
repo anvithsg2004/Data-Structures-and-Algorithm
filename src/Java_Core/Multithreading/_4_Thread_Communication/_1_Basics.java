@@ -7,4 +7,3 @@ package Java_Core.Multithreading._4_Thread_Communication;
 //1️⃣ wait(): Makes the thread pause and release the lock until another thread notifies it.
 //2️⃣ notify(): Wakes up a single waiting thread.
 //3️⃣ notifyAll(): Wakes up all waiting threads.
-

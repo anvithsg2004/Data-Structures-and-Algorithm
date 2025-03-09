@@ -31,13 +31,4 @@ public class _15_2_Sum_2_Pointer_Approch {
 
         return new int[]{-1, -1};
     }
-
-    public static void main(String[] args) {
-
-        int[] array = {1, 2, 3, 1, 1, 1, 1, 4, 2, 3};
-
-        int target = 3;
-
-        System.out.println("The index are : " + Arrays.toString(_2_Sum(array, target)));
-    }
 }

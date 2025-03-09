@@ -24,12 +24,4 @@ public class _15_2_Sum_problem {
         //Else False.
         return false;
     }
-
-    public static void main(String[] args) {
-        int[] array = {1, 2, 3, 1, 1, 1, 1, 4, 2, 3};
-
-        int target = 10;
-
-        System.out.println("The Target is : " + _2_sum(array, target));
-    }
 }

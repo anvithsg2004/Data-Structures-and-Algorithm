@@ -34,7 +34,7 @@ public class _35_Count_Reverse_Pairs {
             right++;
         }
 
-        // transfering all elements from temporary to arr //
+        //Transferring all elements from temporary to arr //
         for (int i = low; i <= high; i++) {
             arr[i] = temp.get(i - low);
         }
@@ -63,9 +63,5 @@ public class _35_Count_Reverse_Pairs {
 
     public static int team(int[] skill, int n) {
         return mergeSort(skill, 0, n - 1);
-    }
-
-    public static void main(String[] args) {
-
     }
 }

@@ -48,12 +48,4 @@ public class _10_Union_Optimal_Approch {
 
         return union;
     }
-
-    public static void main(String[] args) {
-        int[] array1 = {0, 1, 0, 3, 12};
-
-        int[] array2 = {1, 2, 3, 4, 5, 6, 7};
-
-        System.out.println("The Union Array is : " + Union(array1, array2));
-    }
 }

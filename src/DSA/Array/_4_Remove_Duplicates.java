@@ -20,10 +20,4 @@ public class _4_Remove_Duplicates {
 
         System.out.println(result);
     }
-
-    public static void main(String[] args) {
-        int[] array = {1, 1, 2, 2, 3, 3};
-        ArrayList<Integer> result = new ArrayList<>();
-        RemoveDuplicates(array, result);
-    }
 }

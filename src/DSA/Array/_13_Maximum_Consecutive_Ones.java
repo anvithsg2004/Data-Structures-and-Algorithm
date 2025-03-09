@@ -1,6 +1,6 @@
 package DSA.Array;
 
-public class _13_Maximum_Consectutive_Ones {
+public class _13_Maximum_Consecutive_Ones {
 
     public static int ones(int[] array) {
         int maxi = 0;

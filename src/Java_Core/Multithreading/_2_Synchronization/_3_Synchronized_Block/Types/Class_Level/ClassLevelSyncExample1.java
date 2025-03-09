@@ -1,6 +1,7 @@
 package Java_Core.Multithreading._2_Synchronization._3_Synchronized_Block.Types.Class_Level;
 
 class Logger {
+    //Put the "synchronized" for the "static".
     public static synchronized void logMessage(String message) {  // Lock on Logger.class
         System.out.println(Thread.currentThread().getName() + " - Logging: " + message);
         try {
