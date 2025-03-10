@@ -38,8 +38,7 @@ public class _33_Find_the_Missing_and_Repeating_Number {
         long x = (val1 + val2) / 2;
         long y = x - val1;
 
-        int[] ans = {(int) x, (int) y};
-        return ans;
+        return new int[]{(int) x, (int) y};
 
     }
 

@@ -4,6 +4,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+//Method	                                Description
+//execute(Runnable task)	                Executes a Runnable task.
+//submit(Callable<T> task)	                Submits a task and returns a Future.
+//shutdown()	                            Initiates an orderly shutdown.
+//shutdownNow()	                            Attempts to stop all executing tasks immediately.
+//invokeAll(Collection<Callable<T>> tasks)	Executes multiple tasks and waits for all to finish.
+//invokeAny(Collection<Callable<T>> tasks)	Executes multiple tasks and returns the first completed result.
+
 public class Main {
 
     public static long factorial(int n) {

@@ -6,7 +6,6 @@ package Java_Core.Multithreading._2_Synchronization._1_Theory;
 
 //Why is Synchronization Needed?
 //When multiple threads access a shared resource at the same time, problems like:
-//
 //Race Condition: Two threads modifying a value at the same time.
 //Data Inconsistency: The final value of a shared variable is unpredictable.
 //Unexpected Results: The program behaves randomly because the execution order is not controlled.
