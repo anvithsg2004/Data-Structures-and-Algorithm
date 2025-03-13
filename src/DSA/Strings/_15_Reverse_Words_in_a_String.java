@@ -2,6 +2,19 @@ package DSA.Strings;
 
 import java.util.ArrayList;
 
+//Dry Run of reverseWords(" hello world ")
+//Step 1: Splitting the String
+//words = ["", "", "hello", "", "", "world", "", ""]
+//Extra spaces create empty strings in the array.
+//Step 2: Removing Empty Strings
+//result = ["hello", "world"]
+//We keep only non-empty trimmed words.
+//Step 3: Reversing the Words
+//reversedResult = ["world", "hello"]
+//Step 4: Joining the Words
+//Intermediate string: "world hello "
+//Final result after trimming: "world hello"
+
 public class _15_Reverse_Words_in_a_String {
     public String reverseWords(String s) {
         String[] words = s.split(" ");

@@ -18,8 +18,4 @@ public class _4_Ceil {
 
         return ceil; // Return the ceil value or -1 if not found
     }
-
-    public static void main(String[] args) {
-        // You can add test cases here
-    }
 }

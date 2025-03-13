@@ -1,9 +1,8 @@
 package DSA.Sorting;
 
-import java.util.Scanner;
-import java.util.Arrays;
+import java.util.*;
 
-public class Selection_Sort {
+public class _1_Selection_Sort {
 
     public static void section_sort(int[] array, int size) {
         for (int i = 0; i <= (size - 2); i++) {

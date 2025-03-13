@@ -1,10 +1,10 @@
 package DSA.Sliding_Window;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class _1_Length_of_Longest_Substring_without_any_Repeating_Character {
+
+    //Optimal
     public int solve(String s) {
         HashMap<Character, Integer> hashMap = new HashMap<>();
 

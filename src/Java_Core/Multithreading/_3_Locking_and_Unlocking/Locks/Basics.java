@@ -1,5 +1,3 @@
-package Java_Core.Multithreading._3_Locking_and_Unlocking.Locks;
-
 //Lock → The resourese are locked by the OS so that
 //only one user/thread/preprocess can access it or to modify it.
 

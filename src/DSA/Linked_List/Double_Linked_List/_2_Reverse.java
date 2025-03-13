@@ -21,8 +21,4 @@ public class _2_Reverse {
 
         return prev.back;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

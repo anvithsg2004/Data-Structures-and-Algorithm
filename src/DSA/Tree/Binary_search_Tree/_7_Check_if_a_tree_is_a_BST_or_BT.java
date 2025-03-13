@@ -13,16 +13,14 @@ public class _7_Check_if_a_tree_is_a_BST_or_BT {
             return true;
         }
 
+        //It is just the opposite of the condition.
         if (node.val >= maxVal || node.val <= minVal) {
             return false;
         }
 
         //Left → the next left node should be smaller than the parent node and greater than the minValue.
         //Right → the next right node should be greater than the parent node and smaller than the highest value.
+        //     Left                                  Right
         return valid(node.left, minVal, node.val) && valid(node.right, node.val, maxVal);
-    }
-
-    public static void main(String[] args) {
-
     }
 }

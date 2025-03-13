@@ -29,8 +29,4 @@ public class _25_Add_1_to_a_number_represented_by_LL {
         return head;
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

@@ -2,6 +2,18 @@ package DSA.Linked_List.Single_Linked_List;
 
 public class _24_Add_Two_Numbers {
 
+    //The digits are stored in reverse order (1's place is at the head).
+    //l1 = [2 → 4 → 3]   (represents 342)
+    //l2 = [5 → 6 → 4]   (represents 465)
+
+    //[7 → 0 → 8]  (represents 807)
+
+    //Step-by-Step Dry Run
+    //Step	l1 Value	l2 Value    Carry	Sum (l1 + l2 + carry)	New Node	    Result Linked List
+    //1	    2	        5	        0	    2 + 5 + 0 = 7	        7	            7 →
+    //2	    4	        6	        0	    4 + 6 + 0 = 10	        0 (carry=1)	    7 → 0 →
+    //3	    3	        4	        1	    3 + 4 + 1 = 8	        8	            7 → 0 → 8
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode();
         ListNode temp = dummy;
@@ -28,9 +40,5 @@ public class _24_Add_Two_Numbers {
         }
 
         return dummy.next;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

@@ -61,9 +61,4 @@ public class _2_Kahn_Algorithm {
 
         return topo;
     }
-
-
-    public static void main(String[] args) {
-
-    }
 }

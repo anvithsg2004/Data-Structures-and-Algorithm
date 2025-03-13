@@ -52,8 +52,8 @@ public class _3_Dijkstras_Algorithm_Using_Priority_Queue {
 
             for (int i = 0; i < adj.get(node).size(); i++) {
 
-                int edgeWeight = adj.get(node).get(i).distance;
                 int adjNode = adj.get(node).get(i).node;
+                int edgeWeight = adj.get(node).get(i).distance;
 
                 if (distance + edgeWeight < dist.get(adjNode)) {
 
@@ -67,10 +67,6 @@ public class _3_Dijkstras_Algorithm_Using_Priority_Queue {
         }
 
         return dist;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

@@ -8,14 +8,17 @@ public class _1_Conversion {
 
     public static void main(String[] args) {
 
+        //Convert to streams.
         List<String> list = Arrays.asList("Anvith", "Remo", "Dog");
         Stream<String> stream = list.stream();
 
+        //Convert to streams.
         String[] array = {"Anvith", "Remo", "Dog"};
         Stream<String> stream1 = Arrays.stream(array);
 
         //By Creating own
         Stream<Integer> integerStream = Stream.of(1, 2, 5, 9, 10);
+        integerStream.forEach(System.out::println);
 
         //It will take the initial starting number and the unary operator
         Stream<Integer> limit = Stream.iterate(0, n -> n + 1).limit(200);

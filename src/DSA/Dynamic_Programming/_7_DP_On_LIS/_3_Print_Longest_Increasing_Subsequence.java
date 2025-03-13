@@ -10,7 +10,7 @@ public class _3_Print_Longest_Increasing_Subsequence {
         int[] dp = new int[n];
         Arrays.fill(dp, 1);
 
-        int[] hash = new int[n];
+        int[] hash = new int[n]; //stores the previous element’s index to allow backtracking.
 
         for (int i = 0; i < n; i++) {
             hash[i] = i;

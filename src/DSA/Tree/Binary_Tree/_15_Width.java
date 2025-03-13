@@ -1,8 +1,6 @@
 package DSA.Tree.Binary_Tree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
+import java.util.*;
 class Pair {
     TreeNode node;
     int num;

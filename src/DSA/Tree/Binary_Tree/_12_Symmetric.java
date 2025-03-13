@@ -17,8 +17,4 @@ public class _12_Symmetric {
 
         return (left.val == right.val) && symmetry(left.left, right.right) && symmetry(left.right, right.left);
     }
-
-    public static void main(String[] args) {
-
-    }
 }

@@ -23,8 +23,4 @@ public class _11_Right_Side_View {
         recursionRight(root.right, level + 1, res);
         recursionRight(root.left, level + 1, res);
     }
-
-    public static void main(String[] args) {
-
-    }
 }

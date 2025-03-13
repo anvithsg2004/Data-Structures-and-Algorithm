@@ -1,8 +1,6 @@
 package DSA.Greedy_Algorithms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 class meeting {
     int start;

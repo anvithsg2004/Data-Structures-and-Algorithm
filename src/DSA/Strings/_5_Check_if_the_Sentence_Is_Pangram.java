@@ -1,9 +1,10 @@
 package DSA.Strings;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 public class _5_Check_if_the_Sentence_Is_Pangram {
+    //Code checks whether a sentence is a pangram a sentence that contains every letter of the English
+    //alphabet at least once.
 
     public boolean checkIfPangram(String sentence) {
         int[] lower = new int[26];

@@ -18,8 +18,4 @@ public class _3_Floor {
 
         return floor; // Return the floor value or -1 if not found
     }
-
-    public static void main(String[] args) {
-        // You can add test cases here
-    }
 }

@@ -1,30 +1,38 @@
 package DSA.Sorting;
 
-import java.util.Scanner;
-import java.util.Arrays;
+import java.util.*;
 
-public class Quick_Sort {
+//Quick Sort Algorithm (Steps)
+//Choose a Pivot (can be first, last, middle, or a random element).
+//Partition the Array:
+//Rearrange the elements so that all elements smaller than the pivot are on the left, and all greater are on the right.
+//The pivot is placed in its correct sorted position.
+//Recursively Apply Quick Sort to the left and right subarrays.
 
-    public static int partion(int[] array, int low, int high) {
+public class _5_Quick_Sort {
 
+    public static int partition(int[] array, int low, int high) {
         int pivot = array[low];
         int i = low;
         int j = high;
 
         while (i < j) {
-            while (array[i] <= pivot && i <= high - 1) {
+            //'i' moves right until it finds an element greater than pivot.
+            while (i <= high - 1 && array[i] <= pivot) {
                 i++;
             }
-
-            while (array[j] > pivot && j >= low + 1) {
+            //'j' moves left until it finds an element smaller than pivot.
+            while (j >= low + 1 && array[j] > pivot) {
                 j--;
             }
+            //When i < j, swap array[i] and array[j].
             if (i < j) {
                 int temp = array[i];
                 array[i] = array[j];
                 array[j] = temp;
             }
         }
+        //swap array[low] (pivot) with array[j], placing the pivot in the correct position.
         int temp = array[low];
         array[low] = array[j];
         array[j] = temp;
@@ -34,7 +42,12 @@ public class Quick_Sort {
 
     public static void quick_sort(int[] array, int low, int high) {
         if (low < high) {
-            int PI = partion(array, low, high);
+            //Example ==  {4 6 2 5 7 9 1 3};
+            //Place the Pivot in the correct place.
+            //After Finding the Pivot and putting in the correct place.
+            //The new Array == {2 1 3 "4" 6 5 7 9};
+            int PI = partition(array, low, high);
+            //Now the same for the down as before.
             quick_sort(array, low, PI - 1);
             quick_sort(array, PI + 1, high);
         }

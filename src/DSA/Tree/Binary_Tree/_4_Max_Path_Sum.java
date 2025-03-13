@@ -17,6 +17,7 @@ public class _4_Max_Path_Sum {
             return 0;
         }
 
+        //This is to take only positive numbers only.
         int left = Math.max(0, maxPathDown(root.left, maxValue));
         int right = Math.max(0, maxPathDown(root.right, maxValue));
 
@@ -26,7 +27,7 @@ public class _4_Max_Path_Sum {
     }
 
 
-    //pathSum and help (Sum of All Paths)
+    //pathSum and help (Sum of All Paths in a Binary Tree)
     public int pathSum(TreeNode root) {
 
         if (root == null) {
@@ -50,6 +51,7 @@ public class _4_Max_Path_Sum {
     }
 
     public void help(TreeNode node, ArrayList<Integer> currentPath, ArrayList<ArrayList<Integer>> allPaths) {
+        //Just returns as there is no nodes to go.
         if (node == null) {
             return; // Base case: do nothing for null nodes
         }
@@ -66,9 +68,5 @@ public class _4_Max_Path_Sum {
 
         // Backtrack: remove the current node's value before going back up
         currentPath.remove(currentPath.size() - 1);
-    }
-
-    public static void main(String[] args) {
-
     }
 }

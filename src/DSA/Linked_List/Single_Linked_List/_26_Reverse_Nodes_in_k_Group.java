@@ -7,8 +7,4 @@ public class _26_Reverse_Nodes_in_k_Group {
 //
 //
 //    }
-
-    public static void main(String[] args) {
-
-    }
 }

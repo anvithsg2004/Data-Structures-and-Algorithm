@@ -13,7 +13,7 @@ public class ReadAndWriteExample {
     private final Lock writeLock = lock.writeLock(); // Get write lock from ReadWriteLock
 
     public void increment() {
-        writeLock.lock(); // Correctly uses write lock for modification
+        writeLock.lock(); // Allow only one to write.
         try {
             count++;
         } finally {
@@ -22,7 +22,7 @@ public class ReadAndWriteExample {
     }
 
     public int getCount() {
-        readLock.lock(); // Correctly uses read lock for reading
+        readLock.lock(); // Allow all to read.
         try {
             return count;
         } finally {

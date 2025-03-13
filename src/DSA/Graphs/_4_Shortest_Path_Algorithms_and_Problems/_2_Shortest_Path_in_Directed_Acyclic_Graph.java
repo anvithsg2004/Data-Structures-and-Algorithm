@@ -81,8 +81,4 @@ public class _2_Shortest_Path_in_Directed_Acyclic_Graph {
         }
         return dist;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

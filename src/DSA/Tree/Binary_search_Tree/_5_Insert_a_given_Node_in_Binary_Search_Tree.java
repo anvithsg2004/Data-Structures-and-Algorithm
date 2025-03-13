@@ -28,7 +28,7 @@ public class _5_Insert_a_given_Node_in_Binary_Search_Tree {
         return root;
     }
 
-    public static TreeNode insert(TreeNode root, int value) {
+    public TreeNode insert(TreeNode root, int value) {
         if (root == null) {
             return new TreeNode(value); // Create a new node if root is null
         }
@@ -38,9 +38,5 @@ public class _5_Insert_a_given_Node_in_Binary_Search_Tree {
             root.right = insert(root.right, value); // Insert in right subtree
         }
         return root;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

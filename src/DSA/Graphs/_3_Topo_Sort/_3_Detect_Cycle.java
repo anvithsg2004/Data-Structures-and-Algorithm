@@ -57,7 +57,4 @@ public class _3_Detect_Cycle {
         return true;
     }
 
-    public static void main(String[] args) {
-
-    }
 }

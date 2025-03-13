@@ -1,5 +1,3 @@
-package Java_Core.Multithreading._2_Synchronization._1_Theory;
-
 //Thread synchronization is the process of controlling multiple threads
 //so that they do not interfere with each other when accessing shared resources
 //(such as variables, files, or databases).

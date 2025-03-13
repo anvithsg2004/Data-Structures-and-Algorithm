@@ -27,8 +27,4 @@ public class _2_Balanced_Or_Not {
 
         return false;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

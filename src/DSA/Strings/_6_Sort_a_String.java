@@ -1,5 +1,7 @@
 package DSA.Strings;
 
+//Given a string s consisting of lowercase English letters, return the string sorted in lexicographical order.
+
 public class _6_Sort_a_String {
     public String sort(String s) {
         if (s == null) {

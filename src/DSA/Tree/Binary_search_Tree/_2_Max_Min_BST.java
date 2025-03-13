@@ -1,7 +1,6 @@
 package DSA.Tree.Binary_search_Tree;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class _2_Max_Min_BST {
 
@@ -19,9 +18,5 @@ public class _2_Max_Min_BST {
         inorder(root.left, list);
         list.add(root.val);
         inorder(root.right, list);
-    }
-
-    public static void main(String[] args) {
-
     }
 }

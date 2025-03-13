@@ -3,6 +3,8 @@ package DSA.Sliding_Window;
 public class _2_Max_Consecutive_Ones_III {
 
     //Brute Force Solution
+    //This function finds the maximum number of consecutive 1s by
+    //flipping at most k 0s using the Sliding Window (Two-Pointer) approach.
     //We can convert this question to like Longest Sub String with at most k zero's
     public int longestOnes2(int[] nums, int k) {
 

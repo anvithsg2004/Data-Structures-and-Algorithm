@@ -1,7 +1,6 @@
 package DSA.Greedy_Algorithms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class _13_Insert_Interval {
 
@@ -36,35 +35,32 @@ public class _13_Insert_Interval {
     }
 
     public List<List<Integer>> insert2(int[][] intervals, int[] newInterval) {
-
         int n = intervals.length;
-
         List<List<Integer>> result = new ArrayList<>();
-
         int i = 0;
 
-        //Left Intervals
+        // Left Intervals (Non-overlapping intervals before newInterval)
+        //Compare with the give ith last interval with the new interval.
         while (i < n && intervals[i][1] < newInterval[0]) {
             result.add(List.of(intervals[i][0], intervals[i][1]));
-            i = i + 1;
+            i++; // Move to the next interval
         }
 
-        //Overlapping Intervals
+        // Overlapping Intervals (Merging process)
         while (i < n && intervals[i][0] <= newInterval[1]) {
-            newInterval[0] = Math.min(newInterval[0], intervals[i][0]);
-            newInterval[1] = Math.max(newInterval[1], intervals[i][1]);
-            i = i + 1;
+            newInterval[0] = Math.min(newInterval[0], intervals[i][0]); // Expand left boundary
+            newInterval[1] = Math.max(newInterval[1], intervals[i][1]); // Expand right boundary
+            i++; // Move to the next interval
         }
-        // Add the merged new interval
+        // Add the merged interval
         result.add(List.of(newInterval[0], newInterval[1]));
 
-        //Right
+        // Right Intervals (Non-overlapping intervals after newInterval)
         while (i < n) {
             result.add(List.of(intervals[i][0], intervals[i][1]));
-            i = i + 1;
+            i++;
         }
 
         return result;
-
     }
 }

@@ -1,7 +1,6 @@
 package DSA.Greedy_Algorithms;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
 class Item {
     int weight;
@@ -30,6 +29,11 @@ public class _2_Fractional_Knapsack_Problem {
         if (arr == null || arr.length == 0 || W == 0) {
             return 0.0;
         }
+
+        //Sort items based on value/weight ratio in descending order.
+        //Pick whole items as long as they fit in the knapsack.
+        //If an item cannot fit completely, take a fraction of it to fill the remaining space.
+        //Return the maximum value obtained.
 
         //The sorting is in descending order.
         Arrays.sort(arr, new itemComparator());

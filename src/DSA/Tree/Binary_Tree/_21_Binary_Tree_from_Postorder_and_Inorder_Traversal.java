@@ -1,7 +1,6 @@
 package DSA.Tree.Binary_Tree;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class _21_Binary_Tree_from_Postorder_and_Inorder_Traversal {
     public TreeNode buildTree(int[] inorder, int[] postorder) {

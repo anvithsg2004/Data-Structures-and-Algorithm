@@ -1,7 +1,6 @@
 package DSA.Greedy_Algorithms;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class _5_Valid_Parenthesis {
 
@@ -49,10 +48,9 @@ public class _5_Valid_Parenthesis {
         }
 
         if (s.charAt(index) == '*') {
-            // Explore all three possibilities for '*'
-            return helper(s, index + 1, count + 1)
-                    || helper(s, index + 1, count - 1)
-                    || helper(s, index + 1, count);
+            return helper(s, index + 1, count + 1)  // Treat * as '('
+                    || helper(s, index + 1, count - 1)  // Treat * as ')'
+                    || helper(s, index + 1, count);  // Treat * as empty
         }
 
         // If none of the above, return false

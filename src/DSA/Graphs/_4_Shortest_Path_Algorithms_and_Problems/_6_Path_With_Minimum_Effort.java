@@ -71,8 +71,4 @@ public class _6_Path_With_Minimum_Effort {
         return 0;
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

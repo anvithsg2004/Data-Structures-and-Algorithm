@@ -2,6 +2,17 @@ package DSA.Dynamic_Programming._7_DP_On_LIS;
 
 //This is a Tabulation algorithm to find the length of the longest increasing subsequence.
 
+//Final Conclusion
+//Use dp[i] = Math.max(dp[i], new_value); when:
+//✔ You only need the best possible value for dp[i].
+//✔ You don’t need to track previous indices or counts.
+//
+//Use if (condition) { dp[i] = new_value; } when:
+//✔ You need to inherit values (like count or index tracking).
+//✔ You need to ensure updates happen only under strict conditions (e.g., for maintaining paths in LIS).
+//
+//👉 If unsure, using Math.max is safer for most cases!
+
 import java.util.Arrays;
 
 public class _2_Find_the_length_of_the_longest_increasing_subsequence {
@@ -26,7 +37,7 @@ public class _2_Find_the_length_of_the_longest_increasing_subsequence {
         //We iterate through every index i and compare it with all previous indices previousIndex (0 to i-1).
         //If arr[previousIndex] < arr[i], it means arr[i] can extend the LIS ending at previousIndex.
         //dp[i] = Math.max(dp[i], 1 + dp[previousIndex]);
-        for (int i = 0; i <= n - 1; i++) {
+        for (int i = 0; i < n; i++) {
             for (int previousIndex = 0; previousIndex <= i - 1; previousIndex++) {
                 if (arr[previousIndex] < arr[i]) {
                     dp[i] = Math.max(dp[i], 1 + dp[previousIndex]);
@@ -36,7 +47,7 @@ public class _2_Find_the_length_of_the_longest_increasing_subsequence {
 
         int ans = -1;
 
-        for (int i = 0; i <= n - 1; i++) {
+        for (int i = 0; i < n; i++) {
             ans = Math.max(ans, dp[i]);
         }
 

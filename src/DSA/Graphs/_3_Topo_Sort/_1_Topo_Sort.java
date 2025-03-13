@@ -61,8 +61,4 @@ public class _1_Topo_Sort {
         stack.push(node);
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

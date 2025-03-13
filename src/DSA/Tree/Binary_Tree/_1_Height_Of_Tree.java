@@ -12,8 +12,4 @@ public class _1_Height_Of_Tree {
 
         return 1 + Math.max(left, right);
     }
-
-    public static void main(String[] args) {
-
-    }
 }

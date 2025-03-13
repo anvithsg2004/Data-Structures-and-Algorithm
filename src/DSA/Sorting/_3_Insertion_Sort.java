@@ -1,9 +1,8 @@
 package DSA.Sorting;
 
-import java.util.Scanner;
-import java.util.Arrays;
+import java.util.*;
 
-public class Insertion_Sort {
+public class _3_Insertion_Sort {
 
     public static void insertionSort(int[] array, int size) {
         for (int i = 1; i < size; i++) {  // Start from 1 since the first element is already "sorted"

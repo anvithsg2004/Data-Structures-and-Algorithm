@@ -89,7 +89,6 @@ public class _11_Number_of_Islands {
     }
 
     public void bfs(int ro, int co, boolean[][] visited, char[][] grid, int[] drow, int[] dcol) {
-
         visited[ro][co] = true;
 
         Queue<Pair5> queue = new LinkedList<>();
@@ -99,7 +98,6 @@ public class _11_Number_of_Islands {
         int m = grid[0].length;
 
         while (!queue.isEmpty()) {
-
             int row = queue.peek().row;
             int col = queue.peek().col;
             queue.remove();
@@ -108,17 +106,11 @@ public class _11_Number_of_Islands {
                 int nrow = row + drow[i];
                 int ncol = col + dcol[i];
 
-                if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && visited[nrow][ncol] == false && grid[row][col] == '1') {
+                if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && !visited[nrow][ncol] && grid[nrow][ncol] == '1') {
                     visited[nrow][ncol] = true;
                     queue.add(new Pair5(nrow, ncol));
                 }
             }
-
         }
-
-    }
-
-    public static void main(String[] args) {
-
     }
 }

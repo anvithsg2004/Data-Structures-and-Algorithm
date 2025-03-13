@@ -69,8 +69,4 @@ public class _5_Shortest_Distance_Binary_Maze {
 
         return -1;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

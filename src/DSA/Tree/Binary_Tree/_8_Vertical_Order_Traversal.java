@@ -63,8 +63,4 @@ public class _8_Vertical_Order_Traversal {
 
         return list;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

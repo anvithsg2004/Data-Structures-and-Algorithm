@@ -1,9 +1,8 @@
 package DSA.Sorting;
 
-import java.util.Scanner;
-import java.util.Arrays;
+import java.util.*;
 
-public class Bubble_Sort {
+public class _2_Bubble_Sort {
 
     public static void bubble_sort(int[] array, int size) {
         for (int i = (size - 1); i >= 1; i--) {

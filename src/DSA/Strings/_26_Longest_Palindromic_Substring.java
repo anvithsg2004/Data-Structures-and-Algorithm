@@ -2,6 +2,9 @@ package DSA.Strings;
 
 public class _26_Longest_Palindromic_Substring {
 
+    //s = "babad"
+    //"bab" // (or "aba" is also valid)
+
     public String longestPalindrome(String s) {
 
         int n = s.length();
@@ -61,10 +64,6 @@ public class _26_Longest_Palindromic_Substring {
         }
 
         return LPS;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

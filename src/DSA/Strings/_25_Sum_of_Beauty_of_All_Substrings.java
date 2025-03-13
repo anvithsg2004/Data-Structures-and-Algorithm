@@ -1,10 +1,12 @@
 package DSA.Strings;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class _25_Sum_of_Beauty_of_All_Substrings {
+
+    //Given a string s, the beauty of a substring is defined as the difference
+    //between the most frequent and the least frequent character counts in that substring.
+    //The task is to calculate the sum of beauty values for all possible substrings of s.
 
     public int beautySum(String s) {
 
@@ -36,10 +38,6 @@ public class _25_Sum_of_Beauty_of_All_Substrings {
         }
 
         return sum;
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

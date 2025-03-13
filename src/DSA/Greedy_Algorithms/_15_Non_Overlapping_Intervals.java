@@ -1,8 +1,6 @@
 package DSA.Greedy_Algorithms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 class Intervals {
     int start;
@@ -29,6 +27,10 @@ class intervalsComparator implements Comparator<Intervals> {
 public class _15_Non_Overlapping_Intervals {
     public int eraseOverlapIntervals(int[][] intervals) {
 
+        //Find the minimum number of intervals to remove so that the remaining intervals are non-overlapping.
+        //Input = int[][] intervals = {{1, 3}, {2, 4}, {3, 5}, {6, 8}};
+        //Output = int[][] intervals = {{1, 3}, {3, 5}, {6, 8}};
+
         int n = intervals.length;
 
         ArrayList<Intervals> intervalsArrayList = new ArrayList<>();
@@ -37,6 +39,7 @@ public class _15_Non_Overlapping_Intervals {
             intervalsArrayList.add(new Intervals(intervals[i][0], intervals[i][1]));
         }
 
+        //Sort intervals based on the end time.
         intervalsComparator ic = new intervalsComparator();
         Collections.sort(intervalsArrayList, new intervalsComparator());
 

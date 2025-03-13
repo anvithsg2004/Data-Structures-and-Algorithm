@@ -33,7 +33,7 @@ public class _13_Smallest_distinct_window {
             while (matchedDistinctChars == distinctCount) {
                 int windowLength = end - start + 1;
 
-                // Update the result if the current window is smaller than the previously found smallest window
+                // Update the result if the current window is smaller than the previously found the smallest window
                 if (windowLength < minLength) {
                     minLength = windowLength;
                     result = str.substring(start, end + 1);

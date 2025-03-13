@@ -1,5 +1,16 @@
 package DSA.Tree.Binary_search_Tree;
 
+//       50
+//      /  \
+//    30    70
+//   /  \   /  \
+//  20   40 60  80
+
+//Since node 50 has two children (30 and 70), we:
+//Find the in-order successor (smallest value in the right subtree).
+//Replace 50 with the in-order successor.
+//Delete the in-order successor.
+
 public class _6_Delete_Node_in_a_BST {
 
     public TreeNode right(TreeNode root) {
@@ -39,9 +50,5 @@ public class _6_Delete_Node_in_a_BST {
             }
         }
         return root;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

@@ -79,8 +79,4 @@ public class _7_Boundary_Traversal {
     public static boolean isLeaf(TreeNode root) {
         return root.left == null && root.right == null;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

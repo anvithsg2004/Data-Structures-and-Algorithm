@@ -19,8 +19,4 @@ public class _14_Lowest_Common_Ancestor {
             return root;
         }
     }
-
-    public static void main(String[] args) {
-
-    }
 }

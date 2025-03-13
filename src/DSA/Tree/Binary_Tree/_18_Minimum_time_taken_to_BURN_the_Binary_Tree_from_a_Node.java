@@ -23,10 +23,16 @@ public class _18_Minimum_time_taken_to_BURN_the_Binary_Tree_from_a_Node {
 
     // Method to find the target node
     public static TreeNode findTarget(TreeNode root, int tar) {
-        if (root == null) return null;
-        if (root.val == tar) return root;
+        if (root == null) {
+            return null;
+        }
+        if (root.val == tar) {
+            return root;
+        }
         TreeNode left = findTarget(root.left, tar);
-        if (left != null) return left;
+        if (left != null) {
+            return left;
+        }
         return findTarget(root.right, tar);
     }
 
@@ -83,9 +89,5 @@ public class _18_Minimum_time_taken_to_BURN_the_Binary_Tree_from_a_Node {
         }
 
         return time; // Return the total time taken to burn the tree
-    }
-
-    public static void main(String[] args) {
-
     }
 }

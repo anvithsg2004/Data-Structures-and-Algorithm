@@ -34,8 +34,4 @@ public class _13_Root_To_Node {
 
         return arr;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

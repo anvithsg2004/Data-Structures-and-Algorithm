@@ -15,8 +15,4 @@ public class _11_Inorder_Successor_in_BST {
 
         return successor;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

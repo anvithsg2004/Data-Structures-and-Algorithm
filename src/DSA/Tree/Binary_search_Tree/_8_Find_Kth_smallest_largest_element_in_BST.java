@@ -23,8 +23,4 @@ public class _8_Find_Kth_smallest_largest_element_in_BST {
         list.add(root.val);
         inorder(root.right, list);
     }
-
-    public static void main(String[] args) {
-
-    }
 }

@@ -1,9 +1,6 @@
 package DSA.Tree.Binary_Tree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class _6_Zig_Zag {
 
@@ -44,9 +41,5 @@ public class _6_Zig_Zag {
         }
 
         return ans;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

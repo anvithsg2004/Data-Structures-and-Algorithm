@@ -103,8 +103,4 @@ public class _19_Serialize_and_De_serialize_Binary_Tree {
         return root;
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

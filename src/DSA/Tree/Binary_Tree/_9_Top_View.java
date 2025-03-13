@@ -4,7 +4,7 @@ import java.util.*;
 
 public class _9_Top_View {
 
-    public class Pair{
+    public class Pair {
 
         TreeNode node;
 
@@ -16,7 +16,7 @@ public class _9_Top_View {
         }
     }
 
-    public ArrayList<Integer> topView(TreeNode root)  {
+    public ArrayList<Integer> topView(TreeNode root) {
 
         ArrayList<Integer> res = new ArrayList<>();
 
@@ -60,16 +60,10 @@ public class _9_Top_View {
 
         }
 
-        // Collect top view nodes in sorted order of lines
+        //Collect top view nodes in sorted order of lines
         for (TreeNode node : mpp.values()) {
             res.add(node.val);
         }
-
-    }
-
-    public static void main(String[] args) {
-
-
 
     }
 }

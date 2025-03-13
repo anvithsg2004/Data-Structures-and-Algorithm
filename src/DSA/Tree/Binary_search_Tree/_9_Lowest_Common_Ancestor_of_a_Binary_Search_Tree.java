@@ -2,7 +2,6 @@ package DSA.Tree.Binary_search_Tree;
 
 public class _9_Lowest_Common_Ancestor_of_a_Binary_Search_Tree {
 
-
     //Use this is for all.
     public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || root == p || root == q) {
@@ -41,9 +40,5 @@ public class _9_Lowest_Common_Ancestor_of_a_Binary_Search_Tree {
         }
 
         return root;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

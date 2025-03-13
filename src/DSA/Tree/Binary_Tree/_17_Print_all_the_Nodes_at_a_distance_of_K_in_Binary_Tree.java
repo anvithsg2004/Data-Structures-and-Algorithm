@@ -2,7 +2,6 @@ package DSA.Tree.Binary_Tree;
 
 import java.util.*;
 
-
 public class _17_Print_all_the_Nodes_at_a_distance_of_K_in_Binary_Tree {
 
     public void markParents(TreeNode root, Map<TreeNode, TreeNode> parent_track) {
@@ -25,7 +24,7 @@ public class _17_Print_all_the_Nodes_at_a_distance_of_K_in_Binary_Tree {
         Map<TreeNode, TreeNode> parent_Tree = new HashMap<>();
         markParents(root, parent_Tree);
         Map<TreeNode, Boolean> visited = new HashMap<>();
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(target);
         visited.put(target, true);
         int distance = 0;
@@ -66,9 +65,5 @@ public class _17_Print_all_the_Nodes_at_a_distance_of_K_in_Binary_Tree {
         }
 
         return result;
-    }
-
-    public static void main(String[] args) {
-
     }
 }
