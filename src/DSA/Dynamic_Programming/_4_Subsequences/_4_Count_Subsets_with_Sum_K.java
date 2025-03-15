@@ -14,6 +14,7 @@ public class _4_Count_Subsets_with_Sum_K {
                 return 2;
             }
 
+            //Here the arr[0] is not zero, so you can take only one.
             if (target == 0 || arr[0] == target) {
                 return 1;
             }

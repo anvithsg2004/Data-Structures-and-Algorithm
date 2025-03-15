@@ -38,6 +38,17 @@ public class _27_Search_in_a_2D_Matrix_II {
         int m = matrix.get(0).size();
         int row = 0, col = m - 1;
 
+        //Approach: Start from the Top-Right Corner
+        //Start at (0, m-1) → (first row, last column)
+        //If matrix[row][col] == target, return true
+        //If matrix[row][col] > target, move left
+        //If matrix[row][col] < target, move down
+
+        //Why Does This Work?
+        //Moving left (col--) removes large numbers.
+        //Moving down (row++) removes small numbers.
+        //We eliminate one row or one column at a time, making the solution fast.
+
         //traverse the matrix from (0, m-1):
         while (row < n && col >= 0) {
             if (matrix.get(row).get(col) == target) return true;

@@ -2,7 +2,7 @@ package DSA.Dynamic_Programming._4_Subsequences;
 
 public class _2_Partition_Equal_Subset_Sum {
 
-    //Given an integer array nums, return true if you can partition the array into
+    //Given an integer array "nums", return true if you can partition the array into
     //two subsets such that the sum of the elements in both subsets is equal or false otherwise.
 
     //Recursion
@@ -27,12 +27,12 @@ public class _2_Partition_Equal_Subset_Sum {
 
     public boolean helper(int index, int target, int[] arr) {
 
-        if (index == 0) {
-            return arr[index] == target;
-        }
-
         if (target == 0) {
             return true;
+        }
+
+        if (index == 0) {
+            return arr[index] == target;
         }
 
         boolean notTaken = helper(index - 1, target, arr);

@@ -40,8 +40,4 @@ public class _9_Search_in_Rotated_Sorted_Array_II {
 
         return false;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

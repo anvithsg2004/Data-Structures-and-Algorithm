@@ -68,7 +68,7 @@ public class _33_Find_the_Missing_and_Repeating_Number {
                 missing = i;
             }
 
-            //If we got the Value then stop ans return the value.
+            //If we got the Value then stop "ans" return the value.
             if (repeating != -1 && missing != -1)
                 break;
 

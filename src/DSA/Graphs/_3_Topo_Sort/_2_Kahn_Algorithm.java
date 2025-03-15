@@ -46,7 +46,8 @@ public class _2_Kahn_Algorithm {
             //Get the Queue Elements and add it to the topo ArrayList.
             int node = queue.peek();
             queue.remove();
-            topo.add(index++, node);
+            topo.add(index, node);
+            index = index + 1;
 
             //Get the node and decrease the node In degree Values.
             for (int it : adj.get(node)) {
