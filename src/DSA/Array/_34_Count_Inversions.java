@@ -42,7 +42,7 @@ public class _34_Count_Inversions {
             right++;
         }
 
-        // transfering all elements from temporary to arr //
+        //Transferring all elements from temporary to arr //
         for (int i = low; i <= high; i++) {
             arr[i] = temp.get(i - low);
         }

@@ -25,8 +25,7 @@ public class _24_Rotate_Matrix_Image_by_90_Degrees {
             //Just traverse till the half because it will exchange the rest.
             for (int j = 0; j < columns / 2; j++) {
 
-                int temp = 0;
-                temp = matrix[i][j];
+                int temp = matrix[i][j];
                 matrix[i][j] = matrix[i][rows - 1 - j];
                 matrix[i][rows - 1 - j] = temp;
 

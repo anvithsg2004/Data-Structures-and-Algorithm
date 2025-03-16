@@ -50,7 +50,7 @@ public class _1_Longest_subarray_with_given_sum_K_positives {
         int maxLen = 0;
         for (int i = 0; i < n; i++) {
             //calculate the prefix sum till current element.
-            sum += a[i];
+            sum = sum + a[i];
 
             // if the sum = k, update the maxLen:
             if (sum == k) {
