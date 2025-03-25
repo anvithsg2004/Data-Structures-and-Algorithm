@@ -7,7 +7,7 @@ public class _24_Find_the_smallest_Divisor {
         //Find the summation of division values:
         int sum = 0;
         for (int i = 0; i < n; i++) {
-            sum += Math.ceil((double) (arr[i]) / (double) (div));
+            sum = (int) (sum + (Math.ceil((double) (arr[i]) / (double) (div))));
         }
         return sum;
     }

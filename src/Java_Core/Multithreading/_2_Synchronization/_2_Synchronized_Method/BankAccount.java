@@ -8,7 +8,7 @@ public class BankAccount {
     public synchronized void withdraw(String name, int amount) {
         if (balance >= amount) {
             System.out.println(name + " is withdrawing " + amount);
-            balance -= amount;
+            balance = balance - amount;
             System.out.println("Remaining Balance: " + balance);
         } else {
             System.out.println(name + " cannot withdraw. Insufficient balance.");

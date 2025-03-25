@@ -16,13 +16,14 @@ public class _4_RandomizedSet {
     public boolean insert(int val) {
         if (map.containsKey(val)) return false;
         list.add(val);
-        map.put(val, list.size() - 1);
+        map.put(val, list.size() - 1); //This is for getting the index.
         return true;
     }
 
     public boolean remove(int val) {
         if (!map.containsKey(val)) return false;
 
+        //Get the last inserted element and the index.
         int index = map.get(val);
         int lastElement = list.get(list.size() - 1);
 

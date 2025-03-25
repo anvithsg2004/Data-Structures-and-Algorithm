@@ -12,8 +12,6 @@ package DSA.Bit_Manipulation;
 //Continue this process until √n, because any non-prime beyond this would have been marked earlier.
 //The numbers that remain true are prime numbers.
 
-import java.util.Arrays;
-
 public class _19_Sieve_of_Eratosthenes {
     public int countPrimes(int n) {
 

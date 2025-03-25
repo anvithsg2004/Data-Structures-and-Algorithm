@@ -1,9 +1,6 @@
 package Java_Core.Multithreading._7_Exceuters_Framework._3_Runnable_Callable;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 public class _5_FutureRunnableCallable {
     public static void main(String[] args) throws Exception {

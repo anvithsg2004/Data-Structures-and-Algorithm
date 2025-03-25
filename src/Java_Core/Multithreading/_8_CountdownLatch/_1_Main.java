@@ -3,6 +3,16 @@ package Java_Core.Multithreading._8_CountdownLatch;
 import java.util.concurrent.*;
 
 public class _1_Main {
+
+    static class DependentService implements Callable<String> {
+        @Override
+        public String call() throws Exception {
+            System.out.println(Thread.currentThread().getName() + " Service Started.");
+            Thread.sleep(3000);
+            return "ok";
+        }
+    }
+
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
         DependentService task1 = new DependentService();
@@ -21,14 +31,5 @@ public class _1_Main {
         System.out.println("Add dependent service finished. Starting some service.");
         executorService.shutdown();
 
-    }
-}
-
-class DependentService implements Callable<String> {
-    @Override
-    public String call() throws Exception {
-        System.out.println(Thread.currentThread().getName() + " Service Started.");
-        Thread.sleep(3000);
-        return "ok";
     }
 }

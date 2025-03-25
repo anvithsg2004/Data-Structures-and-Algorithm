@@ -15,7 +15,7 @@ public class _10_Minimum_Bit_Flips_to_Convert_Number {
             //All odd numbers will have the rightest number will be 1,
             //and if you add 1 to it, then all will become 1;
 
-            answer = answer >> 1; //This is equals to n/2.
+            answer = answer / 2; //This is equals to n/2.
 
         }
 

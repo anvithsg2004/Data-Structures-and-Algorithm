@@ -1,7 +1,8 @@
 package Top_150;
 
 //💬 Problem Summary:
-//Given an array nums and integer k, return true if two equal elements exist such that the distance between their indices ≤ k.
+//Given an array nums and integer k, return true if two equal elements exist such that the distance
+//between their indices ≤ k.
 
 //🧠 Idea:
 //We want to check if the same number repeats within k indices.

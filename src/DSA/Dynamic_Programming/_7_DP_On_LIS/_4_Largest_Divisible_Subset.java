@@ -36,7 +36,7 @@ public class _4_Largest_Divisible_Subset {
         for (int i = 0; i < n; i++) {
             hash[i] = i;
             for (int previousIndex = 0; previousIndex <= i - 1; previousIndex++) {
-                if (nums[i] % nums[previousIndex] == 0 && 1 + dp[previousIndex] > dp[i]) {
+                if (nums[i] % nums[previousIndex] == 0 && dp[previousIndex] + 1 > dp[i]) {
                     dp[i] = 1 + dp[previousIndex];
                     hash[i] = previousIndex;
                 }

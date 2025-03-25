@@ -17,7 +17,7 @@ public class _3_Largest_Subarray_with_Zero_Sum {
             //calculate the prefix sum till index i:
             sum = sum + a[i];
 
-            // if the sum = k, update the maxLen:
+            //If the sum = k, update the maxLen:
             if (sum == 0) {
                 maxLen = Math.max(maxLen, i + 1);
             }

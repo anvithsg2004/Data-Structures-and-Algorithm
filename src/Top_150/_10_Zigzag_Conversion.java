@@ -1,6 +1,7 @@
 package Top_150;
 
-//Given a string s and a number of rows numRows, write the string in a zigzag pattern and read it row by row.
+//Given a string s and a number of rows numRows,
+//write the string in a zigzag pattern and read it row by row.
 
 //🧪 Example:
 //Input:
@@ -9,13 +10,6 @@ package Top_150;
 //A P L S I I G
 //Y   I   R
 //Output: "PAHNAPLSIIGYIR"
-
-//🧪 Dry Run:
-//Input: "PAYPALISHIRING", numRows = 3
-//Row 0: P A H N
-//Row 1: A P L S I I G
-//Row 2: Y I R
-//Final Output: "PAHNAPLSIIGYIR"
 
 public class _10_Zigzag_Conversion {
     public String convert(String s, int numRows) {

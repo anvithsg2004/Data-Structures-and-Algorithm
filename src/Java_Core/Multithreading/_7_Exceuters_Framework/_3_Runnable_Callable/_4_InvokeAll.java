@@ -2,10 +2,7 @@ package Java_Core.Multithreading._7_Exceuters_Framework._3_Runnable_Callable;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 public class _4_InvokeAll {
 
@@ -32,6 +29,16 @@ public class _4_InvokeAll {
         //Until all the tasks given would not complete then it won't go to next tasks.
         //This will block all others.
         List<Future<Integer>> futures = executor.invokeAll(list);
+
+        // Loop through futures to print the result of each task
+        for (Future<Integer> future : futures) {
+            try {
+                System.out.println(future.get());  // This will block until the result is available
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
 
         executor.shutdown();
 

@@ -14,8 +14,8 @@ public class _5_Product_of_Array_Except_Self {
         // Second pass: suffix product
         int suffix = 1;
         for (int i = n - 1; i >= 0; i--) {
-            answer[i] *= suffix;
-            suffix *= nums[i];
+            answer[i] = answer[i] * suffix;
+            suffix = suffix * nums[i];
         }
 
         return answer;

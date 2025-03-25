@@ -12,11 +12,11 @@ public class _2_Swap_Two_Numbers {
         //So now a is b.
 
         a = a ^ b;
-        System.out.println(a);
+        System.out.println(a + " " + b);
         b = a ^ b;
-        System.out.println(b);
+        System.out.println(a + " " + b);
         a = a ^ b;
-        System.out.println(a);
+        System.out.println(a + " " + b);
 
         return new int[]{a, b};
 

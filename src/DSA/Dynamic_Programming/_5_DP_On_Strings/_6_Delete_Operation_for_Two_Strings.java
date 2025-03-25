@@ -14,7 +14,7 @@ public class _6_Delete_Operation_for_Two_Strings {
             Arrays.fill(row, -1);
         }
 
-        return n + m - 2 * helper(word1, word2, n, m, dp);
+        return n + m - (2 * helper(word1, word2, n, m, dp));
 
     }
 

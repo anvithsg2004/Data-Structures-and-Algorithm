@@ -1,7 +1,6 @@
 package DSA.Bit_Manipulation;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class _18_Print_all_Divisors_of_a_Number {
     public static List<Integer> print_divisors(int n) {

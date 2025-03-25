@@ -3,7 +3,6 @@ package Top_150;
 public class _14_Game_of_Life {
     //🔧 Problem Breakdown:
     //You're given an m x n grid (2D board) with:
-    //
     //1 = live cell
     //0 = dead cell
     //Apply the 4 rules to all cells simultaneously to compute the next state.

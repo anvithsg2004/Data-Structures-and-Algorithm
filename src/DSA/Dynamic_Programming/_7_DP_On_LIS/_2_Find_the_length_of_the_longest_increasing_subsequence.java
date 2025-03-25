@@ -9,8 +9,8 @@ package DSA.Dynamic_Programming._7_DP_On_LIS;
 //
 //Use if (condition) { dp[i] = new_value; } when:
 //✔ You need to inherit values (like count or index tracking).
-//✔ You need to ensure updates happen only under strict conditions (e.g., for maintaining paths in LIS).
-//
+//✔ You need to ensure updates happen only under strict conditions
+//(e.g., for maintaining paths in LIS).
 //👉 If unsure, using Math.max is safer for most cases!
 
 import java.util.Arrays;
