@@ -1,5 +1,8 @@
 package DSA.Tree.Binary_search_Tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 class TreeNode {
     int val;
     TreeNode left;
@@ -29,7 +32,42 @@ public class _1_Search_BST {
 
     }
 
-    public static void main(String[] args) {
+    public boolean search2(TreeNode root, int key) {
+        if (root == null) {
+            return false;
+        }
 
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+
+            if (node.val == key) {
+                return true;
+            }
+
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+        }
+
+        return false;
+    }
+
+    public boolean search3(TreeNode root, int key) {
+        if (root == null) {
+            return false;
+        }
+
+        if (root.val == key) {
+            return true;
+        }
+
+        return search3(root.left, key) || search3(root.right, key);
     }
 }

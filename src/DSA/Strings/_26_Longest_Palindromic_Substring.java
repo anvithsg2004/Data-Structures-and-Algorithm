@@ -5,6 +5,10 @@ public class _26_Longest_Palindromic_Substring {
     //s = "babad"
     //"bab" // (or "aba" is also valid)
 
+    //We need to find the longest palindromic substring (LPS).
+    //A palindrome reads the same forward and backward.
+    //We check for palindromes centered at each character (both odd and even length).
+
     public String longestPalindrome(String s) {
 
         int n = s.length();

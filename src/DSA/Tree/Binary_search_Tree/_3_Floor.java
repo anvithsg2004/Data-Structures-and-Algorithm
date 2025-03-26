@@ -8,7 +8,7 @@ public class _3_Floor {
         while (root != null) {
             if (root.val == x) {
                 return root.val; // Return the value if found
-            } else if (root.val < x) {
+            } else if (x > root.val) {
                 floor = root.val; // Update floor
                 root = root.right; // Move right
             } else {

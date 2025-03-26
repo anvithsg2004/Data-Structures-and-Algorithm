@@ -8,6 +8,10 @@ public class _25_Sum_of_Beauty_of_All_Substrings {
     //between the most frequent and the least frequent character counts in that substring.
     //The task is to calculate the sum of beauty values for all possible substrings of s.
 
+    //We generate all substrings of s.
+    //For each substring, we calculate the difference between the most and least frequent characters.
+    //Sum up all these differences.
+
     public int beautySum(String s) {
 
         int n = s.length();

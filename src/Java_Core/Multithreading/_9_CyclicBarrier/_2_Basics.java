@@ -50,4 +50,3 @@
 //Returns: The number of parties.
 //System.out.println("Parties: " + barrier.getParties());
 
-//7)

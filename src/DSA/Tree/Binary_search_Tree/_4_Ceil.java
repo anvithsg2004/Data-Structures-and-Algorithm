@@ -8,7 +8,7 @@ public class _4_Ceil {
         while (root != null) {
             if (root.val == x) {
                 return root.val; // Return the value if found
-            } else if (root.val < x) {
+            } else if (x > root.val) {
                 root = root.right; // Move right
             } else {
                 ceil = root.val; // Update ceil

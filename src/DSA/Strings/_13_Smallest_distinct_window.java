@@ -12,7 +12,8 @@ public class _13_Smallest_distinct_window {
         int distinctCount = (int) str.chars().distinct().count();
 
         // Step 2: Initialize variables for sliding window and tracking frequency of characters
-        int start = 0, minLength = Integer.MAX_VALUE;
+        int start = 0;
+        int minLength = Integer.MAX_VALUE;
         String result = "";
 
         HashMap<Character, Integer> charCount = new HashMap<>();

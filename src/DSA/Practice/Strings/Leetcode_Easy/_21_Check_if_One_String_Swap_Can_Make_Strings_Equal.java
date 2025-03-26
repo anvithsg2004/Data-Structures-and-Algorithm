@@ -1,5 +1,19 @@
 package DSA.Practice.Strings.Leetcode_Easy;
 
+//Check if One String Swap Can Make Strings Equal
+//Given two strings s1 and s2 of equal length, return true if you can make s1 equal to s2
+//by swapping exactly one pair of characters in s1. Otherwise, return false.
+
+//Input:
+//String s1 = "bank";
+//String s2 = "kanb";
+
+//Output:
+//true
+
+//Explanation:
+//Swapping 'b' and 'k' in "bank" results in "kanb", which is equal to s2.
+
 public class _21_Check_if_One_String_Swap_Can_Make_Strings_Equal {
     public static boolean areAlmostEqual(String s1, String s2) {
 

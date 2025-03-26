@@ -2,6 +2,25 @@ package DSA.Practice.Strings.Leetcode_Easy;
 
 import java.util.HashMap;
 
+//Question: Find Special Substring of Length K
+//Given a string s and an integer k, determine if there exists a special substring of length k.
+//A substring is special if:
+//It contains only one distinct character.
+//It is not inside another sequence of the same character. That is, there should be a different
+//character before and after the substring (if they exist in the string).
+
+//Input:
+//String s = "aaabbbaaa";
+//int k = 3;
+
+//Output:
+//true
+
+//Explanation:
+//The substring "bbb" from index 3 to 5 satisfies both conditions:
+//It contains only one distinct character ('b').
+//The character before ('a') and after ('a') are different.
+
 public class _23_Find_Special_Substring_of_Length_K {
 
     public boolean hasSpecialSubstring(String s, int k) {

@@ -24,10 +24,3 @@ class BSTIterator {
         for (; node != null; stack.push(node), node = node.left) ;
     }
 }
-
-public class _13_Binary_Search_Tree_Iterator {
-
-    public static void main(String[] args) {
-
-    }
-}

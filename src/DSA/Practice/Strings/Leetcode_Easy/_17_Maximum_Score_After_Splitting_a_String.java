@@ -1,5 +1,23 @@
 package DSA.Practice.Strings.Leetcode_Easy;
 
+//Question: Maximum Score After Splitting a String
+//You are given a binary string s (containing only '0' and '1'). You can split it into two non-empty parts at any position.
+//The score of a split is:
+//The number of '0' in the left part.
+//The number of '1' in the right part.
+//Total score = (number of '0's in left) + (number of '1's in right)
+//Find the maximum score possible.
+
+//Input
+//s = "011101"
+
+//Index i	Character	zeroCount	onesCount	sum
+//  0	        '0'	        1	        4	    5
+//  1	        '1'	        1	        3	    5
+//  2	        '1'	        1	        2	    5
+//  3	        '1'	        1	        1	    5
+//  4	        '0'	        2	        1	    5
+
 public class _17_Maximum_Score_After_Splitting_a_String {
     public int maxScore(String s) {
 

@@ -3,6 +3,23 @@ package DSA.Practice.Strings.Leetcode_Medium;
 import java.util.ArrayList;
 import java.util.List;
 
+//Given an integer n, generate all binary strings of length n that do not contain two adjacent 0s.
+
+//Example 1:
+//Input:
+//n = 3
+//Output:
+//[101, 100, 111, 110]
+//Explanation:
+//Valid binary strings of length 3 without adjacent 0s:
+//✅ 101 (Valid)
+//✅ 100 (Valid)
+//✅ 111 (Valid)
+//✅ 110 (Valid)
+//❌ 000 (Invalid) (contains 00)
+//❌ 001 (Invalid) (contains 00)
+//❌ 010 (Invalid) (contains 00)
+
 public class _2_Generate_Binary_Strings_Without_Adjacent_Zeros {
 
     public List<String> validStrings(int n) {

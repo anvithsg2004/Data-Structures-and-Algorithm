@@ -2,6 +2,15 @@ package DSA.Practice.Strings.Leetcode_Easy;
 
 public class _8_Goal_Parser_Interpretation {
 
+    //Problem Statement
+    //You need to interpret a string command containing:
+    //"G" → Stays "G"
+    //"()" → Becomes "o"
+    //"(al)" → Becomes "al"
+
+    //Input: "G()(al)"
+    //Output: "Goal"
+
     public String interpret(String command) {
 
         StringBuilder result = new StringBuilder();

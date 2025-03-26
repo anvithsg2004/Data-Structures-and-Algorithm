@@ -2,6 +2,8 @@ package DSA.Practice.Strings.Leetcode_Medium;
 
 public class _1_Partitioning_Into_Minimum_Number_Of_Deci_Binary_Numbers {
 
+    //Return the maximum digit in the string.
+
     public int minPartitions(String n) {
         int max = 0;
 

@@ -2,6 +2,14 @@ package DSA.Tree.Binary_Tree;
 
 import java.util.*;
 
+//inorder =   [9, 3, 15, 20, 7]
+//postorder = [9, 15, 7, 20, 3]
+//       3
+//      / \
+//     9   20
+//        /  \
+//       15   7
+
 public class _21_Binary_Tree_from_Postorder_and_Inorder_Traversal {
     public TreeNode buildTree(int[] inorder, int[] postorder) {
 
