@@ -14,39 +14,41 @@ public class _16_Child_Sum_Property {
             return;
         }
 
+        // Step 1: Compute sum of left and right child
         int child = 0;
-
         if (root.left != null) {
-            child = child + root.left.val;
+            child += root.left.val;
         }
-
         if (root.right != null) {
-            child = child + root.right.val;
+            child += root.right.val;
         }
 
+        // Step 2: If child < root, update child values to maintain the property
         if (child >= root.val) {
             root.val = child;
         } else {
             if (root.left != null) {
                 root.left.val = root.val;
-            } else if (root.right != null) {
+            }
+            if (root.right != null) {
                 root.right.val = root.val;
             }
         }
 
+        // Step 3: Recursive calls
         changeTree(root.left);
         changeTree(root.right);
 
+        // Step 4: Update root value to be sum of its children
         int total = 0;
-
         if (root.left != null) {
-            total = total + root.left.val;
+            total += root.left.val;
         }
-
         if (root.right != null) {
-            total = total + root.right.val;
+            total += root.right.val;
         }
 
+        // Only update if the node has children
         if (root.left != null || root.right != null) {
             root.val = total;
         }

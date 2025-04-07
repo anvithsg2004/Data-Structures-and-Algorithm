@@ -1,5 +1,13 @@
 package DSA.Tree.Binary_search_Tree;
 
+//Input
+//preorder = [8, 5, 1, 7, 10, 12]
+//        8
+//       / \
+//      5   10
+//     / \    \
+//    1   7   12
+
 public class _10_Construct_Binary_Search_Tree_from_Preorder_Traversal {
 
     public TreeNode bstFromPreorder(int[] preorder) {

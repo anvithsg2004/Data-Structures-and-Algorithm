@@ -2,7 +2,6 @@ package DSA.Tree.Binary_search_Tree;
 
 public class _15_Largest_BST_in_Binary_Tree {
 
-
     class NodeValue {
 
         public int maxNode;
@@ -38,11 +37,6 @@ public class _15_Largest_BST_in_Binary_Tree {
     public int largestBst(TreeNode root) {
 
         return help(root).maxSize;
-
-    }
-
-
-    public static void main(String[] args) {
 
     }
 }

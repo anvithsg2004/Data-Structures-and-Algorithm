@@ -15,7 +15,8 @@ public class _26_Search_in_a_sorted_2D_matrix {
         int colR = matrix.get(0).size();
 
         //apply binary search:
-        int low = 0, high = rowR * colR - 1;
+        int low = 0;
+        int high = rowR * colR - 1;
         while (low <= high) {
             int mid = (low + high) / 2;
             int row = mid / colR;

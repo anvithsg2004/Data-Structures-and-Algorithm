@@ -1,6 +1,7 @@
 package DSA.Tree.Binary_Tree;
 
 import java.util.*;
+
 class Pair {
     TreeNode node;
     int num;
@@ -44,13 +45,9 @@ public class _15_Width {
                     q.offer(new Pair(node.right, cur_id * 2 + 2));
                 }
             }
-            ans = Math.min(ans, last - first + 1);
+            ans = Math.max(ans, last - first + 1); // ✅ Corrected here
         }
 
         return ans;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

@@ -19,7 +19,7 @@ public class _10_Minimum_in_Rotated_Sorted_Array {
                 low = mid + 1;
             } else {
                 //Pick the MID the Sorted Array
-                //Here we may take the mid because the midest may be the the lowest.
+                //Here we may take the mid because the midest may be the lowest.
                 ans = Math.min(ans, nums[mid]);
                 high = mid - 1;
             }

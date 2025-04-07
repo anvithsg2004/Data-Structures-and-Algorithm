@@ -17,16 +17,6 @@ package DSA.Graphs._4_Shortest_Path_Algorithms_and_Problems;
 
 import java.util.Arrays;
 
-class Pair7 {
-    int node;
-    int weight;
-
-    public Pair7(int node, int weight) {
-        this.node = node;
-        this.weight = weight;
-    }
-}
-
 public class _10_Bellman_Ford_Algorithm {
 
     public static int[] bellmanFord(int n, int[][] edges, int src) {

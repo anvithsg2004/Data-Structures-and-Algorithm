@@ -39,19 +39,17 @@ public class _14_Recover_Binary_Search_Tree {
 
         inorder(root);
 
+        //Case 1: Non-Adjacent Nodes Swapped
         if (first != null && last != null) {
             int t = first.val;
             first.val = last.val;
             last.val = t;
-        } else if (first != null && middle != null) {
+        }//Case 2: Adjacent Nodes Swapped
+        else if (first != null && middle != null) {
             int t = first.val;
             first.val = middle.val;
             middle.val = t;
         }
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }

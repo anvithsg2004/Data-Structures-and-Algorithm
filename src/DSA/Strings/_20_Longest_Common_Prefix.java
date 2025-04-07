@@ -14,6 +14,10 @@ import java.util.Arrays;
 
 //we compare only the first and last strings after sorting
 
+//Instead of checking all strings, we check only the first and last strings after sorting
+//because they are the most different in the sorted order. If the first and last strings share a
+//prefix, then all the middle strings must also share that prefix! 🚀
+
 public class _20_Longest_Common_Prefix {
     public String longestCommonPrefix(String[] strs) {
 

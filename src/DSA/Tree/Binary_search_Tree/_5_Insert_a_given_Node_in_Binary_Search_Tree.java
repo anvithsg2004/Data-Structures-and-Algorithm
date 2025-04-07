@@ -2,6 +2,20 @@ package DSA.Tree.Binary_search_Tree;
 
 public class _5_Insert_a_given_Node_in_Binary_Search_Tree {
 
+    //      5
+    //     / \
+    //    3   8
+    //   / \
+    //  2   4
+
+    //Inserting val = 6.
+
+    //      5
+    //     / \
+    //    3   8
+    //   / \  /
+    //  2   4 6
+
     public TreeNode insertIntoBST(TreeNode root, int val) {
         if (root == null) {
             return new TreeNode(val);

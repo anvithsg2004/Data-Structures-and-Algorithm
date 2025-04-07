@@ -29,7 +29,7 @@ class Solution {
         while (low <= high) {
             int mid = (low + high) / 2;
             // maybe an answer
-            if (arr[mid] <= x) {
+            if (x >= arr[mid]) {
                 ans = arr[mid];
                 //look for smaller index on the left
                 low = mid + 1;

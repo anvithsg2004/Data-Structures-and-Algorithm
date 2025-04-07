@@ -19,4 +19,15 @@ public class _2_Max_Min_BST {
         list.add(root.val);
         inorder(root.right, list);
     }
+
+    public int minValue2(TreeNode root) {
+        if (root == null) {
+            throw new IllegalArgumentException("Tree is empty");
+        }
+
+        while (root.left != null) {
+            root = root.left;
+        }
+        return root.val;
+    }
 }

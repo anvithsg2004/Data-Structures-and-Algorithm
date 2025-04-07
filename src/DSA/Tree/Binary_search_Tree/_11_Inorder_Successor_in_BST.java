@@ -2,6 +2,12 @@ package DSA.Tree.Binary_search_Tree;
 
 public class _11_Inorder_Successor_in_BST {
 
+    //        20
+    //       /  \
+    //      10   30
+    //     /  \     \
+    //    5   15    40
+
     //The inorder successor of a node x in a Binary Search Tree (BST) is the node that comes right
     //after x in an inorder traversal.
 
