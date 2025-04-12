@@ -1,23 +1,30 @@
-import java.util.ArrayList;
-
 public class Practise {
+    public static String removeOccurrences(String s, String part) {
 
-    public String name;
-    private int number;
+        boolean didChanged = false;
 
-    public String getName() {
-        return name;
+        StringBuilder result = new StringBuilder(s);
+
+        while (!didChanged) {
+
+            int indexOfThePart = result.indexOf(part);
+
+            if (indexOfThePart != -1) {
+                result.delete(indexOfThePart, indexOfThePart + part.length());
+            } else {
+                didChanged = true;
+            }
+
+        }
+
+        return result.toString();
+
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public static void main(String[] args) {
+        String s = "axxxxyyyyb";
+        String part = "xy";
 
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
+        System.out.println(removeOccurrences(s, part));
     }
 }

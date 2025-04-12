@@ -55,21 +55,16 @@ public class _23_String_to_Integer_atoi {
             i++; // Skip the '+' sign
         }
 
-        for (i = 0; i < s.length(); i++) {
-            //This will covert character to number.
-            int middle = s.charAt(i) - '0';
+        for (; i < s.length(); i++) {
+            int digit = s.charAt(i) - '0';
 
-            // Break if it's not a digit
-            if (middle < 0 || middle > 9) {
-                break;
-            }
+            if (digit < 0 || digit > 9) break;
 
-            // Check for overflow before a multiplying result by 10
-            if (result > (Integer.MAX_VALUE - middle) / 10) {
+            if (result > (Integer.MAX_VALUE - digit) / 10) {
                 return isNegative ? Integer.MIN_VALUE : Integer.MAX_VALUE;
             }
 
-            result = (result * 10) + middle;
+            result = result * 10 + digit;
         }
 
         if (isNegative == true) {

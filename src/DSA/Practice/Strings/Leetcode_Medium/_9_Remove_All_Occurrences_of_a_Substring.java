@@ -21,6 +21,29 @@ public class _9_Remove_All_Occurrences_of_a_Substring {
 
     }
 
+    //My method.
+    public static String removeOccurrences2(String s, String part) {
+
+        boolean didChanged = false;
+
+        StringBuilder result = new StringBuilder(s);
+
+        while (!didChanged) {
+
+            int indexOfThePart = result.indexOf(part);
+
+            if (indexOfThePart != -1) {
+                result.delete(indexOfThePart, indexOfThePart + part.length());
+            } else {
+                didChanged = true;
+            }
+
+        }
+
+        return result.toString();
+
+    }
+
     public static void main(String[] args) {
 
     }
