@@ -40,7 +40,7 @@ public class _12_Find_the_City_With_the_Smallest_Number_of_Neighbors_at_Threshol
         for (int city = 0; city < n; city++) {
             int count = 0;
             for (int adjCity = 0; adjCity < n; adjCity++) {
-                if (dist[city][adjCity] <= distanceThreshold) {
+                if (city != adjCity && dist[city][adjCity] <= distanceThreshold) {
                     count++;
                 }
             }

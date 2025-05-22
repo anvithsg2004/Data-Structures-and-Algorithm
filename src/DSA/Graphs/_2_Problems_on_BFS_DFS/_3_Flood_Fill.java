@@ -46,7 +46,7 @@ public class _3_Flood_Fill {
 
     //My Code
     //BFS Method
-    public static int[][] floodFill(int[][] image, int sr, int sc, int color) {
+    public static int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
 
         int n = image.length;
         int m = image[0].length;
@@ -57,10 +57,10 @@ public class _3_Flood_Fill {
         int source = image[sr][sc];
 
         //Change the color.
-        image[sr][sc] = color;
+        image[sr][sc] = newColor;
 
         // If the source pixel is already the target color, no need to proceed
-        if (source == color) {
+        if (source == newColor) {
             return image;
         }
 
@@ -80,7 +80,7 @@ public class _3_Flood_Fill {
                 int ncol = c + dcol[i];
                 //If the image[nrow][ncol] == source then change to the target color.
                 if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && image[nrow][ncol] == source) {
-                    image[nrow][ncol] = color;
+                    image[nrow][ncol] = newColor;
                     //Add that to the queue.
                     queue.add(new Pair1(nrow, ncol));
                 }

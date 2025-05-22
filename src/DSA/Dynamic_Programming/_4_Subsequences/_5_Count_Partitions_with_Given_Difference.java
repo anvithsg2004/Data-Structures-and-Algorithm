@@ -16,7 +16,7 @@ public class _5_Count_Partitions_with_Given_Difference {
             return 0; // No valid partition exists
         }
 
-        int target_S2 = (totalSum - d) / 2;
+        int target_S2 = (totalSum + d) / 2;
 
         return helper(n - 1, target_S2, arr);
     }
@@ -57,7 +57,7 @@ public class _5_Count_Partitions_with_Given_Difference {
             return 0; // No valid partition exists
         }
 
-        int target_S2 = (totalSum - d) / 2;
+        int target_S2 = (totalSum + d) / 2;
 
         int[][] dp = new int[n][target_S2 + 1];
         for (int i = 0; i < n; i++) {

@@ -21,7 +21,7 @@ public class _1_Print {
     }
 
     public static void main(String[] args) {
-        String s = "abc";
+        String s = "123";
         permutation("", s);
     }
 }

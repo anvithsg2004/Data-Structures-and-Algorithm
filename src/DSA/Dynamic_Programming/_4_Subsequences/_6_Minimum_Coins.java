@@ -9,6 +9,9 @@ public class _6_Minimum_Coins {
     }
 
     public int helper(int index, int target, int[] arr) {
+
+        if (target == 0) return 0;
+
         if (index == 0) {
             if (target % arr[0] == 0) {
                 return target / arr[0]; // Corrected line

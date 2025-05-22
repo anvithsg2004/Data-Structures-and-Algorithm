@@ -14,7 +14,7 @@ public class _11_Rod_Cutting {
 
     public int helper(int index, int[] price, int[] lengths, int remainingLength) {
         if (index == 0) {
-            return remainingLength * price[index];
+            return remainingLength * price[0];
         }
 
         int notTaken = helper(index - 1, price, lengths, remainingLength);

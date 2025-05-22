@@ -34,41 +34,28 @@ public class _2_Print_Longest_Common_Subsequence {
             }
         }
 
-        int length = dp[n][m];
-
+        // Now reconstruct the LCS from dp table
         int i = n;
         int j = m;
 
-        int index = length - 1;
-
-        String str = "";
-        for (int k = 0; k < length; k++) {
-            str = str + "$";
-        }
-
-        StringBuilder answer = new StringBuilder(s);
+        StringBuilder lcs = new StringBuilder();
 
         while (i > 0 && j > 0) {
-
-            //If the character is the same.
             if (s.charAt(i - 1) == t.charAt(j - 1)) {
-                answer.setCharAt(index, s.charAt(i - 1));
-                index--;
+                lcs.append(s.charAt(i - 1)); // matched char goes to LCS
                 i--;
                 j--;
+            } else if (dp[i - 1][j] > dp[i][j - 1]) {
+                i--; // move up
             } else {
-                //If the character is different.
-                if (dp[i - 1][j] > dp[i][j - 1]) {
-                    i--;
-                } else {
-                    j--;
-                }
+                j--; // move left
             }
         }
 
-        // Convert the StringBuilder to a String and add it to a List
+        lcs.reverse(); // Because we were adding characters from the end
+
         List<String> result = new ArrayList<>();
-        result.add(answer.toString());  // Add the LCS as the only string in the list
+        result.add(lcs.toString()); // Add the final LCS to result list
 
         return result;
 

@@ -3,16 +3,6 @@ package DSA.Graphs._2_Problems_on_BFS_DFS;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class Pair5 {
-    int row;
-    int col;
-
-    public Pair5(int row, int col) {
-        this.row = row;
-        this.col = col;
-    }
-}
-
 public class _11_Number_of_Islands {
 
     public void dfs(int row, int col, boolean[][] visited, char[][] grid, int[] drow, int[] dcol) {
@@ -63,6 +53,17 @@ public class _11_Number_of_Islands {
 
         return count;
 
+    }
+
+
+    class Pair5 {
+        int row;
+        int col;
+
+        public Pair5(int row, int col) {
+            this.row = row;
+            this.col = col;
+        }
     }
 
     // Function to find the number of islands.

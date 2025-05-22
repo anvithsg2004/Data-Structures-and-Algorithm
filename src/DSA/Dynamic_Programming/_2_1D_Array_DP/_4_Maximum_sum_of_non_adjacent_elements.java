@@ -27,7 +27,7 @@ public class _4_Maximum_sum_of_non_adjacent_elements {
         //Do not take the current and take the next.
         int nonPick = 0 + helper(index - 1, nums);
 
-        return Math.min(pick, nonPick);
+        return Math.max(pick, nonPick);
 
     }
 
