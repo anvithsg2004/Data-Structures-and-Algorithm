@@ -18,52 +18,42 @@ public class _9_Top_View {
 
     public ArrayList<Integer> topView(TreeNode root) {
 
-        ArrayList<Integer> res = new ArrayList<>();
-
-        if (root == null) {
-            return res;
-        }
-
-        help(root, res);
-
-        return res;
-
-    }
-
-    public void help(TreeNode root, ArrayList<Integer> res) {
+        ArrayList<Integer> result = new ArrayList<>();
 
         Map<Integer, TreeNode> mpp = new HashMap<>();
 
         Queue<Pair> queue = new LinkedList<>();
-
         queue.add(new Pair(root, 0));
 
         while (!queue.isEmpty()) {
 
             Pair pair = queue.poll();
-
             TreeNode node = pair.node;
-
             int line = pair.line;
 
             if (!mpp.containsKey(line)) {
                 mpp.put(line, node);
             }
 
-            if (root.left != null) {
+            if (node.left != null) {
                 queue.add(new Pair(node.left, line - 1));
             }
 
-            if (root.right != null) {
+            if (node.right != null) {
                 queue.add(new Pair(node.right, line + 1));
             }
 
         }
 
-        //Collect top view nodes in sorted order of lines
-        for (TreeNode node : mpp.values()) {
-            res.add(node.val);
+        List<Integer> sortedKeys = new ArrayList<>(mpp.keySet());
+
+        Collections.sort(sortedKeys);
+
+        for (int key : sortedKeys) {
+            result.add(mpp.get(key).val);
         }
+
+        return result;
 
     }
 }

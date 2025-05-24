@@ -22,8 +22,8 @@ class BSTIterator {
 
     public void pushAll(TreeNode node) {
         while (node != null) {
-            stack.push(node);    // Push current node
-            node = node.left;    // Move to left child
+            stack.push(node);
+            node = node.left;
         }
     }
 }

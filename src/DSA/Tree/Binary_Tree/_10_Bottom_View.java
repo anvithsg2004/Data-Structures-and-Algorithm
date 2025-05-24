@@ -63,8 +63,4 @@ public class _10_Bottom_View {
         }
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

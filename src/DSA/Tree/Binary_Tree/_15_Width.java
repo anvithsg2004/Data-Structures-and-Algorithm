@@ -45,7 +45,7 @@ public class _15_Width {
                     q.offer(new Pair(node.right, cur_id * 2 + 2));
                 }
             }
-            ans = Math.max(ans, last - first + 1); // ✅ Corrected here
+            ans = Math.max(ans, last - first + 1);
         }
 
         return ans;
