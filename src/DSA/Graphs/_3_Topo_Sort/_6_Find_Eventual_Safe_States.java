@@ -49,8 +49,4 @@ public class _6_Find_Eventual_Safe_States {
         Collections.sort(safeNodes);
         return safeNodes;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

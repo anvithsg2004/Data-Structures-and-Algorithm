@@ -56,8 +56,4 @@ public class _9_Word_ladder_1 {
         return 0;
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

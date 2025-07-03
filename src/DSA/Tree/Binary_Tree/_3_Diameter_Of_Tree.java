@@ -2,9 +2,33 @@ package DSA.Tree.Binary_Tree;
 
 public class _3_Diameter_Of_Tree {
 
-    static int diameter = 0;
+    public int diameterOfBinaryTree(TreeNode root) {
 
-    public static int height(TreeNode root) {
+        int[] diameter = new int[1];
+
+        helper(root, diameter);
+
+        return diameter[0];
+
+    }
+
+    public void helper(TreeNode root, int[] diameter) {
+
+        if (root == null) {
+            return;
+        }
+
+        int left = height(root.left);
+        int right = height(root.right);
+
+        diameter[0] = Math.max(diameter[0], left + right);
+
+        helper(root.left, diameter);
+        helper(root.right, diameter);
+
+    }
+
+    public int height(TreeNode root) {
         if (root == null) {
             return 0;
         }
@@ -12,16 +36,6 @@ public class _3_Diameter_Of_Tree {
         int left = height(root.left);
         int right = height(root.right);
 
-        // Update the diameter at every node
-        diameter = Math.max(diameter, left + right);
-
-        // Return height of current node
-        return 1 + Math.max(left, right);
-    }
-
-    public static int getDiameter(TreeNode root) {
-        diameter = 0; // Reset diameter before calculating
-        height(root); // This will update the diameter
-        return diameter;
+        return Math.max(left, right) + 1;
     }
 }

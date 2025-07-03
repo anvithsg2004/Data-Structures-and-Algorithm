@@ -41,38 +41,35 @@ public class _31_Merge_Overlapping_Intervals {
 
 
     //Brute Force Code
-    public List<List<Integer>> merge(int[][] intervals) {
+    public int[][] merge(int[][] intervals) {
 
         int n = intervals.length;
 
         Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
 
-        List<List<Integer>> ans = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
 
             int start = intervals[i][0];
             int end = intervals[i][1];
 
-            //Skip all the merged intervals:
-            //If the ans, last end is greater than do not do anything.
-            if (!ans.isEmpty() && end <= ans.get(ans.size() - 1).get(1)) {
-                continue;
+            int j = i + 1;
+            while (j < n && intervals[j][0] <= end) {
+                end = Math.max(end, intervals[j][1]);
+                j++;
             }
 
-            //check the rest of the intervals:
-            for (int j = i + 1; j < n; j++) {
-                if (intervals[j][0] <= end) {
-                    end = Math.max(end, intervals[j][1]);
-                } else {
-                    break;
-                }
-            }
-            ans.add(Arrays.asList(start, end));
-
+            result.add(Arrays.asList(start, end));
+            i = j;
         }
 
-        return ans;
+        int[][] merged = new int[result.size()][2];
+        for (int i = 0; i < result.size(); i++) {
+            merged[i][0] = result.get(i).get(0);
+            merged[i][1] = result.get(i).get(1);
+        }
 
+        return merged;
     }
 }

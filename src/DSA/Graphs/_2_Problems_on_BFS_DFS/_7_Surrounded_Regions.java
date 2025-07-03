@@ -69,8 +69,4 @@ public class _7_Surrounded_Regions {
         }
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

@@ -47,10 +47,3 @@ class UndirectedGraphConverter {
     }
 
 }
-
-public class _6_Matrix_To_List {
-
-    public static void main(String[] args) {
-
-    }
-}

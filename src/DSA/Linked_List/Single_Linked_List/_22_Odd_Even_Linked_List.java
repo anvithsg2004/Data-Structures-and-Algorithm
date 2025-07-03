@@ -4,40 +4,40 @@ public class _22_Odd_Even_Linked_List {
 
     public ListNode oddEvenList(ListNode head) {
 
-        ListNode evenHead = new ListNode(-1);
-        ListNode oddHead = new ListNode(-1);
+        if (head == null) {
+            return null;
+        }
 
-        ListNode evenTail = evenHead;
-        ListNode oddTail = oddHead;
+        ListNode odd = new ListNode(-1);
+        ListNode oddNode = odd;
+        ListNode even = new ListNode(-1);
+        ListNode evenNode = even;
+
+        boolean isEven = false;
 
         ListNode temp = head;
 
-        boolean isEven = true;
-
         while (temp != null) {
 
-            if (isEven == true) {
-                evenTail.next = temp;
-                evenTail = evenTail.next;
+            if (isEven) {
+                ListNode dummy = new ListNode(temp.val);
+                evenNode.next = dummy;
+                evenNode = evenNode.next;
             } else {
-                oddTail.next = temp;
-                oddTail = oddTail.next;
+                ListNode dummy = new ListNode(temp.val);
+                oddNode.next = dummy;
+                oddNode = oddNode.next;
             }
-
-            isEven = !isEven;
 
             temp = temp.next;
 
+            isEven = !isEven;
+
         }
 
-        evenTail.next = oddHead.next;
-        oddTail.next = null;
+        oddNode.next = even.next;
 
-        return evenHead.next;
-
-    }
-
-    public static void main(String[] args) {
+        return odd.next;
 
     }
 }

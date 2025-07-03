@@ -15,29 +15,37 @@ public class _24_Add_Two_Numbers {
     //3	    3	        4	        1	    3 + 4 + 1 = 8	        8	            7 → 0 → 8
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode dummy = new ListNode();
+        ListNode list1 = l1;
+        ListNode list2 = l2;
+
+        ListNode dummy = new ListNode(-1);
         ListNode temp = dummy;
+
         int carry = 0;
 
-        while (l1 != null || l2 != null || carry == 1) {
-            int sum = 0;
-            if (l1 != null) {
-                sum = sum + l1.val;
-                l1 = l1.next;
+        while (list1 != null || list2 != null || carry != 0) {
+
+            int sum = carry;
+
+            if (list1 != null) {
+                sum = sum + list1.val;
+                list1 = list1.next;
             }
 
-            if (l2 != null) {
-                sum = sum + l2.val;
-                l2 = l2.next;
+            if (list2 != null) {
+                sum = sum + list2.val;
+                list2 = list2.next;
             }
 
-            sum = sum + carry;
+            temp.next = new ListNode(sum % 10);
+
             carry = sum / 10;
-            ListNode node = new ListNode(sum % 10);
-            temp.next = node;
+
             temp = temp.next;
 
         }
+
+        temp.next = null;
 
         return dummy.next;
     }
