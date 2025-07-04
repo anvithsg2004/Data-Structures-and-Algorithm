@@ -1,23 +1,40 @@
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
-    public String largestOddNumber(String num) {
+    public int beautySum(String s) {
 
-        int n = num.length();
+        int n = s.length();
 
-        int oddIndex = 0;
+        int sum = 0;
 
-        for (int i = n - 1; i >= 0; i--) {
+        for (int i = 0; i < n; i++) {
 
-            char ch = num.charAt(i);
-            int number = ch - '0';
+            Map<Character, Integer> frequencyMap = new HashMap<>();
 
-            if (number % 2 != 0) {
-                oddIndex = i;
-                break;
+            for (int j = 0; j <= i; j++) {
+
+                frequencyMap.put(s.charAt(i), frequencyMap.getOrDefault(s.charAt(i), 0) + 1);
+
+            }
+
+            int maxFreq = Integer.MIN_VALUE;
+            int minFreq = Integer.MAX_VALUE;
+
+            for (int freq : frequencyMap.values()) {
+                maxFreq = Math.max(maxFreq, freq);
+                minFreq = Math.min(minFreq, freq);
+            }
+
+            int diff = maxFreq - minFreq;
+
+            if (diff != 0) {
+                sum = sum + diff;
             }
 
         }
 
-        return num.substring(0, oddIndex);
+        return sum;
 
     }
 }
