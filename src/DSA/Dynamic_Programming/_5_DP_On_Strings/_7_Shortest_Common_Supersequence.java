@@ -1,5 +1,7 @@
 package DSA.Dynamic_Programming._5_DP_On_Strings;
 
+// Length of SCS = Length(s1) + Length(s2) - Length of LCS(s1, s2)
+
 public class _7_Shortest_Common_Supersequence {
     public String shortestSupersequence(String s1, String s2) {
         int n = s1.length();

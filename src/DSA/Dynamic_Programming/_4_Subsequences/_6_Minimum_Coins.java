@@ -14,7 +14,7 @@ public class _6_Minimum_Coins {
 
         if (index == 0) {
             if (target % arr[0] == 0) {
-                return target / arr[0]; // Corrected line
+                return target / arr[0];
             } else {
                 return -1;
             }
