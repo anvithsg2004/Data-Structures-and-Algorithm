@@ -26,6 +26,7 @@ public class _7_Boundary_Traversal {
     public static void addLeaves(TreeNode root, List<Integer> res) {
         if (isLeaf(root)) {
             res.add(root.val);
+            return;
         }
 
         if (root.left != null) {
