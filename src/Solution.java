@@ -29,72 +29,20 @@ class TreeNode {
     }
 }
 
-class Solution {
-    public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
+public class Codec {
 
-        List<Integer> result = new ArrayList<>();
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+
+        StringBuilder result = new StringBuilder();
 
         if (root == null) {
-            return result;
+            return result.toString();
         }
-
-        Map<TreeNode, TreeNode> childParent = new HashMap<>();
-        trackParents(root, childParent);
-
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(target);
-
-        ArrayList<TreeNode> visited = new ArrayList<>();
-
-        while (!queue.isEmpty()) {
-
-            int size = queue.size();
-
-            if (k == 0) {
-                break;
-            }
-
-            for (int i = 0; i < size; i++) {
-
-                TreeNode node = queue.peek();
-                queue.remove();
-                visited.add(node);
-
-                if (node.left != null && !visited.contains(node.left)) {
-                    queue.add(node.left);
-                    result.add(node.left.val);
-                }
-
-                if (node.right != null && !visited.contains(node.right)) {
-                    queue.add(node.right);
-                    result.add(node.right.val);
-                }
-
-                if (childParent.containsKey(node) && childParent.get(node) != null && !visited.contains(childParent.get(node))) {
-                    queue.add(childParent.get(node));
-                    result.add(childParent.get(node).val);
-                }
-
-            }
-
-            k--;
-
-        }
-
-        while (!queue.isEmpty()) {
-            result.add(queue.poll().val);
-        }
-
-        return result;
-
-    }
-
-    public void trackParents(TreeNode root, Map<TreeNode, TreeNode> map) {
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-
-        map.put(root, null);
+        result.append(root.val).append(",");
 
         while (!queue.isEmpty()) {
 
@@ -102,17 +50,41 @@ class Solution {
             queue.remove();
 
             if (node.left != null) {
-                map.put(node.left, node);
                 queue.add(node.left);
+                result.append(node.left.val).append(",");
+            } else {
+                result.append("null,");
             }
 
             if (node.right != null) {
-                map.put(node.right, node);
                 queue.add(node.right);
+                result.append(node.right.val).append(",");
+            } else {
+                result.append("null,");
             }
-
         }
 
+        int indexTill = result.length() - 1;
+
+        while (indexTill >= 4 && result.substring(indexTill - 4, indexTill).equals("null")) {
+            indexTill -= 5; // Move back 5 positions: "null,"
+        }
+
+        return result.substring(0, indexTill + 1);
     }
 
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String dataGiven) {
+
+        StringBuilder data = new StringBuilder(dataGiven);
+
+        int commaIndex = data.indexOf(",");
+        String value = data.substring(0, commaIndex);
+        data.delete(0, commaIndex + 1);
+
+        TreeNode root = new TreeNode(Integer.parseInt(value));
+
+        Queue<TreeNode> queue = new
+
+    }
 }
