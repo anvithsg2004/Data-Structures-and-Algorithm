@@ -1,90 +1,97 @@
 import java.util.*;
 
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode() {
+    }
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
+}
+
 class Node {
     int data;
-    Node left, right;
+    Node next;
 
-    public Node(int d) {
+    Node(int d) {
         data = d;
-        left = right = null;
+        next = null;
     }
 }
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+class Solution {
+    public ListNode sortList(ListNode head) {
 
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
-
-public class Codec {
-
-    // Encodes a tree to a single string.
-    public String serialize(TreeNode root) {
-
-        StringBuilder result = new StringBuilder();
-
-        if (root == null) {
-            return result.toString();
+        if (head == null || head.next == null) {
+            return head;
         }
 
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        result.append(root.val).append(",");
+        ListNode middle = getMiddle(head);
+        ListNode leftNode = head;
+        ListNode rightNode = middle.next;
+        middle.next = null;
 
-        while (!queue.isEmpty()) {
+        leftNode = sortList(leftNode);
+        rightNode = sortList(rightNode);
 
-            TreeNode node = queue.peek();
-            queue.remove();
+        return sort(leftNode, rightNode);
 
-            if (node.left != null) {
-                queue.add(node.left);
-                result.append(node.left.val).append(",");
+    }
+
+    public ListNode sort(ListNode leftNode, ListNode rightNode) {
+
+        ListNode dummy = new ListNode(-1);
+        ListNode temp = dummy;
+
+        while (leftNode != null && rightNode != null) {
+            if (leftNode.val < rightNode.val) {
+                temp.next = leftNode;
+                leftNode = leftNode.next;
             } else {
-                result.append("null,");
+                temp.next = rightNode;
+                rightNode = rightNode.next;
             }
-
-            if (node.right != null) {
-                queue.add(node.right);
-                result.append(node.right.val).append(",");
-            } else {
-                result.append("null,");
-            }
+            temp = temp.next;
         }
 
-        int indexTill = result.length() - 1;
-
-        while (indexTill >= 4 && result.substring(indexTill - 4, indexTill).equals("null")) {
-            indexTill -= 5; // Move back 5 positions: "null,"
+        if (leftNode != null) {
+            temp.next = leftNode;
         }
 
-        return result.substring(0, indexTill + 1);
-    }
+        if (rightNode != null) {
+            temp.next = rightNode;
+        }
 
-    // Decodes your encoded data to tree.
-    public TreeNode deserialize(String dataGiven) {
-
-        StringBuilder data = new StringBuilder(dataGiven);
-
-        int commaIndex = data.indexOf(",");
-        String value = data.substring(0, commaIndex);
-        data.delete(0, commaIndex + 1);
-
-        TreeNode root = new TreeNode(Integer.parseInt(value));
-
-        Queue<TreeNode> queue = new
+        return dummy.next;
 
     }
+
+    public ListNode getMiddle(ListNode head) {
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode slow = head;
+        ListNode fast = head.next;
+
+        while (fast != null && fast.next != null) {
+
+            slow = slow.next;
+            fast = fast.next.next;
+
+        }
+
+        return slow;
+
+    }
+
 }
