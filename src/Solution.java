@@ -17,81 +17,57 @@ class ListNode {
     }
 }
 
+//class Node {
+//    int data;
+//    Node next;
+//
+//    Node(int d) {
+//        data = d;
+//        next = null;
+//    }
+//}
+
 class Node {
     int data;
     Node next;
+    Node prev;
 
-    Node(int d) {
-        data = d;
-        next = null;
+    Node(int data) {
+        this.data = data;
+        next = prev = null;
     }
 }
 
 class Solution {
-    public ListNode sortList(ListNode head) {
+    public Node addNode(Node head, int p, int x) {
 
-        if (head == null || head.next == null) {
-            return head;
-        }
+        Node before = head;
 
-        ListNode middle = getMiddle(head);
-        ListNode leftNode = head;
-        ListNode rightNode = middle.next;
-        middle.next = null;
+        int currPoint = 0;
 
-        leftNode = sortList(leftNode);
-        rightNode = sortList(rightNode);
+        while (before.next != null) {
 
-        return sort(leftNode, rightNode);
+            if (currPoint == p) {
 
-    }
+                Node data = new Node(x);
 
-    public ListNode sort(ListNode leftNode, ListNode rightNode) {
+                Node next = before.next;
 
-        ListNode dummy = new ListNode(-1);
-        ListNode temp = dummy;
+                before.next = data;
+                data.next = next;
+                data.prev = before;
+                next.prev = data;
 
-        while (leftNode != null && rightNode != null) {
-            if (leftNode.val < rightNode.val) {
-                temp.next = leftNode;
-                leftNode = leftNode.next;
-            } else {
-                temp.next = rightNode;
-                rightNode = rightNode.next;
+                return head;
+
             }
-            temp = temp.next;
+
+            currPoint++;
+            before = before.next;
+
         }
 
-        if (leftNode != null) {
-            temp.next = leftNode;
-        }
-
-        if (rightNode != null) {
-            temp.next = rightNode;
-        }
-
-        return dummy.next;
+        return null;
 
     }
-
-    public ListNode getMiddle(ListNode head) {
-
-        if (head == null || head.next == null) {
-            return head;
-        }
-
-        ListNode slow = head;
-        ListNode fast = head.next;
-
-        while (fast != null && fast.next != null) {
-
-            slow = slow.next;
-            fast = fast.next.next;
-
-        }
-
-        return slow;
-
-    }
-
 }
