@@ -1,73 +1,83 @@
-import java.util.*;
+import java.util.ArrayList;
 
-class ListNode {
+class TreeNode {
     int val;
-    ListNode next;
+    TreeNode left;
+    TreeNode right;
 
-    ListNode() {
+    TreeNode() {
     }
 
-    ListNode(int val) {
+    TreeNode(int val) {
         this.val = val;
     }
 
-    ListNode(int val, ListNode next) {
+    TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
-        this.next = next;
+        this.left = left;
+        this.right = right;
     }
 }
 
-//class Node {
-//    int data;
-//    Node next;
-//
-//    Node(int d) {
-//        data = d;
-//        next = null;
-//    }
-//}
-
 class Node {
     int data;
-    Node next;
-    Node prev;
+    Node left;
+    Node right;
 
     Node(int data) {
         this.data = data;
-        next = prev = null;
+        left = null;
+        right = null;
     }
 }
 
 class Solution {
-    public Node addNode(Node head, int p, int x) {
 
-        Node before = head;
+    TreeNode first = null;
+    TreeNode middle = null;
+    TreeNode last = null;
+    TreeNode prev = null;
 
-        int currPoint = 0;
+    public void recoverTree(TreeNode root) {
 
-        while (before.next != null) {
+        inOrder(root);
 
-            if (currPoint == p) {
+        //Case 1: Non-Adjacent Nodes Swapped
+        if (first != null && last != null) {
+            int t = first.val;
+            first.val = last.val;
+            last.val = t;
+        }//Case 2: Adjacent Nodes Swapped
+        else if (first != null && middle != null) {
+            int t = first.val;
+            first.val = middle.val;
+            middle.val = t;
+        }
 
-                Node data = new Node(x);
+    }
 
-                Node next = before.next;
+    public void inOrder(TreeNode root) {
 
-                before.next = data;
-                data.next = next;
-                data.prev = before;
-                next.prev = data;
+        if (root == null) {
+            return;
+        }
 
-                return head;
+        inOrder(root.left);
 
+        if (prev != null || (root.val < prev.val)) {
+
+            if (first == null) {
+                first = prev;
+                middle = root;
+            } else {
+                last = root;
             }
-
-            currPoint++;
-            before = before.next;
 
         }
 
-        return null;
+        prev = root;
+
+        inOrder(root.right);
 
     }
 }
