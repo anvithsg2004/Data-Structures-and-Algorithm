@@ -1,83 +1,28 @@
-import java.util.ArrayList;
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
-
-class Node {
-    int data;
-    Node left;
-    Node right;
-
-    Node(int data) {
-        this.data = data;
-        left = null;
-        right = null;
-    }
-}
+import java.util.Arrays;
 
 class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
 
-    TreeNode first = null;
-    TreeNode middle = null;
-    TreeNode last = null;
-    TreeNode prev = null;
+        int n = nums.length;
 
-    public void recoverTree(TreeNode root) {
+        int maxiOnes = 0;
 
-        inOrder(root);
+        int current = 0;
 
-        //Case 1: Non-Adjacent Nodes Swapped
-        if (first != null && last != null) {
-            int t = first.val;
-            first.val = last.val;
-            last.val = t;
-        }//Case 2: Adjacent Nodes Swapped
-        else if (first != null && middle != null) {
-            int t = first.val;
-            first.val = middle.val;
-            middle.val = t;
-        }
+        for (int i = 0; i < n; i++) {
 
-    }
+            if (nums[i] == 0) {
+                current = 0;
+            }
 
-    public void inOrder(TreeNode root) {
-
-        if (root == null) {
-            return;
-        }
-
-        inOrder(root.left);
-
-        if (prev != null || (root.val < prev.val)) {
-
-            if (first == null) {
-                first = prev;
-                middle = root;
-            } else {
-                last = root;
+            if (nums[i] == 1) {
+                current = current + 1;
+                maxiOnes = Math.max(maxiOnes, current);
             }
 
         }
 
-        prev = root;
-
-        inOrder(root.right);
+        return maxiOnes;
 
     }
 }
