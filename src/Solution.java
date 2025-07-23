@@ -1,28 +1,23 @@
-import java.util.Arrays;
-
 class Solution {
-    public int findMaxConsecutiveOnes(int[] nums) {
+    public void rotate(int[][] matrix) {
+        int n = matrix.length;
 
-        int n = nums.length;
-
-        int maxiOnes = 0;
-
-        int current = 0;
-
+        // Step 1: Transpose the matrix (swap elements across the diagonal)
         for (int i = 0; i < n; i++) {
-
-            if (nums[i] == 0) {
-                current = 0;
+            for (int j = i + 1; j < n; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
             }
-
-            if (nums[i] == 1) {
-                current = current + 1;
-                maxiOnes = Math.max(maxiOnes, current);
-            }
-
         }
 
-        return maxiOnes;
-
+        // Step 2: Reverse each row
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n / 2; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[i][n - 1 - j];
+                matrix[i][n - 1 - j] = temp;
+            }
+        }
     }
 }
