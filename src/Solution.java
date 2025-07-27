@@ -1,23 +1,42 @@
 class Solution {
-    public void rotate(int[][] matrix) {
-        int n = matrix.length;
+    public boolean canJump(int[] nums) {
 
-        // Step 1: Transpose the matrix (swap elements across the diagonal)
+        int n = nums.length;
+
+        int maxDist = 0;
+
         for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                int temp = matrix[i][j];
-                matrix[i][j] = matrix[j][i];
-                matrix[j][i] = temp;
+
+            if (i > maxDist) {
+                return false;
             }
+
+            maxDist = Math.max(maxDist, i + nums[i]);
+
         }
 
-        // Step 2: Reverse each row
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n / 2; j++) {
-                int temp = matrix[i][j];
-                matrix[i][j] = matrix[i][n - 1 - j];
-                matrix[i][n - 1 - j] = temp;
-            }
-        }
+        return true;
+
     }
+
+    public boolean help(int[] nums, int n, int index) {
+
+        if (index == n - 1) {
+            return true;
+        }
+
+        if (index >= n) {
+            return false;
+        }
+
+        for (int i = 1; i <= nums[index]; i++) {
+            if (help(nums, n, index + i)) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
 }
