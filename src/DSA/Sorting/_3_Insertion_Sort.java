@@ -5,7 +5,7 @@ import java.util.*;
 public class _3_Insertion_Sort {
 
     public static void insertionSort(int[] array, int size) {
-        for (int i = 1; i < size; i++) {  // Start from 1 since the first element is already "sorted"
+        for (int i = 1; i < size; i++) {
             int j = i;
             while (j > 0 && array[j - 1] > array[j]) {
                 int temp = array[j - 1];

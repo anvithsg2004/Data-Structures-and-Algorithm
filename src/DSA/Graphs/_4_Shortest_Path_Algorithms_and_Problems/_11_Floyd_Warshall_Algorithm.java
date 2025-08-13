@@ -38,8 +38,4 @@ public class _11_Floyd_Warshall_Algorithm {
         }
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

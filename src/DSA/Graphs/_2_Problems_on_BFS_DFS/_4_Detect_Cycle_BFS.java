@@ -1,45 +1,58 @@
 package DSA.Graphs._2_Problems_on_BFS_DFS;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 class Pair2 {
-    int node;
-    int parent;
+    int i;
+    int j;
 
-    public Pair2(int node, int parent) {
-        this.node = node;
-        this.parent = parent;
+    public Pair2(int i, int j) {
+        this.i = i;
+        this.j = j;
     }
 }
 
 public class _4_Detect_Cycle_BFS {
+    public boolean isCycle(int n, int[][] edges) {
+        List<List<Integer>> adj = new ArrayList<>();
+        for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
 
-    public static boolean checkForCycle(int src, int V, ArrayList<ArrayList<Integer>> adj, boolean[] vis) {
+        // Build undirected graph
+        for (int[] edge : edges) {
+            int u = edge[0], v = edge[1];
+            adj.get(u).add(v);
+            adj.get(v).add(u);
+        }
 
-        vis[src] = true;
-        Queue<Pair2> queue = new LinkedList<>();
-        queue.add(new Pair2(src, -1));
+        boolean[] visited = new boolean[n];
 
-        while (!queue.isEmpty()) {
-            int node = queue.peek().node;
-            int parent = queue.peek().parent;
-            queue.remove();
-
-            for (int adjacentNode : adj.get(node)) {
-                if (vis[adjacentNode] == false) {
-                    vis[adjacentNode] = true;
-                    queue.add(new Pair2(adjacentNode, node));
-                } else if (parent != adjacentNode) {
-                    return true;
-                }
+        // Check all components
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) {
+                if (bfsHasCycle(i, visited, adj)) return true;
             }
         }
         return false;
     }
 
-    public static void main(String[] args) {
+    private boolean bfsHasCycle(int src, boolean[] visited, List<List<Integer>> adj) {
+        Queue<Pair2> queue = new LinkedList<>();
+        queue.add(new Pair2(src, -1));
+        visited[src] = true;
 
+        while (!queue.isEmpty()) {
+            Pair2 pair = queue.poll();
+            int node = pair.i, parent = pair.j;
+
+            for (int neighbor : adj.get(node)) {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.add(new Pair2(neighbor, node));
+                } else if (neighbor != parent) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

@@ -77,8 +77,4 @@ public class _8_Number_of_Ways_to_Arrive_at_Destination {
         return ways[n - 1] % mod;
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

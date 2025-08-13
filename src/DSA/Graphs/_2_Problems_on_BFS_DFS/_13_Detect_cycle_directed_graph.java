@@ -1,8 +1,9 @@
 package DSA.Graphs._2_Problems_on_BFS_DFS;
 
-import java.util.ArrayList;
+import java.util.*;
 
-public class _13_Detect_cycle_directed_graph {
+public class
+_13_Detect_cycle_directed_graph {
     public boolean isCyclic(int v, ArrayList<ArrayList<Integer>> adj) {
 
         int[] visited = new int[v];

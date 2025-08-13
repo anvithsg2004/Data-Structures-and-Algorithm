@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class _9_Longest_Substring_with_At_Most_K_Distinct_Characters {
     public int fun(String s, int k) {
-        if (s == null || s.length() == 0 || k == 0) {
+        if (s == null || s.isEmpty() || k == 0) {
             return 0;
         }
 

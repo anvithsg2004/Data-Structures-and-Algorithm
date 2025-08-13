@@ -30,7 +30,9 @@ public class _20_Binary_Tree_from_Preorder_and_Inorder_Traversal {
         return root;
     }
 
-    public TreeNode buildTree(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd, Map<Integer, Integer> inMap) {
+    public TreeNode buildTree(int[] preorder, int preStart, int preEnd,
+                              int[] inorder, int inStart, int inEnd,
+                              Map<Integer, Integer> inMap) {
 
         if (preStart > preEnd || inStart > inEnd) {
             return null;

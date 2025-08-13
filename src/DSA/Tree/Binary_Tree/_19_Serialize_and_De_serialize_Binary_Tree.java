@@ -42,7 +42,6 @@ public class _19_Serialize_and_De_serialize_Binary_Tree {
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
 
-
         // Check if the
         // serialized data is empty
         if (data.isEmpty()) {

@@ -24,7 +24,9 @@ public class _21_Binary_Tree_from_Postorder_and_Inorder_Traversal {
         return root;
     }
 
-    public TreeNode buildTree(int[] inorder, int inStart, int inEnd, int[] postorder, int postStart, int postEnd, Map<Integer, Integer> inMap) {
+    public TreeNode buildTree(int[] inorder, int inStart, int inEnd,
+                              int[] postorder, int postStart, int postEnd,
+                              Map<Integer, Integer> inMap) {
 
         if (postStart > postEnd || inStart > inEnd) {
             return null;

@@ -19,7 +19,8 @@ public class _4_Merge_Sort {
 
     public static void merge(int[] array, int low, int mid, int high) {
         ArrayList<Integer> temp = new ArrayList<>();
-        int left = low, right = mid + 1;
+        int left = low;
+        int right = mid + 1;
 
         while (left <= mid && right <= high) {
             if (array[left] <= array[right]) {

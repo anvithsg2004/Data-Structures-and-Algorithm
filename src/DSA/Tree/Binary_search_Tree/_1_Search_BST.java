@@ -70,4 +70,23 @@ public class _1_Search_BST {
 
         return search3(root.left, key) || search3(root.right, key);
     }
+
+    public boolean find(TreeNode root, int key) {
+
+        if (root == null) {
+            return true;
+        }
+
+        if (root.val == key) {
+            return true;
+        }
+
+        boolean left = find(root.left, key);
+        if (left == true) {
+            return true;
+        }
+
+        return find(root.right, key);
+
+    }
 }

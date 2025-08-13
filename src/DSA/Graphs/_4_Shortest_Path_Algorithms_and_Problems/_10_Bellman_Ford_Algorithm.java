@@ -70,8 +70,4 @@ public class _10_Bellman_Ford_Algorithm {
         // Return the shortest distances from the source node
         return dist;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

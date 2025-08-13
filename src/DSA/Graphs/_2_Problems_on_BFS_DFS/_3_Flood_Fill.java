@@ -1,7 +1,6 @@
 package DSA.Graphs._2_Problems_on_BFS_DFS;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 class Pair1 {
     int row;
