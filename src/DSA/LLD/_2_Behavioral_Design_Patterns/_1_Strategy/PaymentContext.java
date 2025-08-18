@@ -15,4 +15,3 @@ public class PaymentContext {
         paymentStrategy.pay(amount);
     }
 }
-

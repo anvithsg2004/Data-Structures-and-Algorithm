@@ -1,34 +1,35 @@
 package DSA.Sliding_Window;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class _5_Binary_Subarrays_With_Sum {
 
-    //It is nothing but count the subarray sum equals k
-    public int numSubarraysWithSum(int[] nums, int k) {
-        return fun(nums, k) - fun(nums, k - 1);
-    }
+    public int numSubarraysWithSum(int[] nums, int goal) {
 
-    public int fun(int[] nums, int k) {
+        int n = nums.length;
 
-        if (k < 0) {
-            return 0;
-        }
+        Map<Integer, Integer> map = new HashMap<>();
 
-        int l = 0;
-        int r = 0;
-        int sum = 0;
+        map.put(0, 1);
+
+        int currentSum = 0;
+
         int count = 0;
-        while (r < nums.length) {
-            sum = sum + nums[r];
 
-            while (sum > k) {
-                sum = sum - nums[l];
-                l = l + 1;
-            }
+        for (int i = 0; i < n; i++) {
 
-            count = count + (r - l + 1);
-            r = r + 1;
+            currentSum = currentSum + nums[i];
+
+            int rem = currentSum - goal;
+
+            count = count + map.getOrDefault(rem, 0);
+
+            map.put(currentSum, map.getOrDefault(currentSum, 0) + 1);
+
         }
 
         return count;
+
     }
 }

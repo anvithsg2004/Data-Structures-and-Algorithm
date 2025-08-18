@@ -27,41 +27,30 @@ public class _14_Merge_Intervals {
 
     public int[][] merge(int[][] intervals) {
 
-        // List to store merged intervals
-        List<int[]> result = new ArrayList<>();
+        int n = intervals.length;
 
-        // Edge case: If there are no intervals, return an empty array
-        if (intervals.length == 0) {
-            return result.toArray(new int[0][]);
-        }
-
-        // Step 1: Sort intervals based on the start time
         Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
 
-        // Step 2: Initialize start and end with the first interval
-        int start = intervals[0][0];
-        int end = intervals[0][1];
+        List<int[]> result = new ArrayList<>();
 
-        // Step 3: Iterate through intervals
-        for (int[] i : intervals) {
-            if (i[0] <= end) {
-                // If intervals overlap, update the end to the maximum value
-                end = Math.max(i[1], end);
-            } else {
-                // If no overlap, add the previous interval to result
-                result.add(new int[]{start, end});
+        for (int i = 0; i < n; i++) {
 
-                // Start a new interval
-                start = i[0];
-                end = i[1];
+            int start = intervals[i][0];
+            int end = intervals[i][1];
+
+            int j = i + 1;
+            while (j < n && intervals[j][0] <= end) { // ✅ compare with merged end
+                start = Math.min(start, intervals[j][0]);
+                end = Math.max(end, intervals[j][1]);
+                j++;
             }
+
+            result.add(new int[]{start, end});
+
+            i = j - 1; // skip merged intervals
         }
 
-        // Add the last interval
-        result.add(new int[]{start, end});
-
-        // Convert result list to an array
-        return result.toArray(new int[0][]);
+        return result.toArray(new int[result.size()][]);
     }
 
     public static void main(String[] args) {

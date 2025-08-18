@@ -42,7 +42,8 @@ public class _4_Detect_Cycle_BFS {
 
         while (!queue.isEmpty()) {
             Pair2 pair = queue.poll();
-            int node = pair.i, parent = pair.j;
+            int node = pair.i;
+            int parent = pair.j;
 
             for (int neighbor : adj.get(node)) {
                 if (!visited[neighbor]) {

@@ -13,32 +13,6 @@ import java.util.*;
 
 public class _3_Fruit_Into_Baskets {
 
-    //Brute Force Solution
-    public static int totalElements(Integer[] arr) {
-
-        int n = arr.length;
-
-        int maxLen = 0;
-
-        for (int i = 0; i < n; i++) {
-
-            Set<Integer> set = new HashSet<>();
-
-            for (int j = i; j < n; j++) {
-                set.add(arr[i]);
-
-                if (set.size() <= 2) {
-                    maxLen = Math.max(maxLen, j - i + 1);
-                } else {
-                    break;
-                }
-            }
-
-        }
-
-        return maxLen;
-    }
-
     //Optimised Solution
     public static int totalElements2(Integer[] arr) {
 
