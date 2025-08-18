@@ -16,9 +16,8 @@ public class _8_Jump_Game_II {
             return jumps;
         }
 
-        // If the current position cannot jump further
         if (nums[index] == 0) {
-            return Integer.MAX_VALUE; // Impossible to proceed
+            return Integer.MAX_VALUE;
         }
 
         int mini = Integer.MAX_VALUE;

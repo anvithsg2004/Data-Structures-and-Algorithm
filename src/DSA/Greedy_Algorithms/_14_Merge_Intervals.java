@@ -39,7 +39,7 @@ public class _14_Merge_Intervals {
             int end = intervals[i][1];
 
             int j = i + 1;
-            while (j < n && intervals[j][0] <= end) { // ✅ compare with merged end
+            while (j < n && intervals[j][0] <= end) {
                 start = Math.min(start, intervals[j][0]);
                 end = Math.max(end, intervals[j][1]);
                 j++;
@@ -47,7 +47,7 @@ public class _14_Merge_Intervals {
 
             result.add(new int[]{start, end});
 
-            i = j - 1; // skip merged intervals
+            i = j - 1;
         }
 
         return result.toArray(new int[result.size()][]);

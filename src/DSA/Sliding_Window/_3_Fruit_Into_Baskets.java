@@ -4,16 +4,13 @@ package DSA.Sliding_Window;
 //You are given an array arr[], where each element represents a type of fruit.
 //Your goal is to determine the maximum number of fruits you can collect in a single pass,
 //if you can carry at most two different types of fruits at a time.
-
 //Same as the question "Find length of the longest subarray containing atmost two distinct integers".
-
 //We can say this question as = Max Length Sub Array with atmost 2 types of number.
 
 import java.util.*;
 
 public class _3_Fruit_Into_Baskets {
 
-    //Optimised Solution
     public static int totalElements2(Integer[] arr) {
 
         int maxLen = 0;

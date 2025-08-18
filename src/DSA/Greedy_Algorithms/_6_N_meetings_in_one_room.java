@@ -44,17 +44,14 @@ public class _6_N_meetings_in_one_room {
         Collections.sort(meetings, new meetingComparator());
 
         ArrayList<Integer> answer = new ArrayList<>();
-        //ith position meetings that can happen.
+
         answer.add(meetings.get(0).position);
 
-        //Get the last-ended meeting.
         int limit = meetings.get(0).end;
 
         for (int i = 1; i < start.length; i++) {
-            //Send the meeting which starts after the last meeting.
             if (meetings.get(i).start > limit) {
                 limit = meetings.get(i).end;
-                //Store the position of the meeting.
                 answer.add(meetings.get(i).position);
             }
         }
