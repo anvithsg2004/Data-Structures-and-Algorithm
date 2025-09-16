@@ -36,36 +36,32 @@ public class _27_Pascal_Triangle {
     }
 
     //Variation 3
-    //Final Code
-    public List<List<Integer>> generate(int numRows) {
-
-        List<List<Integer>> result = new ArrayList<>();
-
-        for (int i = 0; i <= numRows; i++) {
-
-            result.add(generateRow(i));
-
+    public static long nCr3(int n, int r) {
+        long res = 1;
+        for (int i = 0; i < r; i++) {
+            res = res * (n - i);
+            res = res / (i + 1);
         }
-
-        return result;
-
+        return res;
     }
 
-    public static List<Integer> generateRow(int row) {
+    // Variation 2: Generate one row
+    public static List<Integer> generateRow(int n) {
+        List<Integer> row = new ArrayList<>();
+        for (int c = 1; c <= n; c++) {
+            row.add((int) nCr3(n - 1, c - 1));
+        }
+        return row;
+    }
 
-        long ans = 1;
+    // Variation 3: Generate entire triangle
+    public static List<List<Integer>> generateTriangle(int numRows) {
+        List<List<Integer>> triangle = new ArrayList<>();
 
-        List<Integer> ansRow = new ArrayList<>();
-        ansRow.add(1);
-
-        for (int col = 1; col < row; col++) {
-
-            ans = ans * (row - col);
-            ans = ans / col;
-            ansRow.add((int) ans);
-
+        for (int i = 1; i <= numRows; i++) {
+            triangle.add(generateRow(i));
         }
 
-        return ansRow;
+        return triangle;
     }
 }

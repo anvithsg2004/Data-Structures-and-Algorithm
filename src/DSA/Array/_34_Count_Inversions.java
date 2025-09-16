@@ -66,7 +66,7 @@ public class _34_Count_Inversions {
 
 
     //Brute Force Solution
-    public static int inversionCount(int arr[]) {
+    public static int inversionCount(int[] arr) {
         // Your Code Here
 
         int count = 0;
