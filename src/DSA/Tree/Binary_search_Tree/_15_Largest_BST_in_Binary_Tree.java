@@ -26,9 +26,10 @@ public class _15_Largest_BST_in_Binary_Tree {
 
         if (left.maxNode < root.val && root.val < right.minNode) {
             //It is a BST
-            return new NodeValue(Math.min(root.val, left.minNode), Math.max(root.val, right.maxNode), left.maxSize + right.maxSize + 1);
+            return new NodeValue(Math.min(root.val, left.minNode),
+                    Math.max(root.val, right.maxNode),
+                    left.maxSize + right.maxSize + 1);
         }
-
 
         return new NodeValue(Integer.MIN_VALUE, Integer.MAX_VALUE, Math.max(left.maxSize, right.maxSize));
 

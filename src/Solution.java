@@ -1,28 +1,37 @@
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {
+    }
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
 class Solution {
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
 
-        int k = m + n - 1;
-        int i = m - 1;
-        int j = n - 1;
+    TreeNode prev = null;
 
-        while (i >= 0 && j >= 0) {
+    public void flatten(TreeNode root) {
 
-            if (nums1[i] > nums2[j]) {
-                nums1[k] = nums1[i];
-                i--;
-            } else {
-                nums1[k] = nums2[j];
-                j--;
-            }
-            k--;
-
+        if (root == null) {
+            return;
         }
 
-        while (j >= 0) {
-            nums1[k] = nums2[j];
-            j--;
-            k--;
-        }
+        flatten(root.left);
+        flatten(root.right);
+        root.right = prev;
+        root.left = null;
+        prev = root;
 
     }
 }
