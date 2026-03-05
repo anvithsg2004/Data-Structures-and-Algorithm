@@ -10,7 +10,7 @@ public class Singleton {
     }
 
     // Global access point
-    public static Singleton getInstance() {
+    public static synchronized Singleton getInstance() {
         if (instance == null) {
             instance = new Singleton();
         }

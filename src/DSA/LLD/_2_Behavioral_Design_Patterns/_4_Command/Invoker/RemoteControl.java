@@ -1,4 +1,6 @@
-package DSA.LLD._2_Behavioral_Design_Patterns._4_Command;
+package DSA.LLD._2_Behavioral_Design_Patterns._4_Command.Invoker;
+
+import DSA.LLD._2_Behavioral_Design_Patterns._4_Command.Command.Command;
 
 public class RemoteControl {
     private Command command;

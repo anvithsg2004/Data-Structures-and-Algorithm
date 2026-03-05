@@ -1,37 +1,32 @@
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
-
 class Solution {
+    public int characterReplacement(String s, int k) {
 
-    TreeNode prev = null;
+        int n = s.length();
 
-    public void flatten(TreeNode root) {
+        int[] fre = new int[26];
 
-        if (root == null) {
-            return;
+        int left = 0;
+        int right = 0;
+        int maxLength = 0;
+        int maxFreq = 0;
+
+        for (right = 0; right < n; right++) {
+
+            char c = s.charAt(right);
+            fre[s.charAt(right) - 'A']++;
+
+            maxFreq = Math.max(maxFreq, fre[s.charAt(right) - 'A']);
+
+            while ((right - left + 1) - maxFreq > k) {
+                fre[s.charAt(left) - 'A']--;
+                left++;
+            }
+
+            maxLength = Math.max(maxLength, right - left + 1);
+
         }
 
-        flatten(root.left);
-        flatten(root.right);
-        root.right = prev;
-        root.left = null;
-        prev = root;
+        return maxLength;
 
     }
 }

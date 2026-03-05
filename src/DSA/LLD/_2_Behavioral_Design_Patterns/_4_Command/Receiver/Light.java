@@ -1,4 +1,4 @@
-package DSA.LLD._2_Behavioral_Design_Patterns._4_Command;
+package DSA.LLD._2_Behavioral_Design_Patterns._4_Command.Receiver;
 
 public class Light {
     public void turnOn() {

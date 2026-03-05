@@ -1,6 +1,6 @@
-package DSA.LLD._2_Behavioral_Design_Patterns._2_Observer;
+package DSA.LLD._2_Behavioral_Design_Patterns._2_Observer.Observer;
 
-public class EmailSubscriber implements Observer {
+public class EmailSubscriber implements Subscriber {
     private String name;
 
     public EmailSubscriber(String name) {
