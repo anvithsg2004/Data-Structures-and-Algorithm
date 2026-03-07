@@ -1,32 +1,23 @@
 class Solution {
-    public int characterReplacement(String s, int k) {
+    public int findMaxConsecutiveOnes(int[] nums) {
 
-        int n = s.length();
+        int count = 0;
+        int currentCount = 0;
 
-        int[] fre = new int[26];
+        int n = nums.length;
 
-        int left = 0;
-        int right = 0;
-        int maxLength = 0;
-        int maxFreq = 0;
+        for (int i = 0; i < n; i++) {
 
-        for (right = 0; right < n; right++) {
-
-            char c = s.charAt(right);
-            fre[s.charAt(right) - 'A']++;
-
-            maxFreq = Math.max(maxFreq, fre[s.charAt(right) - 'A']);
-
-            while ((right - left + 1) - maxFreq > k) {
-                fre[s.charAt(left) - 'A']--;
-                left++;
+            if (nums[i] == 0) {
+                count = Math.max(count, currentCount);
+                currentCount = 0;
+            } else if (nums[i] == 1) {
+                currentCount++;
             }
-
-            maxLength = Math.max(maxLength, right - left + 1);
 
         }
 
-        return maxLength;
+        return Math.max(count, currentCount);
 
     }
 }
