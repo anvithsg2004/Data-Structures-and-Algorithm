@@ -2,70 +2,113 @@ package DSA.Graphs._2_Problems_on_BFS_DFS;
 
 public class _7_Surrounded_Regions {
 
-    public static void dfs(int row, int col, boolean[][] visited, char[][] mat, int[] drow, int[] dclo) {
-        visited[row][col] = true;
-        int n = mat.length;
-        int m = mat[0].length;
-
-        for (int i = 0; i < 4; i++) {
-
-            int nrow = row + drow[i];
-            int ncol = col + dclo[i];
-            if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && visited[nrow][ncol] == false && mat[nrow][ncol] == 'O') {
-                dfs(nrow, ncol, visited, mat, drow, dclo);
-            }
-
-        }
-
-    }
-
     public void solve(char[][] board) {
+
+        int rowLength = board.length;
+        int colLength = board[0].length;
+
+        int[] rowDir = {-1, 1, 0, 0};
+        int[] colDir = {0, 0, -1, 1};
+
+        boolean[][] borderConnectedElements = new boolean[rowLength][colLength];
 
         int n = board.length;
         int m = board[0].length;
 
-        int[] drow = {-1, 0, 1, 0};
-        int[] dcol = {0, 1, 0, -1};
-
-        // All elements are already false
-        boolean[][] visited = new boolean[n][m];
-
-        //Traverse through first Column and last Column.
-        for (int i = 0; i < n; i++) {
-
-            //First Row
-            if (visited[i][0] == false && board[i][0] == 'O') {
-                dfs(i, 0, visited, board, drow, dcol);
+        // Top row
+        for (int j = 0; j < m; j++) {
+            if (board[0][j] == 'O') {
+                borderConnectedElements[0][j] = true;
             }
-
-            //Last Row
-            if (visited[i][m - 1] == false && board[i][m - 1] == 'O') {
-                dfs(i, m - 1, visited, board, drow, dcol);
-            }
-
         }
 
-        //Traverse through the first row and last row.
-        for (int i = 0; i < m; i++) {
-
-            //First Row
-            if (visited[0][i] == false && board[0][i] == 'O') {
-                dfs(0, i, visited, board, drow, dcol);
+        // Right column
+        for (int i = 1; i < n; i++) {
+            if (board[i][m - 1] == 'O') {
+                borderConnectedElements[i][m - 1] = true;
             }
-
-            //Last Row
-            if (visited[n - 1][i] == false && board[n - 1][i] == 'O') {
-                dfs(n - 1, i, visited, board, drow, dcol);
-            }
-
         }
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (visited[i][j] == false && board[i][j] == 'O') {
+        // Bottom row
+        for (int j = m - 2; j >= 0; j--) {
+            if (board[n - 1][j] == 'O') {
+                borderConnectedElements[n - 1][j] = true;
+            }
+        }
+
+        // Left column
+        for (int i = n - 2; i > 0; i--) {
+            if (board[i][0] == 'O') {
+                borderConnectedElements[i][0] = true;
+            }
+        }
+
+        int row;
+        int col;
+
+        // Top
+        row = 0;
+        col = 0;
+        for (int i = col; i < colLength; i++) {
+            if (board[row][i] == 'O') {
+                dfs(row, i, board, borderConnectedElements, rowDir, colDir);
+            }
+        }
+
+        // Bottom
+        row = rowLength - 1;
+        col = 0;
+        for (int i = col; i < colLength; i++) {
+            if (board[row][i] == 'O') {
+                dfs(row, i, board, borderConnectedElements, rowDir, colDir);
+            }
+        }
+
+        // Left
+        row = 0;
+        col = 0;
+        for (int i = row; i < rowLength; i++) {
+            if (board[i][col] == 'O') {
+                dfs(i, col, board, borderConnectedElements, rowDir, colDir);
+            }
+        }
+
+        // Right
+        row = 0;
+        col = colLength - 1;
+
+        for (int i = row; i < rowLength; i++) {
+            if (board[i][col] == 'O') {
+                dfs(i, col, board, borderConnectedElements, rowDir, colDir);
+            }
+        }
+
+        for (int i = 0; i < rowLength; i++) {
+            for (int j = 0; j < colLength; j++) {
+
+                if (borderConnectedElements[i][j] == false) {
                     board[i][j] = 'X';
                 }
+
             }
+        }
+
+    }
+
+    public void dfs(int row, int col, char[][] board, boolean[][] borderConnectedElements, int[] rowDir, int[] colDir) {
+
+        borderConnectedElements[row][col] = true;
+
+        for (int i = 0; i < 4; i++) {
+
+            int newRol = row + rowDir[i];
+            int newCol = col + colDir[i];
+
+            if (newRol >= 0 && newRol < board.length && newCol >= 0 && newCol < board[0].length &&
+                    borderConnectedElements[newRol][newCol] == false && board[newRol][newCol] == 'O') {
+                dfs(newRol, newCol, board, borderConnectedElements, rowDir, colDir);
+            }
+
         }
 
     }

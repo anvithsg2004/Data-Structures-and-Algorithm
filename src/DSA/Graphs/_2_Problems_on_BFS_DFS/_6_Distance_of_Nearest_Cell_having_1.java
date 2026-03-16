@@ -1,19 +1,6 @@
 package DSA.Graphs._2_Problems_on_BFS_DFS;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
-class Pair3 {
-    int row;
-    int col;
-    int distance;
-
-    public Pair3(int row, int col, int distance) {
-        this.row = row;
-        this.col = col;
-        this.distance = distance;
-    }
-}
+import java.util.*;
 
 public class _6_Distance_of_Nearest_Cell_having_1 {
     //In LeetCode, it is 0/1 Matrix
@@ -21,54 +8,58 @@ public class _6_Distance_of_Nearest_Cell_having_1 {
 
     public int[][] updateMatrix(int[][] mat) {
 
-        int n = mat.length;
-        int m = mat[0].length;
+        int rowLen = mat.length;
+        int colLen = mat[0].length;
 
-        boolean[][] visited = new boolean[n][m];
-        int[][] distance = new int[n][m];
+        Queue<int[]> queue = new LinkedList<>();
 
-        Queue<Pair3> queue = new LinkedList<>();
+        boolean[][] visited = new boolean[rowLen][colLen];
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (mat[i][j] == 1) {
-                    queue.add(new Pair3(i, j, 0));
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[0].length; j++) {
+                if (mat[i][j] == 0) {
+                    queue.add(new int[]{i, j, 0});
                     visited[i][j] = true;
-                } else {
-                    visited[i][j] = false;
                 }
             }
         }
 
-        int[] drow = {-1, 0, 1, 0};
-        int[] dcol = {0, 1, 0, -1};
+        int[][] result = new int[mat.length][mat[0].length];
+
+        int[] rowDir = {-1, 1, 0, 0};
+        int[] colDir = {0, 0, -1, 1};
 
         while (!queue.isEmpty()) {
 
-            int row = queue.peek().row;
-            int column = queue.peek().col;
-            int distanceTo1 = queue.peek().distance;
+            int size = queue.size();
 
-            queue.remove();
-            distance[row][column] = distanceTo1;
+            for (int k = 0; k < size; k++) {
 
-            for (int i = 0; i < 4; i++) {
-                int nrow = row + drow[i];
-                int ncol = column + dcol[i];
+                int[] coordinates = queue.poll();
+                int row = coordinates[0];
+                int col = coordinates[1];
+                int dist = coordinates[2];
 
-                if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && visited[nrow][ncol] == false) {
-                    visited[nrow][ncol] = true;
-                    queue.add(new Pair3(nrow, ncol, distanceTo1 + 1));
+                result[row][col] = dist;
+
+                for (int i = 0; i < 4; i++) {
+
+                    int newRow = row + rowDir[i];
+                    int newCol = col + colDir[i];
+
+                    if (newRow >= 0 && newRow < rowLen && newCol >= 0 && newCol < colLen &&
+                            visited[newRow][newCol] == false) {
+                        queue.add(new int[]{newRow, newCol, dist + 1});
+                        visited[newRow][newCol] = true;
+                    }
+
                 }
+
             }
 
         }
 
-        return distance;
-
-    }
-
-    public static void main(String[] args) {
+        return result;
 
     }
 }

@@ -2,84 +2,65 @@ package DSA.Graphs._2_Problems_on_BFS_DFS;
 
 import java.util.*;
 
-class Pair {
-    //This will store which has turned to rotten tomatoes(which means 2)
-    int row;
-    int column;
-
-    public Pair(int row, int column) {
-        this.row = row;
-        this.column = column;
-    }
-}
-
 public class _2_Rotting_Oranges {
 
     public int orangesRotting(int[][] grid) {
 
-        Queue<Pair> queue = new LinkedList<>();
+        int rows = grid.length;
+        int cols = grid[0].length;
 
-        boolean[][] visited = new boolean[grid.length][grid[0].length];
+        Queue<int[]> queue = new LinkedList<>();
 
-        int fresh = 0;
+        boolean[][] visited = new boolean[rows][cols];
 
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
+        int freshOranges = 0;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+
                 if (grid[i][j] == 2) {
-                    queue.add(new Pair(i, j));
+                    queue.add(new int[]{i, j});
                     visited[i][j] = true;
-                } else if (grid[i][j] == 1) {
-                    fresh++;
+                }
+
+                if (grid[i][j] == 1) {
+                    freshOranges++;
                 }
             }
         }
 
-        int[] dx = {-1, 1, 0, 0};
-        int[] dy = {0, 0, -1, 1};
+        int[] rowDir = {-1, 1, 0, 0};
+        int[] colDir = {0, 0, -1, 1};
 
-        int minute = 0;
+        int minutes = 0;
 
-        while (!queue.isEmpty()) {
+        while (!queue.isEmpty() && freshOranges > 0) {
 
             int size = queue.size();
 
-            boolean rottedThisMinute = false;
-
             for (int k = 0; k < size; k++) {
 
-                Pair pair = queue.peek();
-                int row = pair.row;
-                int col = pair.column;
-                queue.remove();
+                int[] coordinates = queue.poll();
+                int row = coordinates[0];
+                int col = coordinates[1];
 
                 for (int i = 0; i < 4; i++) {
 
-                    int newRow = dx[i] + row;
-                    int newCol = dy[i] + col;
+                    int newRow = row + rowDir[i];
+                    int newCol = col + colDir[i];
 
-                    if (newRow >= 0 && newRow < grid.length && newCol >= 0 && newCol < grid[0].length && grid[newRow][newCol] == 1 && visited[newRow][newCol] == false) {
-                        queue.add(new Pair(newRow, newCol));
+                    if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols && !visited[newRow][newCol] && grid[newRow][newCol] == 1) {
+
+                        queue.add(new int[]{newRow, newCol});
                         visited[newRow][newCol] = true;
-                        grid[newRow][newCol] = 2;
-                        fresh--;
-                        rottedThisMinute = true;
+                        freshOranges--;
                     }
-
                 }
-
             }
 
-            if (rottedThisMinute) {
-                minute++;
-            }
-
+            minutes++;
         }
 
-        if (fresh == 0) {
-            return minute;
-        }
-
-        return -1;
-
+        return freshOranges == 0 ? minutes : -1;
     }
 }
