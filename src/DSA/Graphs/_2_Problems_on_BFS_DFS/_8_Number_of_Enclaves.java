@@ -2,78 +2,105 @@ package DSA.Graphs._2_Problems_on_BFS_DFS;
 
 public class _8_Number_of_Enclaves {
 
-    public void dfs(int row, int col, int[] drow, int[] dcol, boolean[][] visited, int[][] grid) {
-
-        visited[row][col] = true;
-
-        int n = grid.length;
-        int m = grid[0].length;
-
-        for (int i = 0; i < 4; i++) {
-            int nrow = row + drow[i];
-            int ncol = col + dcol[i];
-            if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && visited[nrow][ncol] == false && grid[nrow][ncol] == 1) {
-                dfs(nrow, ncol, drow, dcol, visited, grid);
-            }
-        }
-
-    }
-
     public int numEnclaves(int[][] grid) {
 
-        int[] drow = {-1, 0, 1, 0};
-        int[] dcol = {0, 1, 0, -1};
+        int rowLen = grid.length;
+        int colLen = grid[0].length;
+
+        int[] rowDir = {-1, 1, 0, 0};
+        int[] colDir = {0, 0, -1, 1};
+
+        boolean[][] borderConnectedElements = new boolean[rowLen][colLen];
 
         int n = grid.length;
         int m = grid[0].length;
 
-        boolean[][] visited = new boolean[n][m];
-
-        int noOf1 = 0;
-
-        //Traverse through first Column and last Column.
-        for (int i = 0; i < n; i++) {
-
-            //First Row
-            if (visited[i][0] == false && grid[i][0] == 1) {
-                dfs(i, 0, drow, dcol, visited, grid);
+        // Top row
+        for (int j = 0; j < m; j++) {
+            if (grid[0][j] == 1) {
+                borderConnectedElements[0][j] = true;
             }
-
-            //Last Row
-            if (visited[i][m - 1] == false && grid[i][m - 1] == 1) {
-                dfs(i, m - 1, drow, dcol, visited, grid);
-            }
-
         }
 
-        //Traverse through the first row and last row.
-        for (int i = 0; i < m; i++) {
-
-            //First Row
-            if (visited[0][i] == false && grid[0][i] == 1) {
-                dfs(0, i, drow, dcol, visited, grid);
+        // Right column
+        for (int i = 1; i < n; i++) {
+            if (grid[i][m - 1] == 1) {
+                borderConnectedElements[i][m - 1] = true;
             }
-
-            //Last Row
-            if (visited[n - 1][i] == false && grid[n - 1][i] == 1) {
-                dfs(n - 1, i, drow, dcol, visited, grid);
-            }
-
         }
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (visited[i][j] == false && grid[i][j] == 1) {
-                    noOf1++;
+        // Bottom row
+        for (int j = m - 2; j >= 0; j--) {
+            if (grid[n - 1][j] == 1) {
+                borderConnectedElements[n - 1][j] = true;
+            }
+        }
+
+        // Left column
+        for (int i = n - 2; i > 0; i--) {
+            if (grid[i][0] == 1) {
+                borderConnectedElements[i][0] = true;
+            }
+        }
+
+        // Traversal
+
+        // Top row
+        for (int j = 0; j < m; j++) {
+            if (grid[0][j] == 1) {
+                dfs(0, j, rowDir, colDir, grid, borderConnectedElements);
+            }
+        }
+
+        // Right column
+        for (int i = 1; i < n; i++) {
+            if (grid[i][m - 1] == 1) {
+                dfs(i, m - 1, rowDir, colDir, grid, borderConnectedElements);
+            }
+        }
+
+        // Bottom row
+        for (int j = m - 2; j >= 0; j--) {
+            if (grid[n - 1][j] == 1) {
+                dfs(n - 1, j, rowDir, colDir, grid, borderConnectedElements);
+            }
+        }
+
+        // Left column
+        for (int i = n - 2; i > 0; i--) {
+            if (grid[i][0] == 1) {
+                dfs(i, 0, rowDir, colDir, grid, borderConnectedElements);
+            }
+        }
+
+        int count = 0;
+
+        for (int i = 0; i < rowLen; i++) {
+            for (int j = 0; j < colLen; j++) {
+                if (grid[i][j] == 1 && borderConnectedElements[i][j] == false) {
+                    count++;
                 }
             }
         }
 
-        return noOf1;
+        return count;
 
     }
 
-    public static void main(String[] args) {
+    public void dfs(int row, int col, int[] rowDir, int[] colDir, int[][] grid, boolean[][] borderConnectedElements) {
+
+        borderConnectedElements[row][col] = true;
+
+        for (int i = 0; i < 4; i++) {
+
+            int newRow = row + rowDir[i];
+            int newCol = col + colDir[i];
+
+            if (newRow >= 0 && newRow < grid.length && newCol >= 0 && newCol < grid[0].length && grid[newRow][newCol] == 1 && borderConnectedElements[newRow][newCol] == false) {
+                dfs(newRow, newCol, rowDir, colDir, grid, borderConnectedElements);
+            }
+
+        }
 
     }
 }

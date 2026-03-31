@@ -7,56 +7,76 @@ import java.util.Queue;
 public class _5_Course_Schedule_II {
 
     public int[] findOrder(int numCourses, int[][] prerequisites) {
+
+        int n = numCourses;
+
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
 
-        for (int i = 0; i < numCourses; i++) {
+        for (int i = 0; i < n; i++) {
             adj.add(new ArrayList<>());
         }
 
         for (int[] pre : prerequisites) {
-            adj.get(pre[1]).add(pre[0]);
+
+            int u = pre[0];
+            int v = pre[1];
+
+            adj.get(v).add(u);
+
         }
 
-        int[] inDegree = new int[numCourses];
-        for (int i = 0; i < numCourses; i++) {
+        int[] inDegree = new int[n];
+
+        for (int i = 0; i < n; i++) {
             for (int it : adj.get(i)) {
                 inDegree[it]++;
             }
         }
 
         Queue<Integer> queue = new LinkedList<>();
-        for (int i = 0; i < numCourses; i++) {
+
+        for (int i = 0; i < n; i++) {
             if (inDegree[i] == 0) {
                 queue.add(i);
             }
         }
 
-        int[] result = new int[numCourses];
-        int index = 0;
+        ArrayList<Integer> result = new ArrayList<>();
 
         while (!queue.isEmpty()) {
-            int node = queue.peek();
-            queue.remove();
-            result[index] = node;
-            index++;
 
-            for (int it : adj.get(node)) {
-                inDegree[it]--;
-                if (inDegree[it] == 0) {
-                    queue.add(it);
+            int size = queue.size();
+
+            for (int i = 0; i < size; i++) {
+
+                Integer node = queue.poll();
+                result.add(node);
+
+                for (Integer neighbour : adj.get(node)) {
+
+                    inDegree[neighbour]--;
+
+                    if (inDegree[neighbour] == 0) {
+                        queue.add(neighbour);
+                    }
+
                 }
+
             }
+
         }
 
-        // Check for cycles
-        if (index == numCourses) {
-            return result; // All courses processed successfully
-        } else {
-            return new int[0]; // Cycle detected
+        if (result.size() != n) {
+            return new int[0];
         }
-    }
 
-    public static void main(String[] args) {
+        int[] ans = new int[result.size()];
+
+        for (int i = 0; i < result.size(); i++) {
+            ans[i] = result.get(i);
+        }
+
+        return ans;
 
     }
 }

@@ -2,33 +2,75 @@ package DSA.Graphs._5_Minimum_Spanning_Tree;
 
 public class _7_Number_of_operations_to_make_network_connected {
     public int makeConnected(int n, int[][] connections) {
-        _5_Union_by_Size ds = new _5_Union_by_Size(n);
-        int countExtras = 0;
-        int m = connections.length;
 
-        for (int i = 0; i < m; i++) {
-            int u = connections[i][0];
-            int v = connections[i][1];
-            if (ds.findPar(u) == ds.findPar(v)) {
-                countExtras++;
-            } else {
-                ds.unionByRank(u, v);
-            }
+        if (connections.length < n - 1) {
+            return -1;
         }
 
-        int countC = 0;
+        DisjoinSet ds = new DisjoinSet(n);
+
+        for (int[] edge : connections) {
+            ds.union(edge[0], edge[1]);
+        }
+
+        int components = 0;
+
         for (int i = 0; i < n; i++) {
-            if (ds.parent.get(i) == i) {
-                countC++;
+            if (ds.find(i) == i) {
+                components++;
             }
         }
 
-        int ans = countC - 1;
+        return components - 1;
 
-        if (countExtras >= ans) {
-            return ans;
+    }
+
+    class DisjoinSet {
+
+        int[] parent;
+        int[] rank;
+
+        public DisjoinSet(int n) {
+
+            parent = new int[n];
+            rank = new int[n];
+
+            for (int i = 0; i < n; i++) {
+                parent[i] = i;
+                rank[i] = 0;
+            }
+
         }
 
-        return -1;
+        public int find(int node) {
+
+            if (node == parent[node]) {
+                return node;
+            }
+
+            return parent[node] = find(parent[node]);
+
+        }
+
+        public void union(int u, int v) {
+
+            int pu = find(u);
+            int pv = find(v);
+
+            if (pu == pv) {
+                return;
+            }
+
+            if (rank[pu] < rank[pv]) {
+                parent[pu] = pv;
+            } else if (rank[pv] < rank[pu]) {
+                parent[pv] = pu;
+            } else {
+                parent[pv] = pu;
+                rank[pu]++;
+            }
+
+        }
+
     }
 }

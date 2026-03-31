@@ -3,43 +3,38 @@ package DSA.Recursion.Pattern._2_For_loop;
 import java.util.*;
 
 public class _3_Combination_Sum {
+
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
 
         List<List<Integer>> result = new ArrayList<>();
 
-        helper(0, 0, result, new ArrayList<>(), candidates, target);
+        backtrack(0, 0, candidates, target, new ArrayList<>(), result);
 
         return result;
-
     }
 
-    public void helper(int start, int sum, List<List<Integer>> result, List<Integer> current, int[] candidates, int target) {
+    private void backtrack(int startIndex, int currentSum, int[] candidates, int target,
+                           List<Integer> currentCombination, List<List<Integer>> result) {
 
-        if (target == sum) {
-            result.add(new ArrayList<>(current));
+        if (currentSum == target) {
+            result.add(new ArrayList<>(currentCombination));
+            return; // Important to stop further exploration
         }
 
-        if (sum > target) {
+        if (currentSum > target) {
             return;
         }
 
-        if (start == candidates.length) {
-            return;
-        }
-
-        for (int index = start; index < candidates.length; index++) {
+        for (int i = startIndex; i < candidates.length; i++) {
 
             // Choose
-            current.add(candidates[index]);
+            currentCombination.add(candidates[i]);
 
-            // Explore
-            helper(index, sum + candidates[index], result, current, candidates, target);
+            // Explore (same index because repetition is allowed)
+            backtrack(i, currentSum + candidates[i], candidates, target, currentCombination, result);
 
-            // Undo
-            current.remove(current.size() - 1);
-
+            // Undo (backtrack)
+            currentCombination.remove(currentCombination.size() - 1);
         }
-
     }
-
 }

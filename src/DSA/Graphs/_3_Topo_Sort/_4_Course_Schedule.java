@@ -55,8 +55,4 @@ public class _4_Course_Schedule {
         return false;
 
     }
-
-    public static void main(String[] args) {
-
-    }
 }

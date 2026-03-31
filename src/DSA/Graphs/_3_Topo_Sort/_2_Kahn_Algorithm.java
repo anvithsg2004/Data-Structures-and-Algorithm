@@ -14,52 +14,65 @@ public class _2_Kahn_Algorithm {
     //3) As I take out, put it in a Queue and at last remove and return it.
     //4) That's the answer(Topo Sort)
 
-    public static ArrayList<Integer> topologicalSort(ArrayList<ArrayList<Integer>> adj) {
+    public ArrayList<Integer> topoSort(int V, int[][] edges) {
 
-        int v = adj.size();
+        int n = V;
 
-        //To calculate the In Degree.
-        int[] inDegree = new int[v];
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
 
-        //Traverse through the adjacency Lists and calculate the In Degree.
-        for (int i = 0; i < v; i++) {
+        for (int i = 0; i < n; i++) {
+            adj.add(new ArrayList<>());
+        }
+
+        for (int[] edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+
+            adj.get(u).add(v);
+        }
+
+        ArrayList<Integer> result = new ArrayList<>();
+
+        int[] inDegree = new int[n];
+
+        for (int i = 0; i < n; i++) {
             for (int it : adj.get(i)) {
                 inDegree[it]++;
             }
         }
 
-        //First store the node which has the In Degree 0.
         Queue<Integer> queue = new LinkedList<>();
-        //Store it in the queue.
-        for (int i = 0; i < v; i++) {
+
+        for (int i = 0; i < n; i++) {
             if (inDegree[i] == 0) {
                 queue.add(i);
             }
         }
 
-        //This is to store the topo sort and return.
-        ArrayList<Integer> topo = new ArrayList<>();
-        int index = 0;
-
-        //Do the BFS.
         while (!queue.isEmpty()) {
-            //Get the Queue Elements and add it to the topo ArrayList.
-            int node = queue.peek();
-            queue.remove();
-            topo.add(index, node);
-            index = index + 1;
 
-            //Get the node and decrease the node In degree Values.
-            for (int it : adj.get(node)) {
-                inDegree[it]--;
+            int size = queue.size();
 
-                //In the middle, if you get any In Degree as 0, then add it to the queue for the next iteration.
-                if (inDegree[it] == 0) {
-                    queue.add(it);
+            for (int k = 0; k < size; k++) {
+
+                int node = queue.poll();
+                result.add(node);
+
+                for (Integer neighbour : adj.get(node)) {
+
+                    inDegree[neighbour]--;
+
+                    if (inDegree[neighbour] == 0) {
+                        queue.add(neighbour);
+                    }
+
                 }
+
             }
+
         }
 
-        return topo;
+        return result;
+
     }
 }

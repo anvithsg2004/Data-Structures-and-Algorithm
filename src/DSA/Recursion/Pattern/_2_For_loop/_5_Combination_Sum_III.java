@@ -3,46 +3,49 @@ package DSA.Recursion.Pattern._2_For_loop;
 import java.util.*;
 
 public class _5_Combination_Sum_III {
-    public List<List<Integer>> combinationSum3(int k, int n) {
 
-        int[] nums = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+    public List<List<Integer>> combinationSum3(int k, int target) {
+
+        int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
         List<List<Integer>> result = new ArrayList<>();
 
-        helper(0, k, n, nums, result, new ArrayList<>());
+        backtrack(0, k, target, numbers, new ArrayList<>(), result);
 
         return result;
-
     }
 
-    public void helper(int start, int k, int sum, int[] nums, List<List<Integer>> result, List<Integer> current) {
+    private void backtrack(int startIndex, int remainingCount, int remainingSum,
+                           int[] numbers, List<Integer> currentCombination,
+                           List<List<Integer>> result) {
 
-        if (k == 0) {
-            if (sum == 0) {
-                result.add(new ArrayList<>(current));
-            }
-        }
-
-        if (start >= nums.length) {
+        // Valid combination
+        if (remainingCount == 0 && remainingSum == 0) {
+            result.add(new ArrayList<>(currentCombination));
             return;
         }
 
-        for (int index = start; index < nums.length; index++) {
+        // Invalid case
+        if (remainingCount == 0 || remainingSum < 0) {
+            return;
+        }
 
-            if (nums[index] > sum) {
-                continue;
+        for (int i = startIndex; i < numbers.length; i++) {
+
+            // Optimization (since numbers are sorted)
+            if (numbers[i] > remainingSum) {
+                break;
             }
 
             // Choose
-            current.add(nums[index]);
+            currentCombination.add(numbers[i]);
 
             // Explore
-            helper(index + 1, k - 1, sum - nums[index], nums, result, current);
+            backtrack(i + 1, remainingCount - 1, remainingSum - numbers[i],
+                    numbers, currentCombination, result);
 
             // Undo
-            current.remove(current.size() - 1);
-
+            currentCombination.remove(currentCombination.size() - 1);
         }
-
     }
 }

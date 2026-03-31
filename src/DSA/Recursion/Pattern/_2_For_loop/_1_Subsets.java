@@ -14,17 +14,17 @@ public class _1_Subsets {
 
     }
 
-    public void helper(int index, List<List<Integer>> result, List<Integer> current, int[] nums) {
+    public void helper(int start, List<List<Integer>> result, List<Integer> current, int[] nums) {
 
         result.add(new ArrayList<>(current));
 
-        for (int start = index; start < nums.length; start++) {
+        for (int index = start; index < nums.length; index++) {
 
             // Choose
-            current.add(nums[start]);
+            current.add(nums[index]);
 
             // Explore
-            helper(start + 1, result, current, nums);
+            helper(index + 1, result, current, nums);
 
             // Undo
             current.remove(current.size() - 1);

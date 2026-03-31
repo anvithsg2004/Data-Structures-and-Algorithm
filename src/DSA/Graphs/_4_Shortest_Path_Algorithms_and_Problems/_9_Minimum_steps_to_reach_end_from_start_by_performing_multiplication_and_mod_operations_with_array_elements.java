@@ -1,59 +1,42 @@
 package DSA.Graphs._4_Shortest_Path_Algorithms_and_Problems;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
-
-class Pair8 {
-    int steps;
-    int numbers;
-
-    public Pair8(int steps, int numbers) {
-        this.steps = steps;
-        this.numbers = numbers;
-    }
-}
+import java.util.*;
 
 public class _9_Minimum_steps_to_reach_end_from_start_by_performing_multiplication_and_mod_operations_with_array_elements {
     public int minimumMultiplications(int[] arr, int start, int end) {
 
-        if (start == end) {
-            return 0;
-        }
+        Queue<int[]> queue = new LinkedList<>();
+        queue.add(new int[]{start, 0});
 
-        Queue<Pair8> queue = new LinkedList<>();
-        queue.add(new Pair8(0, start));
-
-        int[] distances = new int[100000];
-        Arrays.fill(distances, (int) 1e9);
-
-        distances[start] = 0;
-
-        int mod = 100000;
-        int n = arr.length;
+        int[] dist = new int[100000];
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        dist[start] = 0;
 
         while (!queue.isEmpty()) {
 
-            int node = queue.peek().numbers;
-            int steps = queue.peek().steps;
-            queue.remove();
+            int[] current = queue.poll();
 
-            for (int i = 0; i < n; i++) {
-                int num = (arr[i] * node) % mod;
+            int num = current[0];
+            int steps = current[1];
 
-                if (steps + 1 < distances[num]) {
-                    distances[num] = steps + 1;
+            if (num == end) {
+                return steps;
+            }
 
-                    if (num == end) {
-                        return steps + 1;
-                    }
+            for (int x : arr) {
 
-                    queue.add(new Pair8(steps + 1, num));
+                int newNum = (num * x) % 100000;
+
+                if (steps + 1 < dist[newNum]) {
+                    dist[newNum] = steps + 1;
+                    queue.add(new int[]{newNum, steps + 1});
                 }
+
             }
 
         }
 
         return -1;
+
     }
 }

@@ -1,72 +1,64 @@
 package DSA.Graphs._4_Shortest_Path_Algorithms_and_Problems;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
-
-class Tuple {
-    int u;
-    int v;
-    int distance;
-
-    public Tuple(int u, int v, int distance) {
-        this.u = u;
-        this.v = v;
-        this.distance = distance;
-    }
-}
+import java.util.*;
 
 public class _5_Shortest_Distance_Binary_Maze {
 
     public int shortestPathBinaryMatrix(int[][] grid) {
-        Queue<Tuple> queue = new LinkedList<>();
 
         int n = grid.length;
-        int m = grid[0].length;
 
-        // Validate the source and destination based on standard convention
-        if (grid[0][0] != 0 || grid[n - 1][m - 1] != 0) {
+        if (grid[0][0] == 1 || grid[n - 1][n - 1] == 1) {
             return -1;
         }
 
-        // Handle the 1x1 grid case
-        if (n == 1 && m == 1) {
-            return 1;
-        }
-
-        int[][] distance = new int[n][m];
-
-        for (int i = 0; i < n; i++) {
-            Arrays.fill(distance[i], (int) 1e9);
-        }
-
-        distance[0][0] = 1;
-        queue.add(new Tuple(0, 0, 1));
+        Queue<int[]> queue = new LinkedList<>();
+        queue.add(new int[]{0, 0, 1});
 
         // 8-directional movement
         int[] drow = {-1, -1, -1, 0, 0, 1, 1, 1};
         int[] dcol = {-1, 0, 1, -1, 1, -1, 0, 1};
 
+        boolean[][] visited = new boolean[grid.length][grid[0].length];
+        visited[0][0] = true;
+
         while (!queue.isEmpty()) {
-            Tuple current = queue.poll();
-            int row = current.u;
-            int column = current.v;
-            int dist = current.distance;
 
-            for (int i = 0; i < 8; i++) { // Iterate through all 8 directions
-                int newr = row + drow[i];
-                int newc = column + dcol[i];
+            int[] values = queue.poll();
+            int row = values[0];
+            int col = values[1];
+            int distance = values[2];
 
-                if (newr >= 0 && newr < n && newc >= 0 && newc < m && grid[newr][newc] == 0 && dist + 1 < distance[newr][newc]) {
-                    distance[newr][newc] = dist + 1;
-                    if (newr == n - 1 && newc == m - 1) {
-                        return dist + 1;
-                    }
-                    queue.add(new Tuple(newr, newc, dist + 1));
-                }
+            if (row == grid.length - 1 && col == grid[0].length - 1) {
+                return distance;
             }
+
+            for (int i = 0; i < 8; i++) {
+
+                int newRow = row + drow[i];
+                int newCol = col + dcol[i];
+
+                if (isValid(newRow, newCol, drow, dcol, grid, visited)) {
+
+                    visited[newRow][newCol] = true;
+                    queue.add(new int[]{newRow, newCol, distance + 1});
+
+                }
+
+
+            }
+
         }
 
         return -1;
+
+    }
+
+    public boolean isValid(int row, int col, int[] dRow, int[] dCol, int[][] grid, boolean[][] visited) {
+
+        int rowLength = grid.length;
+        int colLength = grid[0].length;
+
+        return row >= 0 && row < rowLength && col >= 0 && col < colLength && visited[row][col] == false && grid[row][col] == 0;
     }
 }

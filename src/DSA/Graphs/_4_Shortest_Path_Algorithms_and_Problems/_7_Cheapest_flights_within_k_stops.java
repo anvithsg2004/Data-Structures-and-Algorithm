@@ -2,66 +2,64 @@ package DSA.Graphs._4_Shortest_Path_Algorithms_and_Problems;
 
 import java.util.*;
 
-class Edge {
-    int node, cost;
-
-    public Edge(int node, int cost) {
-        this.node = node;
-        this.cost = cost;
-    }
-}
-
-class FlightInfo {
-    int stopsSoFar, node, costSoFar;
-
-    public FlightInfo(int stops, int node, int cost) {
-        this.stopsSoFar = stops;
-        this.node = node;
-        this.costSoFar = cost;
-    }
-}
-
 class _7_Cheapest_flights_within_k_stops {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
-        List<List<Edge>> adj = new ArrayList<>();
+
+        ArrayList<ArrayList<int[]>> adj = new ArrayList<>();
+
         for (int i = 0; i < n; i++) {
             adj.add(new ArrayList<>());
         }
 
-        for (int[] flight : flights) {
-            int from = flight[0];
-            int to = flight[1];
-            int cost = flight[2];
+        for (int[] i : flights) {
+            int row = i[0];
+            int col = i[1];
+            int price = i[2];
 
-            adj.get(from).add(new Edge(to, cost));
+            adj.get(row).add(new int[]{col, price});
         }
 
-        int[] minCost = new int[n];
-        Arrays.fill(minCost, Integer.MAX_VALUE);
-        minCost[src] = 0;
+        int[][] dist = new int[n][k + 2];
+        for (int[] row : dist) {
+            Arrays.fill(row, Integer.MAX_VALUE);
+        }
 
-        Queue<FlightInfo> queue = new LinkedList<>();
-        queue.offer(new FlightInfo(0, src, 0));
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> (a[2] - b[2]));
+        pq.add(new int[]{src, 0, 0});
+        dist[0][0] = 0;
 
-        while (!queue.isEmpty()) {
-            FlightInfo current = queue.poll();
-            int stopsSoFar = current.stopsSoFar;
-            int currentNode = current.node;
-            int costSoFar = current.costSoFar;
+        while (!pq.isEmpty()) {
 
-            if (stopsSoFar > k) continue;
+            int[] current = pq.poll();
+            int node = current[0];
+            int stops = current[1];
+            int cost = current[2];
 
-            for (Edge edge : adj.get(currentNode)) {
-                int nextNode = edge.node;
-                int flightCost = edge.cost;
-
-                if (minCost[nextNode] > costSoFar + flightCost) {
-                    minCost[nextNode] = costSoFar + flightCost;
-                    queue.offer(new FlightInfo(stopsSoFar + 1, nextNode, minCost[nextNode]));
-                }
+            if (node == dst) {
+                return cost;
             }
+
+            if (stops > k) {
+                continue;
+            }
+
+            for (int[] neighbour : adj.get(node)) {
+
+                int next = neighbour[0];
+                int weight = neighbour[1];
+
+                int newWeight = cost + weight;
+
+                if (newWeight < dist[next][stops + 1]) {
+                    dist[next][stops + 1] = newWeight;
+                    pq.add(new int[]{next, stops + 1, newWeight});
+                }
+
+            }
+
         }
 
-        return minCost[dst] == Integer.MAX_VALUE ? -1 : minCost[dst];
+        return -1;
+
     }
 }

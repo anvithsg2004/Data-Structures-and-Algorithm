@@ -3,38 +3,37 @@ package DSA.Recursion.Pattern._2_For_loop;
 import java.util.*;
 
 public class _2_Subsets_II {
-    public List<List<Integer>> subsetsWithDup(int[] nums) {
+
+    public List<List<Integer>> getSubsets(int[] nums) {
 
         List<List<Integer>> result = new ArrayList<>();
 
-        Arrays.sort(nums);
+        Arrays.sort(nums); // Important for handling duplicates
 
-        helper(0, result, new ArrayList<>(), nums);
+        backtrack(0, nums, new ArrayList<>(), result);
 
         return result;
-
     }
 
-    public void helper(int index, List<List<Integer>> result, List<Integer> current, int[] nums) {
+    private void backtrack(int startIndex, int[] nums, List<Integer> currentSubset, List<List<Integer>> result) {
 
-        result.add(new ArrayList<>(current));
+        result.add(new ArrayList<>(currentSubset));
 
-        for (int start = index; start < nums.length; start++) {
+        for (int i = startIndex; i < nums.length; i++) {
 
-            if (start > index && nums[start] != nums[start - 1]) {
+            // Skip duplicates
+            if (i > startIndex && nums[i] == nums[i - 1]) {
                 continue;
             }
 
             // Choose
-            current.add(nums[start]);
+            currentSubset.add(nums[i]);
 
             // Explore
-            helper(start + 1, result, current, nums);
+            backtrack(i + 1, nums, currentSubset, result);
 
-            // Undo
-            current.remove(current.size() - 1);
-
+            // Undo (backtrack)
+            currentSubset.remove(currentSubset.size() - 1);
         }
-
     }
 }

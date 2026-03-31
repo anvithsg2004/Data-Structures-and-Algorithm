@@ -8,46 +8,40 @@ public class _4_Combination_Sum_II {
 
         List<List<Integer>> result = new ArrayList<>();
 
-        helper(0, 0, result, new ArrayList<>(), candidates, target);
+        Arrays.sort(candidates); // Important for duplicate handling
+
+        backtrack(0, 0, candidates, target, new ArrayList<>(), result);
 
         return result;
-
     }
 
-    public static void helper(int start, int sum, List<List<Integer>> result, List<Integer> current, int[] candidates, int target) {
+    public static void backtrack(int startIndex, int currentSum, int[] candidates, int target,
+                                 List<Integer> currentCombination, List<List<Integer>> result) {
 
-        if (target == sum) {
-            result.add(new ArrayList<>(current));
+        if (currentSum == target) {
+            result.add(new ArrayList<>(currentCombination));
+            return; // Stop further exploration
         }
 
-        if (sum > target) {
+        if (currentSum > target) {
             return;
         }
 
-        if (start >= candidates.length) {
-            return;
-        }
+        for (int i = startIndex; i < candidates.length; i++) {
 
-        for (int index = start; index < candidates.length; index++) {
+            // Skip duplicates
+            if (i > startIndex && candidates[i] == candidates[i - 1]) {
+                continue;
+            }
 
             // Choose
-            current.add(candidates[index]);
+            currentCombination.add(candidates[i]);
 
-            // Explore
-            helper(index + 1, sum + candidates[index], result, current, candidates, target);
+            // Explore (move to next index → no reuse)
+            backtrack(i + 1, currentSum + candidates[i], candidates, target, currentCombination, result);
 
             // Undo
-            current.remove(current.size() - 1);
-
+            currentCombination.remove(currentCombination.size() - 1);
         }
-
     }
-
-    public static void main(String[] args) {
-        int[] candidates = {10, 1, 2, 7, 6, 1, 5};
-        int target = 7;
-        combinationSum2(candidates, target);
-
-    }
-
 }

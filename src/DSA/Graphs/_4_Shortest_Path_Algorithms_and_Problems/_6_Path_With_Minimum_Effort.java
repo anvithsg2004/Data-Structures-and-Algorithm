@@ -1,74 +1,67 @@
 package DSA.Graphs._4_Shortest_Path_Algorithms_and_Problems;
 
-import java.util.PriorityQueue;
-
-class Tuple2 {
-    int row;
-    int col;
-    int distance;
-
-    public Tuple2(int row, int col, int distance) {
-        this.row = row;
-        this.col = col;
-        this.distance = distance;
-    }
-}
+import java.util.*;
 
 public class _6_Path_With_Minimum_Effort {
 
     public int minimumEffortPath(int[][] heights) {
 
-        int n = heights.length;
-        int m = heights[0].length;
+        int rowLen = heights.length;
+        int colLen = heights[0].length;
 
-        int[][] dist = new int[n][m];
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                dist[i][j] = (int) 1e9;
-            }
+        int[][] dist = new int[rowLen][colLen];
+        for (int[] distRow : dist) {
+            Arrays.fill(distRow, Integer.MAX_VALUE);
         }
 
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> (a[2] - b[2]));
+
+        pq.add(new int[]{0, 0, 0});
         dist[0][0] = 0;
 
-        //Priority Queue is a must.
-        //Be careful.
-        //LeetCode does not accept this thing.
-        PriorityQueue<Tuple2> queue = new PriorityQueue<>((x, y) -> x.distance - y.distance);
-        queue.add(new Tuple2(0, 0, 0));
+        int[] drow = {-1, 1, 0, 0};
+        int[] dcol = {0, 0, -1, 1};
 
-        int[] dr = {-1, 0, 1, 0};
-        int[] dc = {0, 1, 0, -1};
+        while (!pq.isEmpty()) {
 
-        while (!queue.isEmpty()) {
+            int[] current = pq.poll();
+            int row = current[0];
+            int col = current[1];
+            int effort = current[2];
 
-            Tuple2 current = queue.poll();
-            int row = current.row;
-            int col = current.col;
-            int diff = current.distance;
-
-            // Check if we have reached the destination cell,
-            // return the current value of difference (which will be min).
-            if (row == n - 1 && col == m - 1) return diff;
+            if (row == rowLen - 1 && col == colLen - 1) {
+                return effort;
+            }
 
             for (int i = 0; i < 4; i++) {
-                int newr = row + dr[i];
-                int newc = col + dc[i];
 
-                if (newr >= 0 && newc >= 0 && newc < m && newr < n) {
+                int newRow = row + drow[i];
+                int newCol = col + dcol[i];
 
-                    int newDist = Math.max(Math.abs(heights[row][col] - heights[newr][newc]), diff);
+                if (isValid(newRow, newCol, rowLen, colLen)) {
 
-                    if (newDist < dist[newr][newc]) {
-                        dist[newr][newc] = newDist;
-                        queue.add(new Tuple2(newr, newc, newDist));
+                    int edgeDiff = Math.abs(heights[row][col] - heights[newRow][newCol]);
+
+                    int newEffort = Math.max(effort, edgeDiff);
+
+                    if (newEffort < dist[newRow][newCol]) {
+
+                        dist[newRow][newCol] = newEffort;
+                        pq.add(new int[]{newRow, newCol, newEffort});
+
                     }
+
                 }
+
             }
 
         }
 
         return 0;
 
+    }
+
+    private boolean isValid(int row, int col, int n, int m) {
+        return row >= 0 && col >= 0 && row < n && col < m;
     }
 }

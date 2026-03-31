@@ -1,4 +1,4 @@
-//Disjoint Set
+package DSA.Graphs._5_Minimum_Spanning_Tree;//Disjoint Set
 //For Example :-
 //We have two parts 1→2→3→4 and 5→6→7. Now the question is does 1 and 5 belong to the same component or not?
 //Basically I do is that I do a simple DFS/BFS which basically take O(V + E).
@@ -26,3 +26,40 @@
 // In the above graph (3) ultimate parent is (1).
 // So instead of traversing from (3) to (1), change it to (2) -> (1) <- (3).
 //This will reduce the time.
+
+class _3_Disjoint_Set {
+
+    int[] parent;
+
+    public _3_Disjoint_Set(int n) {
+
+        parent = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            parent[i] = i;
+        }
+
+    }
+
+    public int find(int node) {
+        if (parent[node] == node) {
+            return node;
+        }
+
+        return find(parent[node]);
+    }
+
+    public void merge(int u, int v) {
+
+        int pu = find(u);
+        int pv = find(v);
+
+        if (pu == pv) {
+            return;
+        }
+
+        parent[pu] = pv;
+
+    }
+
+}
