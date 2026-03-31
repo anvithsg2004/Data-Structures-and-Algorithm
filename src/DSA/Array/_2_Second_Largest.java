@@ -26,3 +26,4 @@ public class _2_Second_Largest {
         System.out.println("The Second Largest is : " + slargest(array));
     }
 }
+
