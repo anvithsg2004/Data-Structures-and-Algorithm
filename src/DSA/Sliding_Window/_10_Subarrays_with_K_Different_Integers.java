@@ -1,31 +1,35 @@
 package DSA.Sliding_Window;
 
-import java.util.HashMap;
+import java.util.*;
 
 public class _10_Subarrays_with_K_Different_Integers {
     public int subarraysWithKDistinct(int[] nums, int k) {
-        int n = nums.length;
-        int result = 0;
-        int left = 0;
-        int right = 0;
-        HashMap<Integer, Integer> mpp = new HashMap<>();
+        return atMost(nums, k) - atMost(nums, k - 1);
+    }
 
-        for (right = 0; right < n; right++) {
-            mpp.put(nums[right], mpp.getOrDefault(nums[right], 0) + 1);
+    private int atMost(int[] nums, int k) {
+        int i = 0, j = 0;
+        int count = 0;
 
-            while (mpp.size() > k) {
-                mpp.put(nums[left], mpp.get(nums[left] - 1));
+        Map<Integer, Integer> map = new HashMap<>();
 
-                if (mpp.get(nums[left]) == 0) {
-                    mpp.remove(nums[left]);
+        while (j < nums.length) {
+
+            map.put(nums[j], map.getOrDefault(nums[j], 0) + 1);
+
+            while (map.size() > k) {
+                map.put(nums[i], map.get(nums[i]) - 1);
+                if (map.get(nums[i]) == 0) {
+                    map.remove(nums[i]);
                 }
-
-                left++;
+                i++;
             }
 
-            result += right - left + 1;
+            count += (j - i + 1);   // ⭐ core logic
+
+            j++;
         }
 
-        return result;
+        return count;
     }
 }

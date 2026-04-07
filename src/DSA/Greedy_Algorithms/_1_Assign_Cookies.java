@@ -4,22 +4,24 @@ import java.util.Arrays;
 
 public class _1_Assign_Cookies {
     public int findContentChildren(int[] g, int[] s) {
-        int n = g.length;
-        int m = s.length;
 
         Arrays.sort(g);
         Arrays.sort(s);
 
-        int left = 0;  // For the children array
-        int right = 0; // For the cookie array
+        int i = 0;
+        int j = 0;
 
-        while (left < n && right < m) {
-            if (g[left] <= s[right]) {
-                left++; // Child is content, move to the next child
+        while (i < g.length && j < s.length) {
+
+            if (s[j] >= g[i]) {
+                i++;
             }
-            right++; // Move to the next cookie
+
+            j++;
+
         }
 
-        return left; // The number of satisfied children
+        return i;
+
     }
 }

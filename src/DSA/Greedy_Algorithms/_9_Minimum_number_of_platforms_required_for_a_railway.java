@@ -3,35 +3,34 @@ package DSA.Greedy_Algorithms;
 import java.util.Arrays;
 
 public class _9_Minimum_number_of_platforms_required_for_a_railway {
-    public int findPlatform(int[] arr, int[] dep) {
+    public int minPlatform(int[] arr, int[] dep) {
 
         int n = arr.length;
 
         Arrays.sort(arr);
         Arrays.sort(dep);
 
-        int platformNeeded = 1;
-        int result = 1;
-        int i = 1;
+        int platform = 0;
+        int maxPlatformNeeded = 0;
+
+        int i = 0;
         int j = 0;
 
-        while (i < n && j < n) {
+        while (i < arr.length && j < dep.length) {
 
             if (arr[i] <= dep[j]) {
-                platformNeeded = platformNeeded + 1;
-                i = i + 1;
-            } else if (arr[i] > dep[j]) {
-                platformNeeded = platformNeeded - 1;
-                j = j + 1;
+                platform++;
+                i++;
+            } else {
+                platform--;
+                j++;
             }
 
-            if (platformNeeded > result) {
-                result = platformNeeded;
-            }
+            maxPlatformNeeded = Math.max(maxPlatformNeeded, platform);
 
         }
 
-        return result;
+        return maxPlatformNeeded;
 
     }
 }

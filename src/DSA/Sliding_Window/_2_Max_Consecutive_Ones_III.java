@@ -6,36 +6,33 @@ public class _2_Max_Consecutive_Ones_III {
 
         int n = nums.length;
 
-        int left = 0;
-        int right = 0;
+        int i = 0;
+        int j = 0;
 
-        int maxi = 0;
+        int zeros = 0;
 
-        int countKs = 0;
+        int maxLength = 0;
 
-        while (right < n) {
+        while (j < n) {
 
-            if (nums[right] == 0) {
-                countKs++;
+            if (nums[j] == 0) {
+                zeros++;
             }
 
-            while (countKs > k) {
-
-                if (nums[left] == 0) {
-                    countKs--;
+            while (zeros > k) {
+                if (nums[i] == 0) {
+                    zeros--;
                 }
-
-                left++;
-
+                i++;
             }
 
-            maxi = Math.max(maxi, right - left + 1);
+            maxLength = Math.max(maxLength, j - i + 1);
 
-            right++;
+            j++;
 
         }
 
-        return maxi;
+        return maxLength;
 
     }
 }

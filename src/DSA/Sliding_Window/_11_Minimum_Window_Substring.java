@@ -1,61 +1,64 @@
 package DSA.Sliding_Window;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class _11_Minimum_Window_Substring {
-    public static String minWindow(String s, String t) {
-        if (s == null || s.length() == 0 || t == null || t.length() == 0) {
+    public String minWindow(String s, String t) {
+
+        if (s.isEmpty() || t.isEmpty()) {
             return "";
         }
 
-        // Map to store frequency of characters in t
+        // Frequency map for t
         Map<Character, Integer> tMap = new HashMap<>();
         for (char c : t.toCharArray()) {
             tMap.put(c, tMap.getOrDefault(c, 0) + 1);
         }
 
-        // Map to store frequency of characters in the current window
-        Map<Character, Integer> windowMap = new HashMap<>();
+        int left = 0;
+        int right = 0;
+        int required = tMap.size(); // Unique chars needed
+        int formed = 0; // How many chars matched
 
-        int left = 0, right = 0;
-        int minLength = Integer.MAX_VALUE;
-        int minStart = 0;
-        int required = tMap.size();  // Number of unique characters in t that need to be present in the window
-        int formed = 0;  // Number of unique characters in the current window that match the required frequency in t
+        Map<Character, Integer> sMap = new HashMap<>();
+
+        int minLen = Integer.MAX_VALUE;
+        int start = 0;
 
         while (right < s.length()) {
-            char rightChar = s.charAt(right);
-            windowMap.put(rightChar, windowMap.getOrDefault(rightChar, 0) + 1);
 
-            // Check if the current character in the window matches the required frequency in t
-            if (tMap.containsKey(rightChar) && windowMap.get(rightChar).intValue() == tMap.get(rightChar).intValue()) {
+            char c = s.charAt(right);
+            sMap.put(c, sMap.getOrDefault(c, 0) + 1);
+
+            if (tMap.containsKey(c) && sMap.get(c).intValue() == tMap.get(c).intValue()) {
                 formed++;
             }
 
-            // Try to contract the window until it ceases to be 'desirable'
+            // Try to shrink
             while (left <= right && formed == required) {
-                char leftChar = s.charAt(left);
 
-                // Update the minimum window if a smaller window is found
-                if (right - left + 1 < minLength) {
-                    minLength = right - left + 1;
-                    minStart = left;
+                char ch = s.charAt(left);
+
+                // Update result
+                if (right - left + 1 < minLen) {
+                    minLen = right - left + 1;
+                    start = left;
                 }
 
-                // Remove the leftmost character from the window
-                windowMap.put(leftChar, windowMap.get(leftChar) - 1);
-                if (tMap.containsKey(leftChar) && windowMap.get(leftChar) < tMap.get(leftChar)) {
+                // Remove the window
+                sMap.put(ch, sMap.get(ch) - 1);
+                if (tMap.containsKey(ch) && sMap.get(ch) < tMap.get(ch)) {
                     formed--;
                 }
 
                 left++;
             }
 
-            // Expand the window by moving the right pointer
             right++;
+
         }
 
-        return minLength == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLength);
+        return minLen == Integer.MAX_VALUE ? "" : s.substring(start, start + minLen);
+
     }
 }

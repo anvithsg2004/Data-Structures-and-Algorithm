@@ -5,30 +5,45 @@ import java.util.Map;
 
 public class _9_Longest_Substring_with_At_Most_K_Distinct_Characters {
     public int fun(String s, int k) {
-        if (s == null || s.isEmpty() || k == 0) {
-            return 0;
-        }
+        int n = s.length();
 
-        Map<Character, Integer> mpp = new HashMap<>();
-        int maxLenght = 0;
-        int left = 0;
-        int right = 0;
+        int i = 0;
+        int j = 0;
 
-        for (right = 0; right < s.length(); right++) {
-            char c = s.charAt(right);
-            mpp.put(c, mpp.getOrDefault(c, 0) + 1);
+        Map<Character, Integer> freCount = new HashMap<>();
 
-            while (mpp.size() > k) {
-                char leftChar = s.charAt(left);
-                mpp.put(leftChar, mpp.get(leftChar) - 1);
-                if (mpp.get(leftChar) == 0) {
-                    mpp.remove(leftChar);
-                }
-                left++;
+        int maxLen = -1;
+
+        while (j < n) {
+
+            char letter = s.charAt(j);
+
+            if (freCount.containsKey(letter) == false) {
+                freCount.put(letter, 1);
+            } else if (freCount.containsKey(letter) == true) {
+                freCount.put(letter, freCount.getOrDefault(letter, 0) + 1);
             }
-            maxLenght = Math.max(maxLenght, right - left + 1);
+
+            while (freCount.size() > k) {
+
+                char currentLetter = s.charAt(i);
+                freCount.put(currentLetter, freCount.get(currentLetter) - 1);
+
+                if (freCount.get(currentLetter) == 0) {
+                    freCount.remove(currentLetter);
+                }
+
+                i++;
+            }
+
+            if (freCount.size() == k) {
+                maxLen = Math.max(maxLen, j - i + 1);
+            }
+
+            j++;
+
         }
 
-        return maxLenght;
+        return maxLen;
     }
 }

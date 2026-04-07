@@ -4,29 +4,32 @@ import java.util.*;
 
 public class _1_Length_of_Longest_Substring_without_any_Repeating_Character {
     public int lengthOfLongestSubstring(String s) {
-        HashSet<Character> hashSet = new HashSet<>();
-
         int n = s.length();
 
-        int left = 0;
-        int right = 0;
-        int len = 0;
+        int i = 0;
+        int j = 0;
 
-        while (right < n) {
+        int maxLength = 0;
 
-            char ch = s.charAt(right);
+        Set<Character> characterSet = new HashSet<>();
 
-            while (hashSet.contains(ch)) {
-                hashSet.remove(s.charAt(left));
-                left = left + 1;
+        while (j < n) {
+
+            while (characterSet.contains(s.charAt(j))) {
+                characterSet.remove(s.charAt(i));
+
+                i++;
             }
 
-            hashSet.add(ch);
+            // Include
+            characterSet.add(s.charAt(j));
 
-            len = Math.max(len, right - left + 1);
-            right++;
+            // Update the Max Length
+            maxLength = Math.max(maxLength, j - i + 1);
+            j++;
+
         }
 
-        return len;
+        return maxLength;
     }
 }

@@ -1,41 +1,37 @@
 package DSA.Sliding_Window;
 
-//Problem Statement
-//You are given an array arr[], where each element represents a type of fruit.
-//Your goal is to determine the maximum number of fruits you can collect in a single pass,
-//if you can carry at most two different types of fruits at a time.
-//Same as the question "Find length of the longest subarray containing atmost two distinct integers".
-//We can say this question as = Max Length Sub Array with atmost 2 types of number.
-
 import java.util.*;
 
 public class _3_Fruit_Into_Baskets {
 
-    public static int totalElements2(Integer[] arr) {
+    public int totalFruit(int[] fruits) {
+
+        int n = fruits.length;
+
+        int i = 0;
+        int j = 0;
 
         int maxLen = 0;
-        int n = arr.length;
-        int left = 0;
 
-        Map<Integer, Integer> freqMap = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
 
-        for (int right = 0; right < n; right++) {
-            // Add the current element to the frequency map
-            freqMap.put(arr[right], freqMap.getOrDefault(arr[right], 0) + 1);
+        while (j < n) {
 
-            // Shrink the window until there are at most 2 unique elements
-            while (freqMap.size() > 2) {
-                // Remove the element at the left pointer
-                int leftElement = arr[left];
-                freqMap.put(leftElement, freqMap.get(leftElement) - 1);
-                if (freqMap.get(leftElement) == 0) {
-                    freqMap.remove(leftElement);
+            map.put(fruits[j], map.getOrDefault(fruits[j], 0) + 1);
+
+            while (map.size() > 2) {
+                map.put(fruits[i], map.get(fruits[i]) - 1);
+
+                if (map.get(fruits[i]) == 0) {
+                    map.remove(fruits[i]);
                 }
-                left++;
+
+                i++;
             }
 
-            // Update the maximum window length
-            maxLen = Math.max(maxLen, right - left + 1);
+            maxLen = Math.max(maxLen, j - i + 1);
+            j++;
+
         }
 
         return maxLen;

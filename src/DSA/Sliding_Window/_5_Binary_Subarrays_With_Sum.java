@@ -1,31 +1,37 @@
 package DSA.Sliding_Window;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class _5_Binary_Subarrays_With_Sum {
 
     public int numSubarraysWithSum(int[] nums, int goal) {
+        return help(nums, goal) - help(nums, goal - 1);
+    }
+
+    public int help(int[] nums, int goal) {
+
+        if (goal < 0) {
+            return 0;
+        }
 
         int n = nums.length;
 
-        Map<Integer, Integer> map = new HashMap<>();
-
-        map.put(0, 1);
-
-        int currentSum = 0;
+        int i = 0;
+        int j = 0;
 
         int count = 0;
 
-        for (int i = 0; i < n; i++) {
+        int sum = 0;
 
-            currentSum = currentSum + nums[i];
+        while (j < n) {
 
-            int rem = currentSum - goal;
+            sum = sum + nums[j];
 
-            count = count + map.getOrDefault(rem, 0);
+            while (sum > goal) {
+                sum = sum - nums[i];
+                i++;
+            }
 
-            map.put(currentSum, map.getOrDefault(currentSum, 0) + 1);
+            count = count + (j - i + 1);
+            j++;
 
         }
 

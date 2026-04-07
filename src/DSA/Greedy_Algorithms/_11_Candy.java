@@ -1,43 +1,35 @@
 package DSA.Greedy_Algorithms;
 
+import java.util.Arrays;
+
 public class _11_Candy {
 
-    //Brute Force
     public int candy(int[] ratings) {
 
         int n = ratings.length;
 
-        int[] left = new int[n];
-        int[] right = new int[n];
+        int[] candies = new int[n];
+        Arrays.fill(candies, 1);
 
-        left[0] = 1;
-        right[n - 1] = 1;
-
-        //Coming from the front.
         for (int i = 1; i < n; i++) {
             if (ratings[i] > ratings[i - 1]) {
-                left[i] = left[i - 1] + 1;
-            } else {
-                left[i] = 1;
+                candies[i] = candies[i - 1] + 1;
             }
         }
 
-        //Coming from the back.
         for (int i = n - 2; i >= 0; i--) {
             if (ratings[i] > ratings[i + 1]) {
-                right[i] = right[i + 1] + 1;
-            } else {
-                right[i] = 1;
+                candies[i] = Math.max(candies[i], candies[i + 1] + 1);
             }
         }
 
-        int answer = 0;
+        int maxSum = 0;
 
         for (int i = 0; i < n; i++) {
-            answer = answer + Math.max(left[i], right[i]);
+            maxSum = maxSum + candies[i];
         }
 
-        return answer;
+        return maxSum;
 
     }
 }

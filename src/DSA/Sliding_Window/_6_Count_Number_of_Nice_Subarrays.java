@@ -1,35 +1,45 @@
 package DSA.Sliding_Window;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class _6_Count_Number_of_Nice_Subarrays {
 
     public int numberOfSubarrays(int[] nums, int k) {
-        int n = nums.length;
+        return help(nums, k) - help(nums, k - 1);
+    }
 
-        // Step 1: transform nums into 0/1 based on odd/even
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = (nums[i] % 2 == 0) ? 0 : 1;
+    public int help(int[] nums, int k) {
+
+        if (k < 0) {
+            return 0;
         }
 
-        // Step 2: apply subarray sum = k template
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, 1);
+        int n = nums.length;
 
-        int currentSum = 0;
+        int i = 0;
+        int j = 0;
+
+        int currentOddNumber = 0;
+
         int count = 0;
 
-        for (int i = 0; i < n; i++) {
-            currentSum += arr[i];
+        while (j < n) {
 
-            int rem = currentSum - k;
-            count += map.getOrDefault(rem, 0);
+            if (nums[j] % 2 == 1) {
+                currentOddNumber++;
+            }
 
-            map.put(currentSum, map.getOrDefault(currentSum, 0) + 1);
+            while (currentOddNumber > k) {
+                if (nums[i] % 2 == 1) {
+                    currentOddNumber--;
+                }
+                i++;
+            }
+
+            count = count + (j - i + 1);
+            j++;
+
         }
 
         return count;
+
     }
 }
