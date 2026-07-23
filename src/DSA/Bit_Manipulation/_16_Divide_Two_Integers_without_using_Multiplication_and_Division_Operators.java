@@ -21,8 +21,8 @@ public class _16_Divide_Two_Integers_without_using_Multiplication_and_Division_O
             sign = false;
         }
 
-        long n = Math.abs(dividend); //Numerator
-        long d = Math.abs(divisor); //Denominator
+        long n = Math.abs((long) dividend);
+        long d = Math.abs((long) divisor);
 
         long quotient = 0;
 
@@ -63,27 +63,26 @@ public class _16_Divide_Two_Integers_without_using_Multiplication_and_Division_O
     //Brute Force
     public int divide(int dividend, int divisor) {
 
-        // Handle an edge case for overflow
+        // Handle overflow case
         if (dividend == Integer.MIN_VALUE && divisor == -1) {
             return Integer.MAX_VALUE;
         }
 
         // Determine the sign of the result
-        boolean isNegative = (dividend < 0) != (divisor < 0);
+        boolean isPositive = !((dividend < 0) ^ (divisor < 0));
 
-        // Work with absolute values
-        long n = Math.abs((long) dividend);
-        long d = Math.abs((long) divisor);
+        // Convert to long before taking absolute value
+        long a = Math.abs((long) dividend);
+        long b = Math.abs((long) divisor);
 
-        // Perform division by repeated subtraction
-        int quotient = 0;
-        while (n >= d) {
-            n -= d;
-            quotient++;
+        int count = 0;
+
+        while (a >= b) {
+            a -= b;
+            count++;
         }
 
-        // Apply the sign to the result
-        return isNegative ? -quotient : quotient;
+        return isPositive ? count : -count;
 
     }
 }

@@ -40,4 +40,15 @@ public class _1_BinaryConversion_1s_And_2s {
         return num;
 
     }
+
+    public static String convertToBinary2(int n) {
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 31; i >= 0; i--) {
+            sb.append((n >> i) & 1);
+        }
+
+        return sb.toString();
+    }
 }

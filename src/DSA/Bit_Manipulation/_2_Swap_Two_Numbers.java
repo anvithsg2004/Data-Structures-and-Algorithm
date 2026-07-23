@@ -22,11 +22,4 @@ public class _2_Swap_Two_Numbers {
 
     }
 
-    public static void main(String[] args) {
-        int a = 4;
-        int b = 5;
-
-        System.out.println(Arrays.toString(swapTwoNumber(a, b)));
-    }
-
 }

@@ -8,7 +8,8 @@ public class _8_Check_If_the_number_is_power_of_2 {
 
     public boolean powerOf2(int n) {
 
-        if (n == 0) {
+        // Ignore negative number
+        if (n <= 0) {
             return false;
         }
 

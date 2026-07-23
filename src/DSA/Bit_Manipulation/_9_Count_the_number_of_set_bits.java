@@ -16,11 +16,8 @@ public class _9_Count_the_number_of_set_bits {
         //Now the count is 2.
 
         while (n != 0) {
-
             n = n & (n - 1);
-
             count = count + 1;
-
         }
 
         return count;
@@ -32,14 +29,15 @@ public class _9_Count_the_number_of_set_bits {
 
         int count = 0;
 
-        while (n > 0) {
-
+        while (n > 1) {
             if (n % 2 == 1) {
                 count = count + 1;
             }
-
             n = n / 2;
+        }
 
+        if (n == 1) {
+            count = count + 1;
         }
 
         return count;
@@ -57,8 +55,14 @@ public class _9_Count_the_number_of_set_bits {
             //All odd numbers will have the rightest number will be 1,
             // and if you add 1 to it, then all will become 1;
 
-            n = n >> 1; //This is equals to n/2.
-
+            //13 = 1101
+            //
+            //After >>
+            //
+            //1101
+            //↓
+            //
+            //0110 = 6
         }
 
         return count;

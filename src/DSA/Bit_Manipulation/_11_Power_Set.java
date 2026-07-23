@@ -3,8 +3,7 @@ package DSA.Bit_Manipulation;
 //2^n is equals to left shift of 1 of the number given.
 //2^n == (1 << n)
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class _11_Power_Set {
     public static List<List<Integer>> generatePowerSet(int[] nums) {
@@ -18,23 +17,14 @@ public class _11_Power_Set {
 
         int totalNumberOfSet = (1 << n); // 2^n subsets
 
-        for (int i = 0; i < totalNumberOfSet; i++) {
-
-            List<Integer> subset = new ArrayList<>();
-
-            for (int j = 0; j < n; j++) {
-
-                // Check if the j-th bit is set in i
-                //For Example, i = 7 and the binary will be '111'
-                //so it say that all the three should be added in the subset.
-                if ((i & (1 << j)) != 0) {
-                    subset.add(nums[j]);
+        for (int num = 0; num < totalNumberOfSet; num++) {
+            List<Integer> currList = new ArrayList<>();
+            for (int i = 0; i < num; i++) {
+                if ((num & (1 << i)) != 0) {
+                    currList.add(nums[i]);
                 }
-
             }
-
-            allSubset.add(subset);
-
+            allSubset.add(currList);
         }
 
         return allSubset;
